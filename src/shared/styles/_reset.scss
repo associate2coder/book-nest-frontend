@@ -1,0 +1,73 @@
+/* Reset styles */
+
+/* Box sizing border-box for all elements */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove list styles */
+ul, ol {
+  list-style: none;
+}
+
+/* Remove default margin and padding from body */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Remove text decoration and inherit color for links */
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* Reset heading margins */
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+  padding: 0;
+}
+
+/* Remove button default styles */
+button, input, textarea, select {
+  font: inherit;
+  border: none;
+  background: none;
+  outline: none;
+}
+
+/* Remove default focus styles but keep accessibility */
+button:focus, input:focus, textarea:focus, select:focus {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+/* Ensure images don’t exceed their container */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Remove table spacing */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* Remove default styles for fieldsets and legends */
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+legend {
+  display: none;
+}
