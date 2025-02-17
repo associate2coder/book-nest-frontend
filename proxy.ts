@@ -1,5 +1,5 @@
 export const config = {
-  runtime: "edge", // Use Edge functions instead of Node.js
+  runtime: "edge", // ✅ Defines this as an Edge function
 };
 
 export default async function handler(req: Request): Promise<Response> {
