@@ -2,6 +2,10 @@ import { useEffect, useState } from 'react';
 import constructionImage from '../src/assets/under-construction.svg';
 import './App.scss';
 
+interface TestType {
+  message: string;
+}
+
 export const App: React.FC = () => {
   const [testMessage, setTestMessage] = useState('');
 
@@ -14,12 +18,12 @@ export const App: React.FC = () => {
           throw new Error('Request' + res.status);
         }
 
-        return res.text();
+        return res.json();
       })
-      .then(data => {
+      .then((data: TestType) => {
         console.log(data);
 
-        setTestMessage(data);
+        setTestMessage(data.message);
       })
       .catch(err => {
         setTestMessage(`Error: ${err}`);
