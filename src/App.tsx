@@ -2,14 +2,14 @@ import { useEffect, useState } from 'react';
 import constructionImage from '../src/assets/under-construction.svg';
 import './App.scss';
 
-const TEST_URL = 'http://ec2-3-84-50-78.compute-1.amazonaws.com:8080/health';
+// const TEST_URL = 'http://ec2-3-84-50-78.compute-1.amazonaws.com:8080/health';
 
 
 export const App: React.FC = () => {
   const [testMessage, setTestMessage] = useState('');
 
   useEffect(() => {
-    fetch(TEST_URL)
+    fetch('/api/health', { method: 'GET' })
       .then(res => {
         console.log(res);
         
