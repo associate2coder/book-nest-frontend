@@ -7,7 +7,7 @@ export default async function handler(req: Request): Promise<Response> {
 
   // Extract the API path dynamically
   const url = new URL(req.url);
-  const backendPath = url.pathname.replace(/^\/api\//, "");
+  const backendPath = url.pathname.replace(/^\/api\//, ""); // ✅ Removes "/api/" prefix
   const targetURL = `${backendBaseURL}/${backendPath}`;
 
   console.log(`Proxying request to: ${targetURL}`);
