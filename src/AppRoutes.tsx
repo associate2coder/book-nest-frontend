@@ -1,15 +1,39 @@
 import { Route, Routes } from "react-router-dom";
 import { App } from "./App";
+import { HomePage } from "./modules/HomePage";
+import { PageNotFound } from "./modules/PageNotFound";
+import { GiveBookPage } from "./modules/GiveBookPage";
+import { MyBooksPage } from "./modules/MyBooksPage";
+import { BookDetailsPage } from "./modules/BookDetailsPage";
+import { SignUpPage } from "./modules/SignUpPage/components/SignUpPage";
+import { LoginPage } from "./modules/LoginPage/components/LoginPage/LoginPage";
+import { ProtectedRoute } from "./features/auth/ProtectedRoute";
+import { BooksPage } from "./modules/BooksPage/components/BooksPage";
 
 export const AppRoutes = () => {
   return (
     <Routes>
       <Route path="/" element={<App />}>
-        {/* <Route index element={<HomePage />} /> */}
+        <Route index element={<HomePage />} />
 
-        {/* More Routes to be added here */}
+        {/* Unprotected routes */}
+        <Route path="login" element={<LoginPage />} />
+        <Route path="register" element={<SignUpPage />} />
 
-        {/* <Route path="*" element={<PageNotFound />} /> */}
+        {/* Unprotected routes with some protected content */}
+        <Route path="books">
+          <Route index element={<BooksPage />} />
+          <Route path=":bookId?" element={<BookDetailsPage />} />
+        </Route>
+
+        {/* authorised-only (protected) routes */}
+        <Route element={<ProtectedRoute />} >
+          <Route path="give" element={<GiveBookPage />} />
+          <Route path="mybooks" element={<MyBooksPage />} />
+        </Route>
+
+        {/* Error route */}
+        <Route path="*" element={<PageNotFound />} />
       </Route>
     </Routes>
   );

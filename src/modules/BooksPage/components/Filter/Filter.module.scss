@@ -1,0 +1,57 @@
+.filter {
+  width: 100%;
+  max-width: 285px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  font-family: vars.$serif-font;
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 700;
+  color: vars.$grey-100;
+}
+
+.icon {
+  width: 21px;
+  height: 21px;
+  transition: transform 0.5s ease;
+  cursor: pointer;
+}
+
+.iconExpanded {
+  transform: rotate(180deg);
+}
+
+.values {
+  padding-inline: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+
+  font-family: vars.$sans-font;
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: 500;
+  color: vars.$grey-50;
+}
+
+.valuesExpanded {
+  opacity: 1;
+}
+
+.box {
+  margin-right: 16px;
+  width: 14px;
+  height: 14px;
+}

@@ -1,0 +1,73 @@
+.group {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+
+  &:focus-within {
+    .label {
+      display: unset;
+      color: vars.$primary-color;
+    }
+
+    .input::placeholder {
+      color: transparent;
+    }
+  }
+}
+
+.label {
+  display: none;
+
+  @extend %body-text;
+  font-size: 16px;
+  letter-spacing: -5%;
+
+  position: absolute;
+  top: -10px;
+  left: 12px;
+  
+  color: vars.$grey-50;
+  background-color: vars.$background-color;
+  padding-inline: 4px;
+}
+
+.input {
+  padding: 15px 17px;
+  border: 1px solid vars.$grey-50;
+  outline: none;
+  height: 44px;
+  border-radius: 8px;
+
+  &::placeholder {
+    @extend %buttons;
+    color: vars.$grey-50;
+  }
+
+  &.error {
+    border: 1px solid vars.$red-color;
+  }
+
+  &:focus {
+    border: 1px solid vars.$primary-color;
+    outline: none;
+  }
+}
+
+.message {
+  margin-top: -8px;
+  height: 12px;
+  color: vars.$grey-80;
+  @extend %small-text;
+  padding-left: 17px;
+}
+
+.errorMessage {
+  color: vars.$red-color;
+}
+
+.visible {
+  display: unset;
+}
+
+

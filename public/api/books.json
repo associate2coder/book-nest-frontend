@@ -1,0 +1,86 @@
+[
+  {
+    "id": 1,
+    "author": "Rachel Kousser",
+    "title": "Alexander at the End of the World",
+    "image": "images/book1.png",
+    "year": 2024
+  },
+  {
+    "id": 2,
+    "author": "Alfred Lansing",
+    "title": "Endurance: Shackleton's Incredible Voyage",
+    "image": "images/book2.png",
+    "year": 2003 
+  },
+  {
+    "id": 3,
+    "author": "Julian Sancton",
+    "title": "Madhouse at the End of the Earth",
+    "image": "images/book3.png",
+    "year": 2021 
+  },
+  {
+    "id": 4,
+    "author": "Nicolas Sparks",
+    "title": "The Best of Me",
+    "image": "images/book4.png",
+    "year": 2010
+  },
+  {
+    "id": 5,
+    "author": "Jim Murphy",
+    "title": "Inner Excellence",
+    "image": "images/book5.png",
+    "year": 2020
+  },
+  {
+    "id": 6,
+    "author": "Carter Willson",
+    "title": "Tell Me What You Did",
+    "image": "images/book6.png",
+    "year": 2025
+  },
+  {
+    "id": 7,
+    "author": "Mark Greaney",
+    "title": "Midnight Black",
+    "image": "images/book7.png",
+    "year": 2025
+  },
+  {
+    "id": 8,
+    "author": "Freida McFadden",
+    "title": "The Crash",
+    "image": "images/book8.png",
+    "year": 2025
+  },
+  {
+    "id": 9,
+    "author": "Julian Barnes",
+    "title": "The Sense of an Ending",
+    "image": "images/book9.png",
+    "year": 2011
+  },
+  {
+    "id": 10,
+    "author": "Yung Pueblo",
+    "title": "Inward",
+    "image": "images/book10.png",
+    "year": 2024
+  },
+  {
+    "id": 11,
+    "author": "Dante Alighieri",
+    "title": "The Divine Comedy",
+    "image": "images/book11.png",
+    "year": 2003
+  },
+  {
+    "id": 12,
+    "author": "Charan Ranganath",
+    "title": "Why We Remember",
+    "image": "images/book12.png",
+    "year": 2024
+  }
+]

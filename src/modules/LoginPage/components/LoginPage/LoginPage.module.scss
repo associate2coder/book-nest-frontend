@@ -1,0 +1,18 @@
+.loginPageContainer {
+  margin-inline: auto;
+  padding: 32px;
+  width: 100%;
+  max-width: 388px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.loginTitle {
+  @extend %h3;
+  font-size: 32px;
+  line-height: 35px;
+  letter-spacing: -5%;
+  text-align: center;
+}
