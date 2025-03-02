@@ -14,7 +14,7 @@ const initialState: BookState = {
   error: '',
 };
 
-export const initProducts = createAsyncThunk<Book[]>(
+export const initBooks = createAsyncThunk<Book[]>(
   'books/fetch',
   getBooks,
 );
@@ -24,18 +24,18 @@ export const bookSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: builder => {
-    builder.addCase(initProducts.pending, state => {
+    builder.addCase(initBooks.pending, state => {
       state.loaded = false;
       state.error = '';
     });
     builder.addCase(
-      initProducts.fulfilled,
+      initBooks.fulfilled,
       (state, action: PayloadAction<Book[]>) => {
         state.loaded = true;
         state.items = action.payload;
       },
     );
-    builder.addCase(initProducts.rejected, (state, action) => {
+    builder.addCase(initBooks.rejected, (state, action) => {
       state.loaded = true;
       state.error = action.error.message || 'Something went wrong!';
     });

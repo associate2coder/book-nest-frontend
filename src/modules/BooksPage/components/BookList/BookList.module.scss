@@ -1,5 +1,17 @@
+.listContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
 .list {
+  width: 100%;
+  max-width: 1032px;
   display: grid;
-  grid-template-columns: repeat(12, 64px);
+  grid-template-columns: repeat(12, minmax(48px, 64px));
   gap: 24px;
+
+  & > * {
+    grid-column: span 4;
+  }
 }

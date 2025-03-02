@@ -1,0 +1,57 @@
+.mainPageContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 16px;
+}
+
+.mainPageImage {
+  width: 100%;
+  max-width: 545px;
+}
+
+.image {
+  object-fit: contain;
+}
+
+.titleBlock {
+  padding-top: 150px;
+  width: 100%;
+  max-width: 540px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.title {
+  font-family: vars.$serif-font;
+  font-size: 48px;
+  line-height: 56px;
+  font-weight: 600;
+}
+
+.purpose {
+  font-family: vars.$sans-font;
+  font-size: 32px;
+  line-height: 32px;
+  font-weight: 400;
+  margin-bottom: 24px;
+}
+
+.button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-block: 16px;
+  width: 100%;
+  max-width: 200px;
+  border-radius: 8px;
+
+  @extend %buttons;
+
+  background-color: vars.$primary-color;
+  color: vars.$white-color;
+  cursor: pointer;
+
+}

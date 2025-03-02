@@ -1,6 +1,16 @@
 .page__body {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1440px;
   margin-inline: auto;
   background-color: vars.$background-color;
+}
+
+.App {
+  width: 100%;
+  padding-inline: 40px;
+}
+
+.App__main {
+  width: 100%;
+  padding-top: 48px;
 }

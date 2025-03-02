@@ -54,6 +54,10 @@
   }
 }
 
+.password {
+  padding-right: 53px;
+}
+
 .message {
   margin-top: -8px;
   height: 12px;
@@ -68,6 +72,18 @@
 
 .visible {
   display: unset;
+}
+
+.icon {
+  width: 21px;
+  height: 21px;
+}
+
+.showPassword {
+  position: absolute;
+  right: 16px;
+  top: 20%;
+  cursor: pointer;
 }
 
 

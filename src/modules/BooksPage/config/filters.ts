@@ -1,6 +1,6 @@
 export const filters = {
-  categories: {
-    id: 'categories',
+  category: {
+    id: 'category',
     title: 'Book Categories',
     values: [
       'Fiction',
@@ -9,7 +9,7 @@ export const filters = {
       'Comics & Graphic Novels',
       'Poetry & Drama',
       'Educational & Reference',
-      'Hobies & Lifestyle',
+      'Hobbies & Lifestyle',
     ],
   },
   format: {

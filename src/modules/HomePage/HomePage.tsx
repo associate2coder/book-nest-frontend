@@ -1,20 +1,26 @@
 // import cn from 'classnames'
-// import styles from './HomePage.module.scss';
+import { useNavigate } from 'react-router-dom';
+import styles from './HomePage.module.scss';
+import mainPagePic from '@assets/images/home_page_image.png';
 
-import { Link } from "react-router-dom";
-import { useAuth } from "../../features/hooks/useAuth";
 
 export const HomePage: React.FC = () => {
-  const { authToken } = useAuth();
+  const naviate = useNavigate();
 
+  const handleClick = () => {
+    naviate('/books');
+  }
   return (
-    <div>
-      <h1>{`[Home Page]`}</h1>
-      <Link to={'register'}>Sign up</Link>
-      <br />
-      <Link to={'login'}>Log in</Link>
-      <br />
-      <p>{authToken}</p>
+    <div className={styles.mainPageContainer}>
+      <div className={styles.titleBlock}>
+        <h1 className={styles.title}>Book Nest</h1>
+        <p className={styles.purpose}>Clear your shelves and find your next great read with ease!</p>
+        <button onClick={handleClick} className={styles.button}>Explore books!</button>
+      </div>
+
+      <div className={styles.mainPageImage}>
+        <img src={mainPagePic} alt="picture with books" className={styles.image} />
+      </div>
     </div>
   );
-}
+};

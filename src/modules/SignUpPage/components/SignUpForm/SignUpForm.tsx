@@ -5,7 +5,7 @@ import { FormSeparator } from '../../../../shared/components/FormSeparator/FormS
 import { FormInput } from '../../../../shared/components/FormInput';
 import { validateEmail, validateFullName, validatePassword } from '../../utils/validation';
 import { Link } from 'react-router-dom';
-import { minPasswordLength } from '../../../../config/constants';
+import { MIN_PASS_LENGTH } from '../../../../config/constants';
 import { SubmitButton } from '../../../../shared/components/SubmitButton';
 import { authService } from '../../../../features/auth/authService';
 import { AuthContext } from '../../../../features/auth/AuthContext';
@@ -45,8 +45,8 @@ export const SingUpForm: React.FC = () => {
     const error = `${key}Error`;
 
     const isPassword = key === 'password'
-    const passwordError = value.length < minPasswordLength
-      ? `Must be at least ${minPasswordLength} characters`
+    const passwordError = value.length < MIN_PASS_LENGTH
+      ? `Must be at least ${MIN_PASS_LENGTH} characters`
       : '';
     const errorValue = isPassword ? passwordError : '';
 

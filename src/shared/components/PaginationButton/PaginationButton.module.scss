@@ -1,0 +1,29 @@
+
+.button {
+  @extend %body-text;
+  height: 21px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pageButton {
+  width: 21px;
+  cursor: pointer;
+}
+
+.pageBreak {
+  width: 25px;  
+}
+
+.currentPage {
+  color: vars.$primary-color;
+  cursor: unset;
+}
+
+.pageBreakLine {
+  height: 1px;
+  width: 100%;
+  background-color: vars.$primary-color;
+
+}

@@ -1,0 +1,46 @@
+.card {
+  width: 100%;
+  padding: 32px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+
+  align-items: center;
+
+  background-color: vars.$secondary-color;
+}
+
+.cardHeader {
+  min-height: 70px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.author {
+  font-family: vars.$sans-font;
+  font-size: 16px;
+  line-height: 1.4;
+  font-weight: 400;
+  letter-spacing: -3%;
+  color: vars.$grey-100;
+  text-align: left;
+  width: 100%;
+}
+
+.title {
+  @extend %h4;
+  color: vars.$grey-100;
+  text-align: left;
+  width: 100%;
+}
+
+.imageWrapper {
+  max-height: 188px;
+}
+
+.image {
+  object-fit: contain;
+}

@@ -9,6 +9,9 @@ import { SignUpPage } from "./modules/SignUpPage/components/SignUpPage";
 import { LoginPage } from "./modules/LoginPage/components/LoginPage/LoginPage";
 import { ProtectedRoute } from "./features/auth/ProtectedRoute";
 import { BooksPage } from "./modules/BooksPage/components/BooksPage";
+import { Redirect } from "./features/auth/Redirect";
+import { PrivacyPolicy } from "./modules/PrivacyPolicy";
+import { DataDeletion } from "./modules/DataDeletion";
 
 export const AppRoutes = () => {
   return (
@@ -19,6 +22,10 @@ export const AppRoutes = () => {
         {/* Unprotected routes */}
         <Route path="login" element={<LoginPage />} />
         <Route path="register" element={<SignUpPage />} />
+        <Route path="redirect" element={<Redirect />} />
+        <Route path="privacy-policy" element={<PrivacyPolicy />} />
+        <Route path="data-deletion" element={<DataDeletion />} />
+
 
         {/* Unprotected routes with some protected content */}
         <Route path="books">

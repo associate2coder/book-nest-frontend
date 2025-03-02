@@ -1,0 +1,14 @@
+.loginBlock {
+  display: flex;
+  flex-direction: row;
+  gap: 80px;
+}
+
+.authLink {
+  font-family: vars.$sans-font;
+  font-size: 16px;
+  line-height: 17px;
+  font-weight: 400;
+  text-align: center;
+  color: vars.$grey-100;
+}

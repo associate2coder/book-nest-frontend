@@ -1,0 +1,78 @@
+
+.sortbyContainer {
+  position: relative;
+  width: 100%;
+  max-width: 214px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.sortbyButton {
+  border: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  
+  @extend %body-text;
+  color: vars.$grey-100;
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.icon {
+  width: 21px;
+  height: 21px;
+  transition: transform 0.5s ease;
+}
+
+.iconExpanded {
+  transform: rotate(180deg);
+}
+
+.dropdown {
+  position: absolute;
+  width: 100%;
+  min-width: fit-content;
+  top: 48px;
+  right: 0;
+  padding: 24px 16px;
+  border-radius: 8px;
+  background-color: vars.$background-color;
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.15);
+
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  
+  transform: scale(0);
+  opacity: 0;
+  transform-origin: top right;
+}
+
+.dropdownExpanded {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.dropdownContent {
+  // width: 214px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.dropdownItem {
+  width: 100%;
+  max-width: 200px;
+  padding: 4px 8px;
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: vars.$secondary-color;
+  }
+}
