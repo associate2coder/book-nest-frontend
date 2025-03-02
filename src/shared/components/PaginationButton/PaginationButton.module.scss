@@ -1,0 +1,27 @@
+
+.button {
+  @include mixins.display-flex-centered();
+  @extend %body-text;
+
+  height: 21px;
+}
+
+.pageButton {
+  width: 21px;
+  cursor: pointer;
+}
+
+.pageBreak {
+  width: 25px;  
+}
+
+.currentPage {
+  color: vars.$primary-color;
+  cursor: unset;
+}
+
+.pageBreakLine {
+  @include mixins.width-height(100%, 1px);
+
+  background-color: vars.$primary-color;
+}

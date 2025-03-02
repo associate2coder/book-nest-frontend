@@ -1,0 +1,28 @@
+.container {
+  @include mixins.flex-row-gap();
+
+  justify-content: space-between;
+  align-items: center;
+
+  position: relative;
+}
+
+.queryInput {
+  @include mixins.width-height(100%, 30px);
+
+  max-width: 416px;
+  padding: 9.5px 16px 9.5px 45px;
+  border: 0.5px solid vars.$grey-50;
+  border-radius: 8px;
+
+  &:focus {
+    outline: none;
+    caret-color: vars.$primary-color;
+  }
+}
+
+.icon {
+  position: absolute;
+  left: 16px;
+  top: 20%;
+}

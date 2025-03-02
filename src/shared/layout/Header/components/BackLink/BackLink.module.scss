@@ -1,0 +1,16 @@
+.link {
+  @include mixins.flex-row-gap(8px);
+
+  align-items: center;
+  color: vars.$grey-100;
+}
+
+.text {
+  @extend %body-text;
+  font-size: 16px;
+  line-height: 1;
+}
+
+.icon {
+  @include mixins.width-height(21px, 21px);
+}

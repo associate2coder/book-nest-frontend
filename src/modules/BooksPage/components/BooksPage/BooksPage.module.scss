@@ -1,0 +1,11 @@
+.booksPage {
+  background-color: vars.$background-color;
+  padding-block: 48px;
+}
+
+.pageContent {
+  width: 100%;
+  justify-content: space-between;
+
+  @include mixins.flex-row-gap(24px);
+}

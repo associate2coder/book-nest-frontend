@@ -1,0 +1,72 @@
+.filter {
+  width: 100%;
+  max-width: 285px;
+
+  @include mixins.flex-column-gap(24px);
+}
+
+.header {
+  @include mixins.flex-row-gap();
+  
+  justify-content: space-between;
+  align-items: center;
+
+  font-family: vars.$serif-font;
+  font-size: 20px;
+  line-height: 20px;
+  font-weight: 700;
+  color: vars.$grey-100;
+}
+
+.icon {
+  transition: transform 0.5s ease;
+  cursor: pointer;
+
+  @include mixins.width-height(21px, 21px);
+}
+
+.iconExpanded {
+  transform: rotate(180deg);
+}
+
+.filterItems {
+  padding-inline: 24px;
+
+  @include mixins.flex-column-gap(16px);
+
+  opacity: 0;
+  transition: opacity 0.5s ease;
+
+  font-family: vars.$sans-font;
+  font-size: 14px;
+  line-height: 14px;
+  font-weight: 500;
+}
+
+.filterItem {
+  @include mixins.flex-row-gap(16px);
+
+  & > * {
+    cursor: pointer;
+  }
+}
+
+.label {
+  text-align: left;
+  color: vars.$grey-100;
+}
+
+.filterDisabled {
+  color: vars.$grey-50;
+  cursor: unset;
+}
+
+.valuesExpanded {
+  opacity: 1;
+}
+
+.box {
+  margin-right: 16px;
+
+  @include mixins.width-height(14px, 14px);
+}

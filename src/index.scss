@@ -1,0 +1,28 @@
+:root {
+  --serif-font: 'Playfair', Georgia, 'Times New Roman', Times, serif;
+  --sans-font: 'DM Sans', Arial, Helvetica, sans-serif;
+  --heading-font: 'Mont', 'DM Sans', Arial, Helvetica, sans-serif;
+}
+
+.main-color-scheme {
+  --primary-color: #FF6400;
+  --secondary-color: #EDEDE3;
+  --background-color: #F9F8F3;
+
+  --grey-100: #1D1D1D;
+  --grey-90: #393939;
+  --grey-80: #515051;
+  --grey-70: #8F8F8F;
+  --grey-60: #7A7A7A;
+  --grey-50: #939393;
+  --grey-40: #ABABAB;
+  --grey-30: #C4C4C4;
+  --grey-20: #DCDCDC;
+  --grey-10: #E9E9E9;
+  --white-color: #FFF;
+  --red-color: #FF0000;
+}
+
+.page {
+  font-family: var(--sans-font);
+}

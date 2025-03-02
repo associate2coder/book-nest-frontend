@@ -1,0 +1,7 @@
+.pagination {
+  @include mixins.flex-row-gap(16px);
+
+  height: 21px;
+  justify-content: flex-end;
+  align-items: center;
+}

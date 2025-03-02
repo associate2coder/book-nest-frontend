@@ -1,0 +1,13 @@
+.loginButton {
+  @include mixins.display-flex-centered();
+  @extend %buttons;
+
+  gap: 4px;
+  padding: 10px;
+  width: 100%;
+  border-radius: 8px;
+
+  background-color: vars.$grey-100;
+  color: vars.$white-color;
+  cursor: pointer;
+}

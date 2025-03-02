@@ -1,0 +1,134 @@
+[
+  {
+    "id": 1,
+    "slug": "rachel-kousser-alexander-at-the-end-of-the-world",
+    "author": "Rachel Kousser",
+    "title": "Alexander at the End of the World",
+    "image": "images/book1.png",
+    "category": "Non-Fiction",
+    "format": "Hardcover",
+    "condition": "Very Good",
+    "year": 2024
+  },
+  {
+    "id": 2,
+    "slug": "alfred-lansing-endurance-shackletons-incredible-voyage",
+    "author": "Alfred Lansing",
+    "title": "Endurance: Shackleton's Incredible Voyage",
+    "image": "images/book2.png",
+    "category": "Non-Fiction",
+    "format": "Hardcover",
+    "condition": "Poor",
+    "year": 2003 
+  },
+  {
+    "id": 3,
+    "slug": "julian-sancton-madhouse-at-the-end-of-the-earth",
+    "author": "Julian Sancton",
+    "title": "Madhouse at the End of the Earth",
+    "image": "images/book3.png",
+    "category": "Non-Fiction",
+    "format": "Paperback",
+    "condition": "Good",
+    "year": 2021 
+  },
+  {
+    "id": 4,
+    "slug": "nicolas-sparks-the-best-of-me",
+    "author": "Nicolas Sparks",
+    "title": "The Best of Me",
+    "image": "images/book4.png",
+    "category": "Fiction",
+    "format": "Paperback",
+    "condition": "Good",
+    "year": 2010
+  },
+  {
+    "id": 5,
+    "slug": "jim-murphy-inner-excellence",
+    "author": "Jim Murphy",
+    "title": "Inner Excellence",
+    "image": "images/book5.png",
+    "category": "Hobbies & Lifestyle",
+    "format": "Paperback",
+    "condition": "Good",
+    "year": 2020
+  },
+  {
+    "id": 6,
+    "slug": "carter-willson-tell-me-what-you-did",
+    "author": "Carter Willson",
+    "title": "Tell Me What You Did",
+    "image": "images/book6.png",
+    "category": "Fiction",
+    "format": "Paperback",
+    "condition": "Like New",
+    "year": 2025
+  },
+  {
+    "id": 7,
+    "slug": "mark-greaney-midnight-black",
+    "author": "Mark Greaney",
+    "title": "Midnight Black",
+    "image": "images/book7.png",
+    "category": "Fiction",
+    "format": "Hardcover",
+    "condition": "Like New",
+    "year": 2025
+  },
+  {
+    "id": 8,
+    "slug": "freida-mcfadden-the-crash",
+    "author": "Freida McFadden",
+    "title": "The Crash",
+    "image": "images/book8.png",
+    "category": "Fiction",
+    "format": "Paperback",
+    "condition": "Like New",
+    "year": 2025
+  },
+  {
+    "id": 9,
+    "slug": "julian-barnes-the-sense-of-an-ending",
+    "author": "Julian Barnes",
+    "title": "The Sense of an Ending",
+    "image": "images/book9.png",
+    "category": "Fiction",
+    "format": "Paperback",
+    "condition": "Good",
+    "year": 2011
+  },
+  {
+    "id": 10,
+    "slug": "yung-pueblo-inward",
+    "author": "Yung Pueblo",
+    "title": "Inward",
+    "image": "images/book10.png",
+    "category": "Fiction",
+    "format": "Paperback",
+    "condition": "Like New",
+    "year": 2024
+  },
+  {
+    "id": 11,
+    "slug": "dante-alighieri-the-divine-comedy",
+    "author": "Dante Alighieri",
+    "title": "The Divine Comedy",
+    "image": "images/book11.png",
+    "category": "Poetry & Drama",
+    "format": "Hardcover",
+    "condition": "Very Good",
+    "year": 2003
+  },
+  {
+    "id": 12,
+    "slug": "charan-ranganath-why-we-remember",
+    "author": "Charan Ranganath",
+    "title": "Why We Remember",
+    "image": "images/book12.png",
+    "category": "Educational & Reference",
+    "format": "Paperback",
+    "condition": "Very Good",
+    "year": 2024
+  }
+]

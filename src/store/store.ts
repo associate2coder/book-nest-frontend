@@ -1,7 +1,12 @@
-import { configureStore } from '@reduxjs/toolkit';
+import { combineSlices, configureStore } from '@reduxjs/toolkit';
+import { bookSlice } from './bookSlice';
+
+export const rootReducer = combineSlices(
+  bookSlice
+);
 
 export const store = configureStore({
-  reducer: {},
+  reducer: rootReducer,
 });
 
 export type RootState = ReturnType<typeof store.getState>;

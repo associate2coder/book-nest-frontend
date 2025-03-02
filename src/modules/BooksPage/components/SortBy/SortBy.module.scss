@@ -1,0 +1,75 @@
+
+.sortbyContainer {
+  @include mixins.flex-row-gap();
+
+  width: 100%;
+  max-width: 214px;
+  justify-content: flex-end;
+
+  position: relative;
+}
+
+.sortbyButton {
+  @include mixins.flex-row-gap(8px);
+  @extend %body-text;
+
+  color: vars.$grey-100;
+  align-items: center;
+  border: none;  
+  cursor: pointer;
+
+
+  &:focus {
+    outline: none;
+  }
+}
+
+.icon {
+  @include mixins.width-height(21px, 21px);
+
+  transition: transform 0.5s ease;
+}
+
+.iconExpanded {
+  transform: rotate(180deg);
+}
+
+.dropdown {
+  position: absolute;
+  width: 100%;
+  min-width: fit-content;
+  top: 48px;
+  right: 0;
+  padding: 24px 16px;
+  border-radius: 8px;
+  background-color: vars.$background-color;
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.15);
+
+  transition: transform 0.3s ease, opacity 0.3s ease;
+  
+  transform: scale(0);
+  opacity: 0;
+  transform-origin: top right;
+}
+
+.dropdownExpanded {
+  transform: scale(1);
+  opacity: 1;
+}
+
+.dropdownContent {
+  @include mixins.flex-column-gap(8px);
+}
+
+.dropdownItem {
+  @include mixins.flex-row-gap(8px);
+
+  width: 100%;
+  max-width: 200px;
+  padding: 4px 8px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: vars.$secondary-color;
+  }
+}

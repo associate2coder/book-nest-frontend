@@ -1,0 +1,5 @@
+.separator {
+  @include mixins.display-flex-centered();
+  
+  gap: 16px;
+}

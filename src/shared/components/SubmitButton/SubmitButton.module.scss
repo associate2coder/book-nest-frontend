@@ -1,0 +1,9 @@
+.submitButton {
+  @include mixins.width-height(100%, 48px);
+  max-width: 328px;
+  border-radius: 8px;
+
+  background-color: vars.$primary-color;
+  color: vars.$white-color;
+  cursor: pointer;
+}

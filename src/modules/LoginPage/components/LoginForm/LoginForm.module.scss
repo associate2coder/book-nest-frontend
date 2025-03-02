@@ -1,0 +1,27 @@
+.form {
+  @include mixins.flex-column-gap(24px);
+}
+
+.field {
+  @include mixins.flex-column-gap(8px);
+}
+
+.input {
+  border: 1px solid lightgray;
+}
+
+.externalLogin {
+  @include mixins.flex-row-gap();
+
+  justify-content: space-between;
+}
+
+.registerBlock {
+  @include mixins.flex-row-gap(8px);
+
+  justify-content: center;
+
+  & > a {
+    color: vars.$primary-color;
+  }
+}

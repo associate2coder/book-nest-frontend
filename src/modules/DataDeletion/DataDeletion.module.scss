@@ -1,5 +1,10 @@
 .container {
-  padding: 64px 32px;
+  & > :first-child {
+    @extend %h1;
+
+    margin-top: -16px;
+    margin-bottom: 32px;
+  }
 }
 
 .paragraph {
