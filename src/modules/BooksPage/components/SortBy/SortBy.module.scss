@@ -1,22 +1,23 @@
 
 .sortbyContainer {
-  position: relative;
+  @include mixins.flex-row-gap();
+
   width: 100%;
   max-width: 214px;
-  display: flex;
   justify-content: flex-end;
+
+  position: relative;
 }
 
 .sortbyButton {
-  border: none;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  gap: 8px;
-  cursor: pointer;
-  
+  @include mixins.flex-row-gap(8px);
   @extend %body-text;
+
   color: vars.$grey-100;
+  align-items: center;
+  border: none;  
+  cursor: pointer;
+
 
   &:focus {
     outline: none;
@@ -24,8 +25,8 @@
 }
 
 .icon {
-  width: 21px;
-  height: 21px;
+  @include mixins.width-height(21px, 21px);
+
   transition: transform 0.5s ease;
 }
 
@@ -57,19 +58,15 @@
 }
 
 .dropdownContent {
-  // width: 214px;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  @include mixins.flex-column-gap(8px);
 }
 
 .dropdownItem {
+  @include mixins.flex-row-gap(8px);
+
   width: 100%;
   max-width: 200px;
   padding: 4px 8px;
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
   cursor: pointer;
 
   &:hover {

@@ -1,6 +1,5 @@
 .separator {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include mixins.display-flex-centered();
+  
   gap: 16px;
 }

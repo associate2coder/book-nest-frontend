@@ -1,8 +1,7 @@
 .mainPageContainer {
-  display: flex;
-  flex-direction: row;
+  @include mixins.flex-row-gap(16px);
+
   justify-content: flex-end;
-  gap: 16px;
 }
 
 .mainPageImage {
@@ -15,13 +14,11 @@
 }
 
 .titleBlock {
+  @include mixins.flex-column-gap(16px);
+  
   padding-top: 150px;
   width: 100%;
   max-width: 540px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
 }
 
 .title {
@@ -40,18 +37,15 @@
 }
 
 .button {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  @include mixins.display-flex-centered();
+  @extend %buttons;
+
   padding-block: 16px;
   width: 100%;
   max-width: 200px;
   border-radius: 8px;
 
-  @extend %buttons;
-
   background-color: vars.$primary-color;
   color: vars.$white-color;
   cursor: pointer;
-
 }

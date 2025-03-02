@@ -1,13 +1,9 @@
 .form {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  @include mixins.flex-column-gap(24px);
 }
 
 .field {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  @include mixins.flex-column-gap(8px);
 }
 
 .input {
@@ -15,14 +11,14 @@
 }
 
 .externalLogin {
-  display: flex;
+  @include mixins.flex-row-gap();
+
   justify-content: space-between;
 }
 
 .registerBlock {
-  display: flex;
-  flex-direction: row;
-  gap: 8px;
+  @include mixins.flex-row-gap(8px);
+
   justify-content: center;
 
   & > a {

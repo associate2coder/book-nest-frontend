@@ -1,7 +1,6 @@
 .filterMenu {
-  display: flex;
-  flex-direction: column;
-  gap: 32px;
+  @include mixins.flex-column-gap(32px);
+  
   width: 100%;
   max-width: 336px;
   padding-inline: 40px 11px;

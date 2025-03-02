@@ -1,7 +1,5 @@
 .loginBlock {
-  display: flex;
-  flex-direction: row;
-  gap: 80px;
+  @include mixins.flex-row-gap(80px);
 }
 
 .authLink {

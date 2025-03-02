@@ -2,14 +2,12 @@
   width: 100%;
   max-width: 285px;
 
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
+  @include mixins.flex-column-gap(24px);
 }
 
 .header {
-  display: flex;
-  flex-direction: row;
+  @include mixins.flex-row-gap();
+  
   justify-content: space-between;
   align-items: center;
 
@@ -21,10 +19,10 @@
 }
 
 .icon {
-  width: 21px;
-  height: 21px;
   transition: transform 0.5s ease;
   cursor: pointer;
+
+  @include mixins.width-height(21px, 21px);
 }
 
 .iconExpanded {
@@ -33,9 +31,9 @@
 
 .filterItems {
   padding-inline: 24px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
+
+  @include mixins.flex-column-gap(16px);
+
   opacity: 0;
   transition: opacity 0.5s ease;
 
@@ -46,9 +44,7 @@
 }
 
 .filterItem {
-  display: flex;
-  flex-direction: row;
-  gap: 16px;
+  @include mixins.flex-row-gap(16px);
 
   & > * {
     cursor: pointer;
@@ -71,6 +67,6 @@
 
 .box {
   margin-right: 16px;
-  width: 14px;
-  height: 14px;
+
+  @include mixins.width-height(14px, 14px);
 }

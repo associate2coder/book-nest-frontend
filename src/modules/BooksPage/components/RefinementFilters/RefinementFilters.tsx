@@ -1,4 +1,4 @@
-import { QueryInput } from '../Search';
+import { QueryInput } from '../QueryInput';
 import { SortBy } from '../SortBy';
 import styles from './RefinementFilters.module.scss';
 

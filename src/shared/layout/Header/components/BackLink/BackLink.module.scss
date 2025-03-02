@@ -1,8 +1,7 @@
 .link {
-  display: flex;
-  flex-direction: row;
+  @include mixins.flex-row-gap(8px);
+
   align-items: center;
-  gap: 8px;
   color: vars.$grey-100;
 }
 
@@ -13,6 +12,5 @@
 }
 
 .icon {
-  width: 21px;
-  height: 21px;
+  @include mixins.width-height(21px, 21px);
 }

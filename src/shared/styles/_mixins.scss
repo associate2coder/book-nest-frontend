@@ -1,0 +1,81 @@
+@mixin on-tablet {
+  @media (min-width: vars.$tablet-min-width) {
+    @content;
+  }
+}
+
+@mixin on-desktop {
+  @media (min-width: vars.$desktop-min-width) {
+    @content;
+  }
+}
+
+@mixin flex-column-gap($value: auto) {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: column;
+  -webkit-flex-direction: column;
+  gap: #{$value};
+}
+
+@mixin width-height($width, $height) {
+  width: #{$width};
+  height: #{$height};
+}
+
+@mixin flex-row-gap($default-value: 0) {
+  display: flex;
+  display: -webkit-flex;
+  flex-direction: row;
+  -webkit-flex-direction: row;
+  gap: #{$default-value};
+}
+
+@mixin display-flex-centered {
+  display: flex;
+  display: -webkit-flex;
+  justify-content: center;
+  -webkit-justify-content: center;
+  align-items: center;
+  -webkit-align-items: center;
+}
+
+@mixin responsive-property($property, $default-value, $tablet-value: null, $desktop-value: null) {
+  @if $default-value or $default-value == 0 or type-of($default-value) == number {
+    #{$property}: $default-value;
+  }
+
+  @if $tablet-value or $tablet-value == 0 or type-of($tablet-value) == number {
+    @include on-tablet {
+      #{$property}: $tablet-value;
+    }
+  }
+
+  @if $desktop-value or $desktop-value == 0 or type-of($desktop-value) == number {
+    @include on-desktop {
+      #{$property}: $desktop-value;
+    }
+    }
+}
+
+@mixin pulse-animation($scale-start: 1.1, $scale-mid: 1.2, $duration: 0.6s) {
+  transform: scale($scale-start);
+  animation: pulse $duration infinite;
+
+  @keyframes pulse {
+    0%, 100% {
+      transform: scale($scale-start);
+    }
+    50% {
+      transform: scale($scale-mid);
+    }
+  }
+}
+
+@mixin scale-image-animation {
+  transition: transform vars.$scale-duration;
+
+  &:hover {
+    transform: scale(1.1);
+  }
+}

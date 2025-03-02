@@ -1,8 +1,7 @@
 .group {
+  @include mixins.flex-column-gap(8px);
+
   position: relative;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
 
   &:focus-within {
     .label {
@@ -75,8 +74,7 @@
 }
 
 .icon {
-  width: 21px;
-  height: 21px;
+  @include mixins.width-height(21px, 21px);
 }
 
 .showPassword {

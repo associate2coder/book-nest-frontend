@@ -3,8 +3,7 @@ import { App } from "./App";
 import { HomePage } from "./modules/HomePage";
 import { PageNotFound } from "./modules/PageNotFound";
 import { GiveBookPage } from "./modules/GiveBookPage";
-import { MyBooksPage } from "./modules/MyBooksPage";
-import { BookDetailsPage } from "./modules/BookDetailsPage";
+import { MyBooksPage } from "./modules/MyBooksPage/components/MyBooksPage";
 import { SignUpPage } from "./modules/SignUpPage/components/SignUpPage";
 import { LoginPage } from "./modules/LoginPage/components/LoginPage/LoginPage";
 import { ProtectedRoute } from "./features/auth/ProtectedRoute";
@@ -12,6 +11,7 @@ import { BooksPage } from "./modules/BooksPage/components/BooksPage";
 import { Redirect } from "./features/auth/Redirect";
 import { PrivacyPolicy } from "./modules/PrivacyPolicy";
 import { DataDeletion } from "./modules/DataDeletion";
+import { BookDetailsPage } from "./modules/BookDetailsPage/components/BooksDetailsPage";
 
 export const AppRoutes = () => {
   return (

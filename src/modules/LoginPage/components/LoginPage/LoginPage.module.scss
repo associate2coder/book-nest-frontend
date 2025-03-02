@@ -1,12 +1,10 @@
 .loginPageContainer {
+  @include mixins.flex-column-gap(40px);
+
   margin-inline: auto;
   padding: 32px;
   width: 100%;
   max-width: 388px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 40px;
 }
 
 .loginTitle {

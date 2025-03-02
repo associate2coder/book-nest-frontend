@@ -1,6 +1,5 @@
 .socialButtons {
-  display: flex;
-  flex-direction: row;
-  gap: 24px;
+  @include mixins.flex-row-gap(24px);
+
   justify-content: space-between;
 }
