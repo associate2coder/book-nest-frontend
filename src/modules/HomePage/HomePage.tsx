@@ -10,6 +10,7 @@ export const HomePage: React.FC = () => {
   const handleClick = () => {
     naviate('/books');
   }
+  
   return (
     <div className={styles.mainPageContainer}>
       <div className={styles.titleBlock}>

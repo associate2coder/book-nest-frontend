@@ -1,9 +1,22 @@
+import { User } from '../shared/types/User';
 
-// proxy is needed while SSL certificate is pending on backend side
-// export const API_BASE_URL = import.meta.env.PROXY_URL + '/api';
-export const API_BASE_URL = 'https://book-nest-d7b451700a31.herokuapp.com'
+export const TESTING = false;
+
+export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
+
 export const MIN_PASS_LENGTH = 8;
+
 export const DEFAULT_SORTBY = 'age-desc';
 export const BOOKS_PER_PAGE = 6;
 
-export const AUTH_TOKEN_KEY = 'auth';
+export const testUser: User = {
+  id: 1,
+  email: 'GilbertLola@gmail.com',
+  fullName: 'Lola Gilbert',
+  tokens: 5,
+};
+
+export const localStorageKeys = {
+  cart: 'cart',
+  favourites: 'favourites',
+}

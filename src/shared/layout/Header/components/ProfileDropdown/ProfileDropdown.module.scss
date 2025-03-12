@@ -1,0 +1,61 @@
+.profileDropdown {
+  position: absolute;
+  right: 0;
+  top: 64px;
+
+  @include mixins.flex-column-gap(34px);
+
+  width: 214px;
+  border-radius: 8px;
+  padding: 24px 16px;
+
+  background-color: vars.$background-color;
+  box-shadow: 0px 10px 20px 0px #00000026;
+  z-index: 1;
+}
+
+.section {
+  @include mixins.flex-column-gap(16px);
+  @include mixins.width-height(100%, 100%);
+}
+
+.profileSection {
+  @include mixins.flex-row-gap(16px);
+  @include mixins.width-height(100%, 40px);
+  align-items: center;
+  -webkit-align-items: center;
+}
+
+.userName {
+  @extend %h4;
+}
+
+.navSection {
+  gap: 8px;
+}
+
+.dropdownItem {
+  @include mixins.flex-row-gap(8px);
+  align-items: center;
+  -webkit-align-items: center;
+
+  width: 100%;
+  max-width: 200px;
+  padding: 4px 8px;
+  cursor: pointer;
+
+  text-decoration: none;
+  color: vars.$grey-100;
+
+  &:hover {
+    background-color: vars.$secondary-color;
+  }
+}
+
+.icon {
+  @include mixins.width-height(21px, 21px);
+
+  & > img {
+    object-fit: contain;
+  }
+}

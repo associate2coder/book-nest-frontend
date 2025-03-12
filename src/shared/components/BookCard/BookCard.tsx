@@ -1,4 +1,7 @@
+import { Link, useLocation } from 'react-router-dom';
+import { API_BASE_URL } from '../../../config/constants';
 import { Book } from '../../types/Book';
+import { AddButtonsBlock } from '../AddButtonsBlock';
 import styles from './BookCard.module.scss';
 
 interface Props {
@@ -6,15 +9,31 @@ interface Props {
 }
 
 export const BookCard: React.FC<Props> = ({ book }) => {
+  const location = useLocation();
+  const image = API_BASE_URL + `/books/image/${book.id}`;
+
   return (
     <div className={styles.card}>
-      <div className={styles.cardHeader}>
+      <Link 
+        to={`/books/${book.slug}`} 
+        state={{ from: location.pathname, search: location.search }}
+        className={styles.cardHeader}
+      >
         <p className={styles.author}>{book.author}</p>
 
         <h3 className={styles.bookTitle}>{book.title}</h3>
-      </div>
-      <div className={styles.imageWrapper}>
-        <img src={book.image} alt={`${book.title} image`} className={styles.image} />
+      </Link>
+
+      <Link 
+        to={`/books/${book.slug}`} 
+        state={{ from: location.pathname, search: location.search }}
+        className={styles.imageWrapper}
+      >
+        <img src={image} alt={`${book.title} image`} className={styles.image} />
+      </Link>
+
+      <div className={styles.addButtons}>
+        <AddButtonsBlock book={book}/>
       </div>
     </div>
   );

@@ -14,11 +14,11 @@ const sortNumbers = (num1: number, num2: number, desc: boolean = false) => {
 }
 
 const sortOldestFirst = (book: Book, other: Book) => {
-  return sortNumbers(book.year, other.year, false);
+  return sortNumbers(book.releaseYear, other.releaseYear, false);
 }
 
 const sortNewestFirst = (book: Book, other: Book) => {
-  return sortNumbers(book.year, other.year, true);
+  return sortNumbers(book.releaseYear, other.releaseYear, true);
 }
 
 const sortAlphabeticallyAsc = (book: Book, other: Book) => {

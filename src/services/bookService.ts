@@ -1,21 +1,24 @@
-import { Book } from "../shared/types/Book";
+// import { API_BASE_URL } from "../config/constants";
+import { Book, BookResponse } from "../shared/types/Book";
+import { apiClient } from "./apiClient";
 // import { apiClient } from "./apiClient";
 
-export const getBooks = async () => {
-  console.log('books are retrieved from server');
-  
-  // return apiClient.get<Book[]>('api/books.json');
+const BOOKS_PATH = '/books';
 
-  const promise: Promise<Book[]> = fetch('api/books.json')
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-    })
 
-    return promise;
-};
+export const getBooks = async (search: string = '') => {
+  const path = BOOKS_PATH + search;
+
+  return apiClient.get<BookResponse>(path);
+}
+
+export const getBook = async (id: number) => {
+  const path = BOOKS_PATH + `/${id}`;
+
+  return apiClient.get<Book>(path);
+}
 
 export const bookService = {
   getBooks,
+  getBook,
 }

@@ -1,15 +1,19 @@
 export const filters = {
-  category: {
-    id: 'category',
+  genre: {
+    id: 'genre',
     title: 'Book Categories',
     values: [
-      'Fiction',
+      'Fictions',
       'Non-Fiction',
       'Young Readers',
-      'Comics & Graphic Novels',
-      'Poetry & Drama',
-      'Educational & Reference',
-      'Hobbies & Lifestyle',
+      'Comics',
+      'Graphic Novels',
+      'Poetry',
+      'Drama',
+      'Educational',
+      'Reference',
+      'Hobbies',
+      'Lifestyle',
     ],
   },
   format: {

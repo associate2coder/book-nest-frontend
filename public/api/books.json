@@ -5,7 +5,7 @@
     "author": "Rachel Kousser",
     "title": "Alexander at the End of the World",
     "image": "images/book1.png",
-    "genre": [
+    "genres": [
       "Non-Fiction"
     ],
     "description": "Description paragraph 1.\nDescription paragraph 2.\nDescription paragraph 3.",
@@ -19,7 +19,7 @@
     "author": "Alfred Lansing",
     "title": "Endurance: Shackleton's Incredible Voyage",
     "image": "images/book2.png",
-    "genre": [
+    "genres": [
       "Non-Fiction"
     ],
     "description": "Description paragraph 1.\nDescription paragraph 2.\nDescription paragraph 3.",
@@ -33,7 +33,7 @@
     "author": "Julian Sancton",
     "title": "Madhouse at the End of the Earth",
     "image": "images/book3.png",
-    "genre": [
+    "genres": [
       "Non-Fiction"
     ],
     "description": "Description paragraph 1.\nDescription paragraph 2.\nDescription paragraph 3.",
@@ -47,7 +47,7 @@
     "author": "Nicolas Sparks",
     "title": "The Best of Me",
     "image": "images/book4.png",
-    "genre": [
+    "genres": [
       "Fictions"
     ],
     "description": "Description paragraph 1.\nDescription paragraph 2.\nDescription paragraph 3.",
@@ -61,7 +61,7 @@
     "author": "Jim Murphy",
     "title": "Inner Excellence",
     "image": "images/book5.png",
-    "genre": [
+    "genres": [
       "Non-Fiction"
     ],
     "description": "Description paragraph 1.\nDescription paragraph 2.\nDescription paragraph 3.",
@@ -75,7 +75,7 @@
     "author": "Carter Willson",
     "title": "Tell Me What You Did",
     "image": "images/book6.png",
-    "genre": [
+    "genres": [
       "Fictions"
     ],
     "description": "Description paragraph 1.\nDescription paragraph 2.\nDescription paragraph 3.",
@@ -89,7 +89,7 @@
     "author": "Mark Greaney",
     "title": "Midnight Black",
     "image": "images/book7.png",
-    "genre": [
+    "genres": [
       "Fictions"
     ],
     "description": "Description paragraph 1.\nDescription paragraph 2.\nDescription paragraph 3.",
@@ -117,7 +117,7 @@
     "author": "Julian Barnes",
     "title": "The Sense of an Ending",
     "image": "images/book9.png",
-    "genre": [
+    "genres": [
       "Fictions"
     ],
     "description": "Description paragraph 1.\nDescription paragraph 2.\nDescription paragraph 3.",
@@ -131,7 +131,7 @@
     "author": "Yung Pueblo",
     "title": "Inward",
     "image": "images/book10.png",
-    "genre": 
+    "genres": 
       ["Fictions"
     ],
     "description": "Description paragraph 1.\nDescription paragraph 2.\nDescription paragraph 3.",
@@ -145,7 +145,7 @@
     "author": "Dante Alighieri",
     "title": "The Divine Comedy",
     "image": "images/book11.png",
-    "genre": [
+    "genres": [
       "Poetry",
       "Fictions"
     ],
@@ -160,7 +160,7 @@
     "author": "Charan Ranganath",
     "title": "Why We Remember",
     "image": "images/book12.png",
-    "genre": [
+    "genres": [
       "Non-Fiction"
     ],
     "format": "Paperback",
@@ -174,7 +174,7 @@
     "author": "Danielle L. Jensen",
     "title": "A Fate Inked in Blood: Book One of the Saga of the Unfated",
     "image": "images/book13.png",
-    "genre": [
+    "genres": [
       "Young Reader",
       "Fictions"
     ],

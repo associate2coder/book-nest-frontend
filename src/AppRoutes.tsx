@@ -30,7 +30,7 @@ export const AppRoutes = () => {
         {/* Unprotected routes with some protected content */}
         <Route path="books">
           <Route index element={<BooksPage />} />
-          <Route path=":bookId?" element={<BookDetailsPage />} />
+          <Route path=":slug?" element={<BookDetailsPage />} />
         </Route>
 
         {/* authorised-only (protected) routes */}

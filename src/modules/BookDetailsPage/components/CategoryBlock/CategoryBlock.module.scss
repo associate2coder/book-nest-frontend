@@ -1,0 +1,7 @@
+.container {
+  @include mixins.display-flex-centered();
+  
+  padding: 16px;
+  width: 100%;
+  border: 1px solid vars.$grey-100;
+}

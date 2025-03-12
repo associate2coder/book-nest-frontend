@@ -1,0 +1,6 @@
+.cartButton {
+  @include mixins.display-flex-centered;
+  
+  height: 100%;
+  aspect-ratio: 1 / 1;
+}
