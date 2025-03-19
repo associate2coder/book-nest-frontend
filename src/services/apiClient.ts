@@ -3,18 +3,21 @@ import { API_BASE_URL } from "../config/constants";
 type RequestMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE';
 
 // wait function to test loaders
-function wait(delay: number) {
-  return new Promise(resolve => {
-    setTimeout(resolve, delay);
-  });
-}
+// function wait(delay: number) {
+//   return new Promise(resolve => {
+//     setTimeout(resolve, delay);
+//   });
+// }
 
 function request<T>(
   url: string,
   method: RequestMethod = 'GET',
   data: unknown = null,
 ): Promise<T> {
-  const options: RequestInit = { method };
+  const options: RequestInit = { 
+    method,
+    credentials: 'include',
+  };
 
   if (data) {
     options.body = JSON.stringify(data);
@@ -23,10 +26,12 @@ function request<T>(
     };
   }
 
-  return wait(0)
-    .then(() => fetch(API_BASE_URL + url, options))
-    .then(response => {
+  return fetch(API_BASE_URL + url, options)
+    .then(response => {     
+      console.log(response);
+
       if (!response.ok) {
+
         throw new Error();
       }
 

@@ -1,0 +1,60 @@
+.bookDetailsPage {
+  @include mixins.flex-column-gap(62px);
+
+  padding-left: 368px;
+}
+
+.pageSection {
+  display: grid;
+  grid-template-columns: repeat(12, minmax(48px, 64px));
+  gap: 24px;
+}
+
+.topSection {
+  // main info
+  & > :first-child {
+    grid-column: 1 / 6;
+  }
+
+  // image
+  & > :last-child {
+    grid-column: 8 / 11;
+  }
+}
+
+.descriptionSection {
+  @include mixins.flex-column-gap(16px);
+
+  font-family: vars.$sans-font;
+  font-size: 16px;
+  line-height: 140%;
+  letter-spacing: -5%;
+  color: vars.$grey-100;
+
+  // title
+  & > :first-child {
+    margin-bottom: 8px;
+  }
+}
+
+.categiesSection {
+  & > :first-child {
+    grid-column: 1 / -1;
+    grid-row: 1;
+  }
+
+  & > :not(:first-child) {
+    grid-column: span 2;
+    grid-row: auto;
+  }
+}
+
+.imageWrapper {
+  width: 100%;
+}
+
+.image {
+  object-fit: contain;
+  width: 100%;
+  height: auto;
+}

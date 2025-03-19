@@ -1,23 +1,17 @@
 import { Navigate, Outlet } from "react-router-dom";
 import React from "react";
-import { useAuth } from "../hooks/useAuth";
+import { useUser } from "../../shared/hooks/useUser";
 
 interface Props {
   children?: React.ReactNode;
 }
 
 export const ProtectedRoute: React.FC<Props> = ({ children }) => {
-    const { authToken, loading } = useAuth();
+    const user = useUser();
 
-    if (loading) {
-      return <p>Loading...</p>
-    }
+    console.log('user', user);
 
-    console.log('authToken', authToken);
-    
-
-    // TODO need to check whether authToken is still valid
-    if (!authToken || authToken.length === 0) {
+    if (!user) {
       return <Navigate 
         to="/login" 
         replace={true} 

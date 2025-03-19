@@ -1,0 +1,30 @@
+.container {
+  height: 100%;
+  position: relative;
+}
+
+.profileBlock {
+  @include mixins.flex-row-gap(16px);
+
+  height: 100%;
+}
+
+.dropdownButton {
+  @include mixins.flex-row-gap(16px);
+  align-items: center;
+  -webkit-align-items: center;
+
+  height: 100%;
+  padding-block: 12px;
+}
+
+.icon {
+  @include mixins.width-height(21px, 21px);
+
+  transition: transform 0.5s ease;
+  cursor: pointer;
+}
+
+.iconExpanded {
+  transform: rotate(180deg);
+}

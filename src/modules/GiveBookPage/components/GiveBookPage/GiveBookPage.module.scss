@@ -1,0 +1,27 @@
+.giveBookPage{
+  padding-left: 368px;
+
+  @include mixins.grid-from-design(12);
+
+  row-gap: 40px;
+
+  & > * {
+    grid-column: span 9;
+  }
+}
+
+.pageHeader {
+  @include mixins.flex-column-gap(16px);
+}
+
+.title {
+  @extend %h2;
+}
+
+.faq {
+  @include mixins.flex-column-gap(32px);
+
+  & > :first-child {
+    margin-bottom: 8px;
+  }
+}

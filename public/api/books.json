@@ -1,134 +1,186 @@
 [
   {
     "id": 1,
-    "slug": "rachel-kousser-alexander-at-the-end-of-the-world",
+    "slug": "rachel-kousser-alexander-at-the-end-of-the-world-1",
     "author": "Rachel Kousser",
     "title": "Alexander at the End of the World",
     "image": "images/book1.png",
-    "category": "Non-Fiction",
+    "genres": [
+      "Non-Fiction"
+    ],
+    "description": "Description paragraph 1.\nDescription paragraph 2.\nDescription paragraph 3.",
     "format": "Hardcover",
     "condition": "Very Good",
-    "year": 2024
+    "releasereleaseYear": 2024
   },
   {
     "id": 2,
-    "slug": "alfred-lansing-endurance-shackletons-incredible-voyage",
+    "slug": "alfred-lansing-endurance-shackletons-incredible-voyage-2",
     "author": "Alfred Lansing",
     "title": "Endurance: Shackleton's Incredible Voyage",
     "image": "images/book2.png",
-    "category": "Non-Fiction",
+    "genres": [
+      "Non-Fiction"
+    ],
+    "description": "Description paragraph 1.\nDescription paragraph 2.\nDescription paragraph 3.",
     "format": "Hardcover",
     "condition": "Poor",
-    "year": 2003 
+    "releaseYear": 2003 
   },
   {
     "id": 3,
-    "slug": "julian-sancton-madhouse-at-the-end-of-the-earth",
+    "slug": "julian-sancton-madhouse-at-the-end-of-the-earth-3",
     "author": "Julian Sancton",
     "title": "Madhouse at the End of the Earth",
     "image": "images/book3.png",
-    "category": "Non-Fiction",
+    "genres": [
+      "Non-Fiction"
+    ],
+    "description": "Description paragraph 1.\nDescription paragraph 2.\nDescription paragraph 3.",
     "format": "Paperback",
     "condition": "Good",
-    "year": 2021 
+    "releaseYear": 2021 
   },
   {
     "id": 4,
-    "slug": "nicolas-sparks-the-best-of-me",
+    "slug": "nicolas-sparks-the-best-of-me-4",
     "author": "Nicolas Sparks",
     "title": "The Best of Me",
     "image": "images/book4.png",
-    "category": "Fiction",
+    "genres": [
+      "Fictions"
+    ],
+    "description": "Description paragraph 1.\nDescription paragraph 2.\nDescription paragraph 3.",
     "format": "Paperback",
     "condition": "Good",
-    "year": 2010
+    "releaseYear": 2010
   },
   {
     "id": 5,
-    "slug": "jim-murphy-inner-excellence",
+    "slug": "jim-murphy-inner-excellence-5",
     "author": "Jim Murphy",
     "title": "Inner Excellence",
     "image": "images/book5.png",
-    "category": "Hobbies & Lifestyle",
+    "genres": [
+      "Non-Fiction"
+    ],
+    "description": "Description paragraph 1.\nDescription paragraph 2.\nDescription paragraph 3.",
     "format": "Paperback",
     "condition": "Good",
-    "year": 2020
+    "releaseYear": 2020
   },
   {
     "id": 6,
-    "slug": "carter-willson-tell-me-what-you-did",
+    "slug": "carter-willson-tell-me-what-you-did-6",
     "author": "Carter Willson",
     "title": "Tell Me What You Did",
     "image": "images/book6.png",
-    "category": "Fiction",
+    "genres": [
+      "Fictions"
+    ],
+    "description": "Description paragraph 1.\nDescription paragraph 2.\nDescription paragraph 3.",
     "format": "Paperback",
     "condition": "Like New",
-    "year": 2025
+    "releaseYear": 2025
   },
   {
     "id": 7,
-    "slug": "mark-greaney-midnight-black",
+    "slug": "mark-greaney-midnight-black-7",
     "author": "Mark Greaney",
     "title": "Midnight Black",
     "image": "images/book7.png",
-    "category": "Fiction",
+    "genres": [
+      "Fictions"
+    ],
+    "description": "Description paragraph 1.\nDescription paragraph 2.\nDescription paragraph 3.",
     "format": "Hardcover",
     "condition": "Like New",
-    "year": 2025
+    "releaseYear": 2025
   },
   {
     "id": 8,
-    "slug": "freida-mcfadden-the-crash",
+    "slug": "freida-mcfadden-the-crash-8",
     "author": "Freida McFadden",
     "title": "The Crash",
     "image": "images/book8.png",
-    "category": "Fiction",
+    "genre": [
+      "Fictions"
+    ],
+    "description": "Description paragraph 1.\nDescription paragraph 2.\nDescription paragraph 3.",
     "format": "Paperback",
     "condition": "Like New",
-    "year": 2025
+    "releaseYear": 2025
   },
   {
     "id": 9,
-    "slug": "julian-barnes-the-sense-of-an-ending",
+    "slug": "julian-barnes-the-sense-of-an-ending-9",
     "author": "Julian Barnes",
     "title": "The Sense of an Ending",
     "image": "images/book9.png",
-    "category": "Fiction",
+    "genres": [
+      "Fictions"
+    ],
+    "description": "Description paragraph 1.\nDescription paragraph 2.\nDescription paragraph 3.",
     "format": "Paperback",
     "condition": "Good",
-    "year": 2011
+    "releaseYear": 2011
   },
   {
     "id": 10,
-    "slug": "yung-pueblo-inward",
+    "slug": "yung-pueblo-inward-10",
     "author": "Yung Pueblo",
     "title": "Inward",
     "image": "images/book10.png",
-    "category": "Fiction",
+    "genres": 
+      ["Fictions"
+    ],
+    "description": "Description paragraph 1.\nDescription paragraph 2.\nDescription paragraph 3.",
     "format": "Paperback",
     "condition": "Like New",
-    "year": 2024
+    "releaseYear": 2024
   },
   {
     "id": 11,
-    "slug": "dante-alighieri-the-divine-comedy",
+    "slug": "dante-alighieri-the-divine-comedy-11",
     "author": "Dante Alighieri",
     "title": "The Divine Comedy",
     "image": "images/book11.png",
-    "category": "Poetry & Drama",
+    "genres": [
+      "Poetry",
+      "Fictions"
+    ],
+    "description": "Description paragraph 1.\nDescription paragraph 2.\nDescription paragraph 3.",
     "format": "Hardcover",
     "condition": "Very Good",
-    "year": 2003
+    "releaseYear": 2003
   },
   {
     "id": 12,
-    "slug": "charan-ranganath-why-we-remember",
+    "slug": "charan-ranganath-why-we-remember-12",
     "author": "Charan Ranganath",
     "title": "Why We Remember",
     "image": "images/book12.png",
-    "category": "Educational & Reference",
+    "genres": [
+      "Non-Fiction"
+    ],
     "format": "Paperback",
+    "description": "Description paragraph 1.\nDescription paragraph 2.\nDescription paragraph 3.",
     "condition": "Very Good",
-    "year": 2024
+    "releaseYear": 2024
+  },
+  {
+    "id": 13,
+    "slug": "danielle-l-jensen-a-fate-inked-in-blood-book-one-of-the-saga-of-the-unfated-13",
+    "author": "Danielle L. Jensen",
+    "title": "A Fate Inked in Blood: Book One of the Saga of the Unfated",
+    "image": "images/book13.png",
+    "genres": [
+      "Young Reader",
+      "Fictions"
+    ],
+    "description": "A Fate Inked in Blood: Book One of the Saga of the Unfated by Danielle L. Jensen is an epic Norse-inspired fantasy brimming with action, romance, and intrigue.\nThe story follows the life of a shieldmaiden whose destiny is intertwined with a prophecy foretold by the gods. Bound by forces beyond her control, she must navigate a treacherous world of myth and politics while balancing loyalty, love, and survival. Her journey pits her against ruthless enemies and tests her strength as she faces betrayal and dark secrets that could alter her fate—and the fate of the world.\nFans of rich world-building, fierce heroines, and Viking lore will be captivated by this first installment of an enthralling saga.",
+    "format": "Paperback",
+    "condition": "Like New",
+    "releaseYear": 2024
   }
 ]

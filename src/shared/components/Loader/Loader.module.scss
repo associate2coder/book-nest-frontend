@@ -1,0 +1,80 @@
+.newtonsCradle {
+  @include mixins.display-flex-centered;
+  @include mixins.width-height(50px, 50px);
+
+  position: relative;
+}
+
+@keyframes swing {
+  0% {
+   transform: rotate(0deg);
+   animation-timing-function: ease-out;
+  }
+ 
+  25% {
+   transform: rotate(70deg);
+   animation-timing-function: ease-in;
+  }
+ 
+  50% {
+   transform: rotate(0deg);
+   animation-timing-function: linear;
+  }
+}
+ 
+@keyframes swing2 {
+  0% {
+   transform: rotate(0deg);
+   animation-timing-function: linear;
+  }
+ 
+  50% {
+   transform: rotate(0deg);
+   animation-timing-function: ease-out;
+  }
+ 
+  75% {
+   transform: rotate(-70deg);
+   animation-timing-function: ease-in;
+  }
+}
+ 
+.newtonsCradleDot {
+  @include mixins.width-height(12.5px, 50px);
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  transform-origin: center top;
+ 
+  &::after {
+    content: '';
+
+    @include mixins.width-height(50px, 12.5px);
+
+    display: block;
+    border-radius: 50%;
+    background-color: vars.$primary-color;
+  }
+
+  &:first-child {
+    animation: swing 1.2s linear infinite;
+   }
+   
+  &:last-child {
+    animation: swing2 1.2s linear infinite;
+  }
+}
+
+.loaderOverlay {
+  @include mixins.display-flex-centered;
+
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.5); // Adjust opacity for dim effect
+  z-index: 9999; // Ensure it appears above everything
+}
+ 

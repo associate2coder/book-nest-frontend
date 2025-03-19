@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import styles from './SortBy.module.scss';
-import expand from '@assets/icons/expand_primary.svg';
+import expand from '@assets/icons/expand_inverted.svg';
 import cn from 'classnames';
 import { useSearchParams } from 'react-router-dom';
 import { getSearchWith } from '../../helpers/getSearchWith';
@@ -12,15 +12,19 @@ export const SortBy: React.FC = () => {
   const dropdownRef = useRef<HTMLDivElement>(null);
   
   const options = {
-    'age-desc': 'Newest First',
-    'age-asc': 'Oldest First',
-    'title-asc': 'Alphabetical (A-Z)',
-    'title-desc': 'Alphabetical (Z-A)',
+    'releaseYear:desc': 'Newest First',
+    'releaseYear:asc': 'Oldest First',
+    'title:asc': 'Alphabetical (A-Z)',
+    'title:desc': 'Alphabetical (Z-A)',
   };
+
+  const toggleDropdown = () => {
+    setExpanded(prev => !prev);
+  }
 
   const handleSelection = useCallback(
     (value: string) => {
-      setSearchParams(getSearchWith(searchParams, { 'sortby': value }));
+      setSearchParams(getSearchWith(searchParams, { 'sort': value }));
       setExpanded(false);
     },
     [searchParams, setSearchParams],
@@ -28,26 +32,26 @@ export const SortBy: React.FC = () => {
 
   // SortBy closes on click
   useEffect(() => {
-    const dropdown = dropdownRef.current;
-
-    if (!dropdown) {
+    if (!expanded) {
       return;
     }
 
-    const handleOutsideClick = () => {
+    const handleOutsideClick = (e: MouseEvent) => {
+      e.stopPropagation();
       setExpanded(false);
-    }
-
-    if (!expanded) {
       document.removeEventListener('mouseup', handleOutsideClick);
     }
 
     document.addEventListener('mouseup', handleOutsideClick);
+
+    return () => {
+      document.removeEventListener('mouseup', handleOutsideClick);
+    };
   }, [expanded])
 
   return (
     <div className={styles.sortbyContainer}>
-      <button className={styles.sortbyButton} onClick={() => setExpanded(!expanded)}
+      <button className={styles.sortbyButton} onClick={toggleDropdown}
       >
         <span>Sort By</span>
         <img 
@@ -55,7 +59,7 @@ export const SortBy: React.FC = () => {
           alt="expand icon" 
           className={cn(styles.icon, {
             [styles.iconExpanded]: expanded,
-          })} 
+          })}
         />
       </button>
 
@@ -70,7 +74,6 @@ export const SortBy: React.FC = () => {
             <div
               key={key}
               className={styles.dropdownItem}
-              hidden={!expanded}
               onClick={() => handleSelection(key)}
             >
               <img src={dropdownItem} alt="list item icon" className={styles.icon} />

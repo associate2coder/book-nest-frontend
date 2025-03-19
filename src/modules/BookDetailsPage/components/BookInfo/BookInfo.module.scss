@@ -1,0 +1,38 @@
+.mainInfo {
+  @include mixins.flex-column-gap(75px);
+}
+
+.bookInfo {
+  @include mixins.flex-column-gap(16px);
+}
+
+.author {
+  font-family: vars.$sans-font;
+  font-size: 18px;
+  line-height: 110%;
+  letter-spacing: -5%;
+  font-weight: 400;
+  color: vars.$grey-100;
+}
+
+.title {
+  font-family: vars.$heading-font;
+  font-size: 32px;
+  line-height: 110%;
+  letter-spacing: -5%;
+  font-weight: 700;
+  color: vars.$grey-100;
+}
+
+.bookCondition {
+  font-family: vars.$sans-font;
+  font-size: 14px;
+  line-height: 110%;
+  letter-spacing: -5%;
+  font-weight: 400;
+  color: vars.$primary-color;
+}
+
+.buttons {
+  @include mixins.flex-column-gap(16px);
+}

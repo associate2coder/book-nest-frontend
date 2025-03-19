@@ -1,21 +1,25 @@
-import { Book } from "../shared/types/Book";
-// import { apiClient } from "./apiClient";
+import { Book, BookData, BookResponse } from "../shared/types/Book";
+import { apiClient } from "./apiClient";
 
-export const getBooks = async () => {
-  console.log('books are retrieved from server');
+const BOOKS_PATH = '/books';
+
+
+export const getBooks = async (search: string = '') => {
+  return apiClient.get<BookResponse>(`${BOOKS_PATH}${search}`);
+}
+
+export const getBook = async (id: number) => {
+  return apiClient.get<Book>(`${BOOKS_PATH}/${id}`);
+}
+
+export const postBook = async (data: BookData) => {
+  console.log(JSON.stringify(data));
   
-  // return apiClient.get<Book[]>('api/books.json');
-
-  const promise: Promise<Book[]> = fetch('api/books.json')
-    .then(res => {
-      if (res.ok) {
-        return res.json();
-      }
-    })
-
-    return promise;
-};
+  return apiClient.post<BookData>(`${BOOKS_PATH}`, data);
+}
 
 export const bookService = {
   getBooks,
+  getBook,
+  postBook,
 }

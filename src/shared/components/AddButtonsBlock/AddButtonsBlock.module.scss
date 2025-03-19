@@ -1,0 +1,10 @@
+.buttons {
+  @include mixins.flex-column-gap(16px);
+  
+  align-items: center;
+  -webkit-align-items: center;
+
+  & > :first-child {
+    width: 100%;
+  }
+}

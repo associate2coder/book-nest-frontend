@@ -1,11 +1,29 @@
 export interface Book {
   id: number;
-  slug: string;
-  author: string;
   title: string;
-  image: string;
-  category: string;
-  format: string;
+  author: string;
   condition: string;
-  year: number;
+  genres: string[];
+  slug: string;
+  releaseYear: number;
+  format: string;
+  image: string;
+  description: string;
 }
+
+export interface BookResponse {
+  content: Book[];
+  pageable: {
+    pageNumber: number;
+    pageSize: number;
+  }
+  totalPages: number;
+}
+
+export type BookData = Pick<Book, 
+  | 'author'
+  | 'title'
+  | 'condition'
+  | 'releaseYear'
+  | 'description'
+> & { genreIds: number[] };;
