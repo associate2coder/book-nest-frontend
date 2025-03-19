@@ -44,8 +44,8 @@ button, input, textarea, select {
 
 /* Remove default focus styles but keep accessibility */
 button:focus, input:focus, textarea:focus, select:focus {
-  outline: 2px solid #000;
-  outline-offset: 2px;
+  // outline: 2px solid #000;
+  // outline-offset: 2px;
 }
 
 /* Ensure images don’t exceed their container */

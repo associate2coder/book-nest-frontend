@@ -10,6 +10,12 @@
   }
 }
 
+@mixin grid-from-design($columns: 12) {
+  display: grid;
+  grid-template-columns: repeat(#{$columns}, minmax(48px, 64px));
+  gap: 24px;
+}
+
 @mixin flex-column-gap($value: auto) {
   display: flex;
   display: -webkit-flex;

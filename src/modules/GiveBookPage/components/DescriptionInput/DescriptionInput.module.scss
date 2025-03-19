@@ -1,0 +1,46 @@
+.textareaContainer {
+  position: relative;
+
+  &:focus-within {
+    .label {
+      display: unset;
+      color: vars.$primary-color;
+    }
+
+    .descriptionInput::placeholder {
+      color: transparent;
+    }
+  }
+}
+
+.label {
+  display: none;
+
+  @extend %body-text;
+  font-size: 16px;
+  letter-spacing: -5%;
+
+  position: absolute;
+  top: -10px;
+  left: 12px;
+  
+  color: vars.$grey-50;
+  background-color: vars.$background-color;
+  padding-inline: 4px;
+}
+
+.descriptionInput {
+  width: 100%;
+  padding: 15.5px 17px;
+  border: 1px solid vars.$grey-50;
+  border-radius: 8px;
+
+  &::placeholder {
+    @extend %buttons;
+    color: vars.$grey-50;
+  }
+}
+
+.visible {
+  display: unset;
+}

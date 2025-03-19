@@ -2,7 +2,6 @@ import { Route, Routes } from "react-router-dom";
 import { App } from "./App";
 import { HomePage } from "./modules/HomePage";
 import { PageNotFound } from "./modules/PageNotFound";
-import { GiveBookPage } from "./modules/GiveBookPage";
 import { MyBooksPage } from "./modules/MyBooksPage/components/MyBooksPage";
 import { SignUpPage } from "./modules/SignUpPage/components/SignUpPage";
 import { LoginPage } from "./modules/LoginPage/components/LoginPage/LoginPage";
@@ -12,6 +11,7 @@ import { Redirect } from "./features/auth/Redirect";
 import { PrivacyPolicy } from "./modules/PrivacyPolicy";
 import { DataDeletion } from "./modules/DataDeletion";
 import { BookDetailsPage } from "./modules/BookDetailsPage/components/BooksDetailsPage";
+import { GiveBookPage } from "./modules/GiveBookPage/components/GiveBookPage";
 
 export const AppRoutes = () => {
   return (
@@ -35,7 +35,7 @@ export const AppRoutes = () => {
 
         {/* authorised-only (protected) routes */}
         <Route element={<ProtectedRoute />} >
-          <Route path="give" element={<GiveBookPage />} />
+          <Route path="give" element={<GiveBookPage/>} />
           <Route path="mybooks" element={<MyBooksPage />} />
         </Route>
 

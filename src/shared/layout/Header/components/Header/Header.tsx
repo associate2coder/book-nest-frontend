@@ -17,14 +17,14 @@ const authPathname = [
 
 export const Header: React.FC = () => {
   const location = useLocation();
-  const user = useUser();
+  const { user, loaded } = useUser();
 
   const isAuthPathname = useMemo(() => {
     return authPathname.includes(location.pathname) ||
       location.pathname === '';
   }, [location.pathname])
 
-  const authorized = !isAuthPathname && user;
+  const authorized = !isAuthPathname && loaded && user;
 
   return (
     <header className={styles.header}>
@@ -34,9 +34,11 @@ export const Header: React.FC = () => {
 
       {!isAuthPathname && <NavBar />}
 
-      {!authorized && !TESTING && <LoginBlock />}
+      {!authorized && loaded && !TESTING && <LoginBlock />}
 
       {(authorized || !isAuthPathname && TESTING) && <ProfileBlock />}
+
+      {!loaded && <div></div>}
 
     </header>
   );

@@ -4,11 +4,13 @@ import './App.scss';
 import { useEffect } from 'react';
 import { useAppSelector } from './shared/hooks/storeHooks';
 import { localStorageKeys } from './config/constants';
-// import { useAppDispatch } from './shared/hooks/storeHooks';
+import { useUser } from './shared/hooks/useUser';
+import { useAppDispatch } from './shared/hooks/storeHooks';
+import { initGenres } from './store/genreSlice';
 // import { initBooks } from './store/bookSlice';
 
 export const App: React.FC = () => {
-  // const dispatch = useAppDispatch();
+  const dispatch = useAppDispatch();
   const favItems = useAppSelector(state => state.fav);
   const cartItems = useAppSelector(state => state.cart);
 
@@ -17,6 +19,14 @@ export const App: React.FC = () => {
   // useEffect(() => {
   //   dispatch(initBooks());
   // }, [dispatch])
+
+  // fetch books on page load
+  useEffect(() => {
+    dispatch(initGenres());
+  }, [dispatch])
+
+  // check authentication when page is loaded
+  useUser();
 
   // save favourites to localStorage for it to survive reload
   useEffect(() => {

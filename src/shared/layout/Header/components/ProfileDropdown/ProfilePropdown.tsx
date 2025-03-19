@@ -8,7 +8,7 @@ import { profileMenu as config } from '../../config/profileMenu';
 import { Link } from 'react-router-dom';
 
 export const ProfileDropdown: React.FC = () => {
-  const user = useUser();
+  const { user } = useUser();
 
   const handleSignout = () => {
     console.log('Sign out to be implemented');

@@ -19,3 +19,11 @@ export interface BookResponse {
   }
   totalPages: number;
 }
+
+export type BookData = Pick<Book, 
+  | 'author'
+  | 'title'
+  | 'condition'
+  | 'releaseYear'
+  | 'description'
+> & { genreIds: number[] };;

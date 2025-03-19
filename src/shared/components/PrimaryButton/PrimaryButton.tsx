@@ -3,20 +3,22 @@ import cn from 'classnames';
 
 interface Props {
   text: string;
-  onClick: (...args: unknown[]) => void;
+  type?: 'submit' | 'button' | 'reset' | undefined;
+  onClick?: (...args: unknown[]) => void;
   selected?: boolean;
 }
 
-export const PrimaryButton: React.FC<Props> = ({ text, onClick, selected = false }) => {
+export const PrimaryButton: React.FC<Props> = ({ text, type, onClick = () => {}, selected = false }) => {
   return (
-    <div 
+    <button 
       className={cn(styles.button, {
         [styles.default]: !selected, 
         [styles.selected]: selected,
       })}
+      type={type}
       onClick={onClick}
     >
       {text}
-    </div>
+    </button>
   )
 }

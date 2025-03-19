@@ -21,12 +21,15 @@ export const Filter: React.FC<Props> = React.memo(
     const key = type as keyof typeof filters;
     const filter = filters[key];
 
+    // expand filter on load
+    // if search params contain such filter
     useEffect(() => {
       const filterParam = searchParams.get(type);
 
       if (filterParam) {
         setExpanded(true);
       }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     const handleExpand = useCallback(() => {

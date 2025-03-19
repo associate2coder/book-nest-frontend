@@ -1,0 +1,90 @@
+.form {
+  // @include mixins.grid-from-design(12);
+
+  // & > * {
+  //   grid-column: span 9;
+  // }
+  @include mixins.flex-column-gap(24px);
+
+}
+
+.subTitle {
+  font-family: vars.$heading-font;
+  font-size: 24px;
+  line-height: 140%;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+
+}
+
+.formGrid {
+  @include mixins.grid-from-design(9);
+}
+
+.names {
+  & > :first-child {
+    grid-column: span 5;
+  }
+
+  & > :last-child {
+    grid-column: span 4;
+  }
+}
+
+.categories {
+  @include mixins.flex-column-gap(40px);
+}
+
+.genres {
+  & > * {
+    grid-column: 1 / 6;
+  }
+}
+
+.genre {
+  @include mixins.grid-from-design(5);
+
+  // select input
+  & > :first-child {
+    grid-column: span 4;
+  }
+
+  // plus or delete .buttons
+  & > :last-child {
+    grid-column: span 1;
+  }
+}
+
+.category {
+  @include mixins.grid-from-design(9);
+
+  & > * {
+    grid-column: 1 / 5;
+  }
+}
+
+.icon {
+  margin-top: 44px;
+  width: 21px;
+  height: 21px;
+  cursor: pointer;
+}
+
+.selectContainer {
+  & > :first-child {
+    grid-column: span 5;
+  }
+}
+
+.descriptionContainer {
+  margin-top: 16px;
+}
+
+.buttons {
+  @include mixins.flex-row-gap(40px);
+
+  & > * {
+    width: 176px;
+  }
+}
+

@@ -16,7 +16,7 @@ interface Props {
 export const FormInput: React.FC<Props> = React.memo(
   ({
     configKey,
-    value,
+    value = '',
     error,
     onChange,
     showPasswordComment = false,

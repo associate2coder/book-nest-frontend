@@ -8,6 +8,7 @@ import { getBook } from '../../../../services/bookService';
 import { API_BASE_URL, TESTING } from '../../../../config/constants';
 import { Loader } from '../../../../shared/components/Loader';
 import { BookInfo } from '../BookInfo';
+import placeholderImage from '@assets/images/book_image_240x360.svg';
 
 
 const testBook: Book = {
@@ -16,7 +17,7 @@ const testBook: Book = {
   author: 'Dante Alighieri',
   title: 'The Divine Comedy',
   image: 'images/book11.png',
-  genre: [
+  genres: [
     'Poetry',
     'Fictions',
   ],
@@ -32,6 +33,7 @@ export const BookDetailsPage: React.FC = () => {
   const [loaded, setLoaded] = useState(false);
   // const [error, setError] = useState('');
 
+  // fetch book on page load
   useEffect(() => {
     console.log(slug);
     
@@ -55,6 +57,7 @@ export const BookDetailsPage: React.FC = () => {
       .finally(() => {
         setLoaded(true);
       })
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const bookDescription = useMemo(() => {
@@ -76,7 +79,12 @@ export const BookDetailsPage: React.FC = () => {
             <BookInfo book={book} />
 
             <div className={styles.imageWrapper}>
-              <img src={image} alt={`${book.title} image`} className={styles.image} />
+              <img 
+                src={image} 
+                alt={`${book.title} image`} 
+                className={styles.image} 
+                onError={e => (e.currentTarget.src = placeholderImage)}
+              />
             </div>
           </div>
 

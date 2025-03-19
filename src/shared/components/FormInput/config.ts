@@ -45,4 +45,18 @@ export const formInputConfig = {
     placeholder: 'Repeat password',
     excluded: true,
   },
+  bookTitle: {
+    id: 'title',
+    type: 'text',
+    label: 'Book Title',
+    placeholder: 'Book Title',
+    excluded: false,
+  },
+  bookAuthor: {
+    id: 'author',
+    type: 'text',
+    label: 'Author',
+    placeholder: 'Author',
+    excluded: false,
+  },
 }

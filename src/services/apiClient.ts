@@ -27,8 +27,11 @@ function request<T>(
   }
 
   return fetch(API_BASE_URL + url, options)
-    .then(response => {
+    .then(response => {     
+      console.log(response);
+
       if (!response.ok) {
+
         throw new Error();
       }
 

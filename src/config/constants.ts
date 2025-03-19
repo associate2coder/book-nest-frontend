@@ -4,6 +4,8 @@ export const TESTING = false;
 
 export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
+export const REDIRECT_LINK = `${import.meta.env.VITE_HOST}/redirect`;
+
 export const MIN_PASS_LENGTH = 8;
 
 export const DEFAULT_SORTBY = 'age-desc';
