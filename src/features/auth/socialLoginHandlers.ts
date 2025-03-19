@@ -5,7 +5,7 @@ const googleRegisterLink = `https://accounts.google.com/o/oauth2/v2/auth?` +
   `&redirect_uri=${import.meta.env.VITE_GOOGLE_AUTH_REDIRECT_URI}`+
   `&response_type=code` +
   `&scope=openid email profile` +
-  `state=${REDIRECT_LINK}`;
+  `&state=${REDIRECT_LINK}`;
 
 const googleLoginLink = `https://accounts.google.com/o/oauth2/v2/auth?` +
   `client_id=${import.meta.env.VITE_GOOGLE_CLIENT_ID}` +
