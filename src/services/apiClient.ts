@@ -41,5 +41,6 @@ function request<T>(
 
 export const apiClient = {
   get: <T>(url: string) => request<T>(url),
-  post: <T>(url: string, data: unknown) => request<T>(url, 'POST', data),
+  post: <T>(url: string, data?: unknown) => request<T>(url, 'POST', data),
+  delete: (url: string) => request(url, 'DELETE'),
 };
