@@ -1,5 +1,7 @@
 .container {
   @include mixins.flex-row-gap(16px);
+
+  cursor: pointer;
 }
 
 .icon {

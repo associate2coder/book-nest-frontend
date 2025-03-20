@@ -12,7 +12,6 @@ const authPathname = [
 export const useUser = () => {
   const [user, setUser] = useState<User | null>(null);
   const [loaded, setLoaded] = useState(false);
-
   const location = useLocation();
 
   const isAuthPathname = useMemo(() => {
@@ -24,8 +23,6 @@ export const useUser = () => {
   const updateUser = (usr: User) => {
     if (JSON.stringify(usr) !== JSON.stringify(user)) {
       setUser(usr);
-      
-      console.log(usr);
     }
   }
 
