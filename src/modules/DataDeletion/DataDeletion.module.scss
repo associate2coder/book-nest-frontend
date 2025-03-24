@@ -1,12 +1,30 @@
-.container {
-  & > :first-child {
-    @extend %h1;
+// .container {
+//   & > :first-child {
+//     @extend %h1;
 
-    margin-top: -16px;
-    margin-bottom: 32px;
-  }
+//     margin-top: -16px;
+//     margin-bottom: 32px;
+//   }
+// }
+
+.title {
+  @extend %h1;
+
+  margin-top: -16px;
+  margin-bottom: 32px;
 }
+
 
 .paragraph {
   margin-block: 16px;
+}
+
+.link {
+  cursor: pointer;
+  color: vars.$primary-color;
+
+  &:hover {
+    color: vars.$grey-60;
+    text-shadow: 0 2px 2px vars.$grey-30;
+  }
 }

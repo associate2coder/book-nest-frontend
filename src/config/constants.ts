@@ -11,6 +11,12 @@ export const MIN_PASS_LENGTH = 8;
 export const DEFAULT_SORTBY = 'age-desc';
 export const BOOKS_PER_PAGE = 6;
 
+// 24px standard gap for deskrop grid layout
+export const STANDARD_GAP = 24; 
+
+// visible books for sliders
+export const SLIDER_VISIBLE_BOOKS_DESKTOP = 3;
+
 export const testUser: User = {
   id: 1,
   email: 'GilbertLola@gmail.com',

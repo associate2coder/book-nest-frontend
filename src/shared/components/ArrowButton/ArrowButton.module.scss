@@ -1,0 +1,23 @@
+.roundButton {
+  @include mixins.display-flex-centered;
+
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background-color: #e3e3e3;
+  cursor: pointer;
+
+  &:hover:not(.disabled) {
+    box-shadow: 0 0 5px 0 vars.$grey-50;
+  }
+}
+
+.disabled {
+  cursor: unset;
+  box-shadow: unset;
+}
+
+.icon {
+  width: 21px;
+  height: 21px;
+}

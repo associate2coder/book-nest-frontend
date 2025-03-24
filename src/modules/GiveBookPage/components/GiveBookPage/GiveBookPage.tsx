@@ -3,6 +3,7 @@ import styles from './GiveBookPage.module.scss';
 import { GiveBookForm } from '../GiveBookForm';
 import { faq } from '../ParticulartFAQ/config';
 import { ParticularFAQ } from '../ParticulartFAQ';
+import { Slider } from '../../../../shared/components/Slider';
 
 export const GiveBookPage: React.FC = () => {
   return (
@@ -26,6 +27,8 @@ export const GiveBookPage: React.FC = () => {
           <ParticularFAQ item={item} key={item.id}/>
         ))}
       </div>
+
+      <Slider title="Explore books" books={[]}/>
 
     </div>
   );

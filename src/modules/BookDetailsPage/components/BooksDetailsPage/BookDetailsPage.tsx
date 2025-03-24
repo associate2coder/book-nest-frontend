@@ -9,6 +9,7 @@ import { API_BASE_URL, TESTING } from '../../../../config/constants';
 import { Loader } from '../../../../shared/components/Loader';
 import { BookInfo } from '../BookInfo';
 import placeholderImage from '@assets/images/book_image_240x360.svg';
+import { Slider } from '../../../../shared/components/Slider';
 
 
 const testBook: Book = {
@@ -61,7 +62,7 @@ export const BookDetailsPage: React.FC = () => {
   }, []);
 
   const bookDescription = useMemo(() => {
-    return book?.description.split('\n') || '';
+    return book?.description.split('\\n') || '';
   }, [book?.description]);
 
   const image = useMemo(() => {
@@ -108,12 +109,7 @@ export const BookDetailsPage: React.FC = () => {
       
       }
 
-
-
-      <div>
-        Carousel to be added
-      </div>
-
+      <Slider title="You may also like" books={[]}/>
 
     </div>
   );

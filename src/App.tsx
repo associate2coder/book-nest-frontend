@@ -7,6 +7,7 @@ import { useAppDispatch } from './shared/hooks/storeHooks';
 import { initGenres } from './store/genreSlice';
 import { initFavs } from './store/favSlice';
 import { initCart } from './store/cartSlice';
+import { Footer } from './shared/layout/Footer/components/Footer';
 // import { initBooks } from './store/bookSlice';
 
 export const App: React.FC = () => {
@@ -42,6 +43,8 @@ export const App: React.FC = () => {
       <main className="App__main">
         <Outlet />
       </main>
+
+      <Footer />
     </div>
   );
 }
