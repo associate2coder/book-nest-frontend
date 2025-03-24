@@ -1,0 +1,41 @@
+.links {
+  @include mixins.display-flex-centered;
+ 
+  background-color: vars.$background-color;
+  height: 100%;
+}
+
+.list {
+  @include mixins.flex-row-gap(64px);
+
+  height: 100%;
+  list-style: none;
+}
+
+.listItem {
+  @include mixins.display-flex-centered();
+
+  height: 100%;
+}
+
+.link {
+  @include mixins.display-flex-centered();
+
+  height: 100%;
+
+  text-decoration: none;
+  text-transform: uppercase;
+  font-family: vars.$sans-font;
+  font-size: 12px;
+  line-height: 12px;
+  font-weight: 600;
+
+  color: vars.$grey-50;
+
+  position: relative;
+  transition: all 0.3s;
+
+  &:hover {
+    color: vars.$primary-color;
+  }
+}

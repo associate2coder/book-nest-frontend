@@ -1,0 +1,17 @@
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  height: 232px;
+  padding-inline: 40px;
+}
+
+.rights {
+  font-family: vars.$sans-font;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 500;
+  color: vars.$grey-50;
+  letter-spacing: -0.02em;
+}
