@@ -1,5 +1,7 @@
 .listContainer {
   @include mixins.flex-column-gap(16px);
+  padding-left: 368px;
+  width: 100%;
 }
 
 .list {
@@ -8,6 +10,7 @@
   display: grid;
   grid-template-columns: repeat(12, minmax(48px, 64px));
   gap: 24px;
+  background-color: vars.$background-color;
 
   & > * {
     grid-column: span 4;

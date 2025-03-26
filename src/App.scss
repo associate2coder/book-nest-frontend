@@ -9,12 +9,12 @@
   @include mixins.flex-column-gap();
 
   width: 100%;
-  padding-inline: 40px;
   min-height: 100dvh;
 }
 
 .App__main {
   width: 100%;
+  padding-inline: 40px;
   flex: 1;
-  padding-top: 48px;
+  padding-top: 112px;
 }
