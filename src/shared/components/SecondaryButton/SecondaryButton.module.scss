@@ -4,6 +4,10 @@
 
   padding: 14px;
   border-radius: 8px;
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 .default {

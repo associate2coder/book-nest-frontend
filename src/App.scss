@@ -6,11 +6,15 @@
 }
 
 .App {
+  @include mixins.flex-column-gap();
+
   width: 100%;
   padding-inline: 40px;
+  min-height: 100dvh;
 }
 
 .App__main {
   width: 100%;
+  flex: 1;
   padding-top: 48px;
 }

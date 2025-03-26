@@ -1,0 +1,23 @@
+.counter {
+  @include mixins.display-flex-centered;
+
+  position: absolute;
+  top: 30%;
+  right: 30%;
+
+  background-color: vars.$primary-color;
+  border-radius: 50%;
+  width: 11px;
+  height: 11px;
+  aspect-ratio: 1 / 1;
+  min-width: fit-content;
+}
+
+.value {
+  color: white;
+  font-family: vars.$sans-font;
+  font-size: 8px;
+  line-height: 1;
+  text-transform: uppercase;
+  font-weight: 600;
+}

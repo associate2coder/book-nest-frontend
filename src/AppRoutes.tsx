@@ -12,8 +12,9 @@ import { GiveBookPage } from "./modules/GiveBookPage/components/GiveBookPage";
 import { Redirect } from "./features/auth/Redirect";
 import { PrivacyPolicy } from "./modules/PrivacyPolicy";
 import { DataDeletion } from "./modules/DataDeletion";
+import { CartPage } from "./modules/CartPage/components/CartPage";
 
-export const AppRoutes = () => {
+export const AppRoutes: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={<App />}>
@@ -36,6 +37,7 @@ export const AppRoutes = () => {
         <Route element={<ProtectedRoute />} >
           <Route path="give" element={<GiveBookPage/>} />
           <Route path="mybooks" element={<MyBooksPage />} />
+          <Route path="cart" element={<CartPage />}/>
         </Route>
 
         {/* Error route */}
