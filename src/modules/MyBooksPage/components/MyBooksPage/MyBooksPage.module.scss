@@ -1,0 +1,94 @@
+.myBooksPage {
+  @include mixins.flex-column-gap(120px);
+
+  width: 100%;
+  padding-inline: 356px 48px;
+}
+
+.pageHeader {
+  @include mixins.flex-row-gap(16px);
+
+  width: 100%;
+  height: 230px;
+}
+
+.images {
+  @include mixins.flex-row-gap(13px);
+
+  width: 100%;
+  align-items: flex-end;
+  -webkit-align-items: flex-end;
+
+  // lying books
+  & > :nth-child(1) {
+    width: minmax(50%, 251px);
+  }
+
+  // standing books
+  & > :nth-child(2) {
+    width: minmax(50%, 196px);
+  }
+}
+
+.image {
+  object-fit: contain;
+}
+
+.quoteWrapper {
+  @include mixins.flex-column-gap(32px);
+
+  justify-content: flex-end;
+  -webkit-justify-content: flex-end;
+  width: 100%;
+}
+
+.quote {
+  font-family: vars.$heading-font;
+  font-size: 40px;
+  line-height: 1;
+  font-weight: 600;
+  color: vars.$grey-100;
+  letter-spacing: 0;
+}
+
+.quotee {
+  font-family: vars.$heading-font;
+  font-size: 24px;
+  line-height: 120%;
+  font-weight: 400;
+  color: vars.$grey-100;
+  letter-spacing: 0;
+}
+
+
+.sectionHeader {
+  @include mixins.flex-row-gap(8px);
+
+  height: 100px;
+}
+
+.count {
+  width: 108px;
+  font-family: vars.$sans-font;
+  font-size: 100px;
+  line-height: 100%;
+  letter-spacing: -0.05em;
+  font-weight: 700;
+  color: vars.$grey-100;
+}
+
+.block {
+  @include mixins.flex-column-gap(8px);
+
+  padding-block: 12px;
+}
+
+.blockTitle {
+  font-family: vars.$sans-font;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 110%;
+  letter-spacing: -0.05em;
+  color: vars.$primary-color;
+  text-transform: uppercase;
+}
