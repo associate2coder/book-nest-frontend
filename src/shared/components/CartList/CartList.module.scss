@@ -1,0 +1,11 @@
+.cart {
+  @include mixins.flex-column-gap(40px);
+}
+
+.cart .modal {
+  gap: 32px;
+}
+
+.item {
+  @include mixins.flex-column-gap(24px);
+}

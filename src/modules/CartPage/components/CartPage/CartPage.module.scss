@@ -1,0 +1,9 @@
+.cartPage {
+  @include mixins.flex-column-gap(80px);
+
+  padding-inline: 366px 307px;
+}
+
+.pageTitle {
+  @extend %h2;
+}
