@@ -11,7 +11,7 @@
   justify-content: space-between;
   align-items: center;
 
-  font-family: vars.$serif-font;
+  font-family: vars.$heading-font;
   font-size: 20px;
   line-height: 20px;
   font-weight: 700;
@@ -53,7 +53,7 @@
 
 .label {
   text-align: left;
-  color: vars.$grey-100;
+  color: vars.$grey-50;
 }
 
 .filterDisabled {
