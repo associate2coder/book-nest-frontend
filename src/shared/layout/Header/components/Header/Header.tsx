@@ -8,7 +8,6 @@ import { useMemo } from 'react';
 import { LoginBlock } from '../LoginBlock';
 import { useUser } from '../../../../hooks/useUser';
 import { ProfileBlock } from '../ProfileBlock';
-import { TESTING } from '../../../../../config/constants';
 
 const authPathname = [
   '/login',
@@ -24,7 +23,15 @@ export const Header: React.FC = () => {
       location.pathname === '';
   }, [location.pathname])
 
+
+  const isRootPathname = useMemo(() => {
+    return location.pathname === '/';
+  }, [location.pathname])
+
   const authorized = !isAuthPathname && loaded && user;
+
+  const showLoginBlock = loaded && !authorized && !isRootPathname;
+  const showProfileBlock = authorized || !isAuthPathname || !isRootPathname;
 
   return (
     <header className={styles.header}>
@@ -34,12 +41,11 @@ export const Header: React.FC = () => {
 
       {!isAuthPathname && <NavBar />}
 
-      {!authorized && loaded && !TESTING && <LoginBlock />}
+      {showLoginBlock && <LoginBlock />}
 
-      {(authorized || !isAuthPathname && TESTING) && <ProfileBlock />}
+      {showProfileBlock && <ProfileBlock />}
 
-      {!loaded && <div></div>}
-
+      {!loaded || isRootPathname && <div></div>}
     </header>
   );
 }

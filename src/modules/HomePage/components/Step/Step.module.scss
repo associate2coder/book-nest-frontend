@@ -1,0 +1,42 @@
+.step {
+  @include mixins.flex-row-gap(8px);
+}
+
+.number {
+  height: 100px;
+  aspect-ratio: 1 / 1;
+
+  font-family: vars.$sans-font;
+  font-weight: 700;
+  font-size: 100px;
+  line-height: 100%;
+  letter-spacing: -0.05em;
+  text-align: center;
+  color: vars.$primary-color;
+
+}
+
+.content {
+  @include mixins.flex-column-gap(8px);
+  
+  justify-content: center;
+  -webkit-justify-content: center;
+}
+
+.title {
+  font-family: vars.$heading-font;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 100%;
+  letter-spacing: 0;
+  color: vars.$grey-100;
+}
+
+.description {
+  font-family: vars.$heading-font;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 120%;
+  letter-spacing: 0;
+  color: vars.$grey-100;
+}

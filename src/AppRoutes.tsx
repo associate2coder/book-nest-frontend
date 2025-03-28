@@ -1,6 +1,5 @@
 import { Route, Routes } from "react-router-dom";
 import { App } from "./App";
-import { HomePage } from "./modules/HomePage";
 import { PageNotFound } from "./modules/PageNotFound";
 import { MyBooksPage } from "./modules/MyBooksPage/components/MyBooksPage";
 import { SignUpPage } from "./modules/SignUpPage/components/SignUpPage";
@@ -14,6 +13,7 @@ import { PrivacyPolicy } from "./modules/PrivacyPolicy";
 import { DataDeletion } from "./modules/DataDeletion";
 import { CartPage } from "./modules/CartPage/components/CartPage";
 import { BooksPageAlt } from "./modules/BooksPage/components/BooksPage/BooksPageAlt";
+import { HomePage } from "./modules/HomePage/components/HomePage";
 
 export const AppRoutes: React.FC = () => {
   return (
