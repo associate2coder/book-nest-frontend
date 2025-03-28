@@ -9,7 +9,7 @@ interface Props {
 export const ProtectedRoute: React.FC<Props> = ({ children }) => {
     const user = useUser();
 
-    console.log('user', user);
+    // console.log('user', user);
 
     if (!user) {
       return <Navigate 

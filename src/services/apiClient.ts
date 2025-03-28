@@ -28,7 +28,7 @@ function request<T>(
 
   return fetch(API_BASE_URL + url, options)
     .then(response => {     
-      console.log(response);
+      // console.log(response);
 
       if (!response.ok) {
 

@@ -96,7 +96,8 @@ export const GiveBookForm: React.FC<Props> = ({ book }) => {
   // FORM DATA state
   const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState<FormDataType>(initFormData());
-  const { items: genres, loaded } = useAppSelector(state => state.genres);
+  const { filters, loaded } = useAppSelector(state => state.filters);
+  const genres = useMemo(() => filters.genres.values, [filters])
 
   // GENRE COUNT state
   const [genreCount, setGenreCount] = useState(0);

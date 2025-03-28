@@ -13,6 +13,7 @@ import { Redirect } from "./features/auth/Redirect";
 import { PrivacyPolicy } from "./modules/PrivacyPolicy";
 import { DataDeletion } from "./modules/DataDeletion";
 import { CartPage } from "./modules/CartPage/components/CartPage";
+import { BooksPageAlt } from "./modules/BooksPage/components/BooksPage/BooksPageAlt";
 
 export const AppRoutes: React.FC = () => {
   return (
@@ -36,8 +37,13 @@ export const AppRoutes: React.FC = () => {
         {/* authorised-only (protected) routes */}
         <Route element={<ProtectedRoute />} >
           <Route path="give" element={<GiveBookPage/>} />
-          <Route path="mybooks" element={<MyBooksPage />} />
           <Route path="cart" element={<CartPage />}/>
+          <Route path="mybooks" >
+            <Route index element={<MyBooksPage />} />
+            <Route path="given" element={<BooksPageAlt />} />
+            <Route path="taken" element={<BooksPageAlt />} />
+            <Route path="favourites" element={<BooksPageAlt />} />
+          </Route>
         </Route>
 
         {/* Error route */}
