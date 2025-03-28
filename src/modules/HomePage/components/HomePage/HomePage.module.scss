@@ -1,0 +1,127 @@
+.homePage {
+  @include mixins.flex-column-gap(243px);
+
+  position: relative;
+  width: 100%;
+}
+
+.titleBlock {
+  @include mixins.flex-column-gap(16px);
+
+  padding-right: 440px;
+  padding-top: 150px;
+  width: 100%;
+  align-items: center;
+
+  & > :last-child {
+    width: 175px;
+  }
+}
+
+.mainPageImage {
+  margin-right: -40px;
+  width: 440px;
+  background-color: vars.$primary-color;
+  position: absolute;
+  top: -112px;
+  right: 0;
+  z-index: 10;
+  overflow: hidden;
+
+  @include mixins.flex-row-gap(16px);
+
+  padding-inline: 16px;
+}
+
+.col {
+  @include mixins.flex-column-gap(16px);
+}
+
+.title {
+  font-family: vars.$heading-font;
+  font-size: 100px;
+  line-height: 56px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+}
+
+.purpose {
+  width: 225px;
+  font-family: vars.$sans-font;
+  font-size: 16px;
+  line-height: 140%;
+  font-weight: 400;
+  letter-spacing: -0.03em;
+  margin-bottom: 24px;
+  text-align: center;
+}
+
+.button {
+  @include mixins.display-flex-centered();
+  @extend %buttons;
+
+  padding-block: 16px;
+  width: 100%;
+  max-width: 200px;
+  border-radius: 8px;
+
+  background-color: vars.$primary-color;
+  color: vars.$white-color;
+  cursor: pointer;
+}
+
+.images {
+  @include mixins.flex-row-gap(13px);
+
+  width: 100%;
+  align-items: flex-end;
+  -webkit-align-items: flex-end;
+
+  // lying books
+  & > :nth-child(1) {
+    width: minmax(50%, 251px);
+  }
+
+  // standing books
+  & > :nth-child(2) {
+    width: minmax(50%, 196px);
+  }
+}
+
+.image {
+  object-fit: contain;
+}
+
+.quoteWrapper {
+  @include mixins.flex-column-gap(32px);
+
+  justify-content: flex-end;
+  -webkit-justify-content: flex-end;
+  width: 100%;
+}
+
+.quoteBlock {
+  @include mixins.flex-row-gap(16px);
+
+  width: 100%;
+  padding-inline: 162px;
+  height: 230px;
+}
+
+.quote {
+  font-family: vars.$heading-font;
+  font-size: 40px;
+  line-height: 1;
+  font-weight: 600;
+  color: vars.$grey-100;
+  letter-spacing: 0;
+}
+
+.quotee {
+  font-family: vars.$heading-font;
+  font-size: 24px;
+  line-height: 120%;
+  font-weight: 400;
+  color: vars.$grey-100;
+  letter-spacing: 0;
+}

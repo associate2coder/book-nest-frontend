@@ -1,0 +1,7 @@
+.howDoesItWork {
+  @include mixins.flex-column-gap(80px);
+
+  padding-inline: 367px 128px;
+
+  margin-bottom: 315px;
+}
