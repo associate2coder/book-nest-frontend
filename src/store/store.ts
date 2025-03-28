@@ -1,12 +1,14 @@
 import { combineSlices, compose, configureStore } from '@reduxjs/toolkit';
-import { genreSlice } from './genreSlice';
+import { genreSlice as filtersSlice } from './filtersSlice';
 import { favSlice } from './favSlice';
 import { cartSlice } from './cartSlice';
+import { bookSlice } from './bookSlice';
 
 export const rootReducer = combineSlices(
   favSlice,
-  genreSlice,
+  filtersSlice,
   cartSlice,
+  bookSlice,
 );
 
 export const store = configureStore({

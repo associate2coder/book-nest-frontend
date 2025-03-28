@@ -3,6 +3,9 @@ import { apiClient } from "./apiClient";
 
 const BOOKS_PATH = '/books';
 
+export const getAllBooks = async () => {
+  return apiClient.get<BookResponse>(`${BOOKS_PATH}`);
+}
 
 export const getBooks = async (search: string = '') => {
   return apiClient.get<BookResponse>(`${BOOKS_PATH}${search}`);

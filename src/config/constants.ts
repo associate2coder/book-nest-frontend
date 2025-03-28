@@ -8,7 +8,7 @@ export const REDIRECT_LINK = `${import.meta.env.VITE_HOST}/redirect`;
 
 export const MIN_PASS_LENGTH = 8;
 
-export const DEFAULT_SORTBY = 'age-desc';
+export const DEFAULT_SORTBY = 'releaseYear:desc';
 export const BOOKS_PER_PAGE = 6;
 
 // 24px standard gap for deskrop grid layout

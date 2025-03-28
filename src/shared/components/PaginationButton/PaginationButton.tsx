@@ -23,6 +23,8 @@ export const PaginationButton: React.FC<Props> = React.memo(
 
     const handlePageSelection = useCallback(() => {
       setSearchParams(getSearchWith(searchParams, { page: `${value}` }))
+
+      window.scrollTo({ top: 0, behavior: 'smooth' });
     }, [searchParams, setSearchParams, value]);
 
     const handleClick = () => {

@@ -1,6 +1,6 @@
 export const filters = {
-  genre: {
-    id: 'genre',
+  genres: {
+    id: 'genres',
     title: 'Book Categories',
     values: [
       'Fictions',

@@ -14,24 +14,32 @@ const sortNumbers = (num1: number, num2: number, desc: boolean = false) => {
 }
 
 const sortOldestFirst = (book: Book, other: Book) => {
+  console.log('sortOldestFirst');
+
   return sortNumbers(book.releaseYear, other.releaseYear, false);
 }
 
 const sortNewestFirst = (book: Book, other: Book) => {
+  console.log('sortNewestFirst');
+
   return sortNumbers(book.releaseYear, other.releaseYear, true);
 }
 
 const sortAlphabeticallyAsc = (book: Book, other: Book) => {
+  console.log('sortAlphabeticallyAsc');
+
   return sortStrings(book.title, other.title, false);
 }
 
 const sortAlphabeticallyDesc = (book: Book, other: Book) => {
+  console.log('sortAlphabeticallyDesc');
+
   return sortStrings(book.title, other.title, true);
 }
 
 export const sortOptions = {
-  'age-desc': sortNewestFirst,
-  'age-asc': sortOldestFirst,
-  'title-asc': sortAlphabeticallyAsc,
-  'title-desc': sortAlphabeticallyDesc,
+  'releaseYear:desc': sortNewestFirst,
+  'releaseYear:asc': sortOldestFirst,
+  'title:asc': sortAlphabeticallyAsc,
+  'title:desc': sortAlphabeticallyDesc,
 }
