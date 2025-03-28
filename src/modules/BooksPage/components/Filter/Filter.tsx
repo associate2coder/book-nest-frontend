@@ -14,7 +14,7 @@ export const Filter: React.FC<Props> = ({
   type, 
   // availableValues,
 }) => {
-  const [expanded, setExpanded] = useState(false);  
+  const [expanded, setExpanded] = useState(true);  
   const [searchParams, setSearchParams] = useSearchParams();
   const { filters } = useAppSelector(state => state.filters); 
 
