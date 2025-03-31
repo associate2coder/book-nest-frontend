@@ -1,17 +1,37 @@
 import cn from 'classnames'
 import styles from './ProfileDropdown.module.scss';
 import { Avatar } from '../Avatar';
-import { useUser } from '../../../../hooks/useUser';
 import settings from '@assets/icons/settings.svg';
 import signout from '@assets/icons/signout.svg';
 import { profileMenu as config } from '../../config/profileMenu';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { authService } from '../../../../../features/auth/authService';
+import { useAppDispatch } from '../../../../hooks/storeHooks';
+import { setUser } from '../../../../../store/profileSlice';
+import { User } from '../../../../types/User';
 
-export const ProfileDropdown: React.FC = () => {
-  const { user } = useUser();
+interface Props {
+  user: User;
+  close: () => void;
+}
+
+export const ProfileDropdown: React.FC<Props> = ({ user, close }) => {
+  const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleSignout = () => {
-    console.log('Sign out to be implemented');
+    authService.signOut()
+      .then(res => {
+        console.log(res);
+
+        close();
+
+        dispatch(setUser(null));
+
+        setTimeout(() => {
+          navigate('/');
+        }, 3);
+      })
   }
 
   return (

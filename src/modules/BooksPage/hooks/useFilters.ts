@@ -8,7 +8,7 @@ export const useFilters = () => {
       page: '0', 
     };
 
-    params.forEach((value, key) => {      
+    params.forEach((value, key) => {
       if (key === 'genre') {
         const values = params.getAll(key);
   

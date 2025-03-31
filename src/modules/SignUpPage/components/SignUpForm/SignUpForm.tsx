@@ -1,14 +1,13 @@
 // import cn from 'classnames'
 import styles from './SignUpForm.module.scss';
-import React, { useCallback, useContext, useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { FormSeparator } from '../../../../shared/components/FormSeparator/FormSeparator';
 import { FormInput } from '../../../../shared/components/FormInput';
 import { validateEmail, validateFullName, validatePassword } from '../../utils/validation';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { MIN_PASS_LENGTH } from '../../../../config/constants';
 import { SubmitButton } from '../../../../shared/components/SubmitButton';
 import { authService } from '../../../../features/auth/authService';
-import { AuthContext } from '../../../../features/auth/AuthContext';
 import { SocialButtonBlock } from '../../../../shared/components/SocialButtonBlock';
 
 interface SignUpState {
@@ -34,8 +33,8 @@ const initialSignUpState: SignUpState = {
 }
 
 export const SingUpForm: React.FC = () => {
+  const navigate = useNavigate();
   const [formData, setFormData] = useState<SignUpState>(initialSignUpState);
-  const { setAuthToken } = useContext(AuthContext); 
 
   // update input value on change
   const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
@@ -122,14 +121,17 @@ export const SingUpForm: React.FC = () => {
 
         // once registered, sign in
         authService.login(loginRequest)
-          .then(tokenRes => {
-            setAuthToken(tokenRes.token);
+          .then(() => {
+            navigate('/mybooks')
+          })
+          .catch(err => {
+            console.log(err);
           })
       })
   
     // Reset form after successful submission
     setFormData(initialSignUpState);
-  }, [formData.email, formData.fullName, formData.password, setAuthToken]);
+  }, [formData.email, formData.fullName, formData.password, navigate]);
 
   return (
     <form 

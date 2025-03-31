@@ -1,9 +1,12 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useAuth } from "../hooks/useAuth";
+import { Loader } from "../../shared/components/Loader";
 
 export const Redirect: React.FC = () => {
   const navigate = useNavigate();
   const location = useLocation();
+  const authorised = useAuth();
 
   // Fn retrieves previous pathname from saved location state
   // if none (link is copied outside), page will instead be routed to home
@@ -22,7 +25,7 @@ export const Redirect: React.FC = () => {
 
   useEffect(() => {
     navigate(redirectTo, { replace: true });
-  }, [navigate, redirectTo]);
+  }, [navigate, redirectTo, authorised]);
 
-  return <p>Please wait</p>;
+  return <Loader />;
 }

@@ -3,12 +3,14 @@ import { genreSlice as filtersSlice } from './filtersSlice';
 import { favSlice } from './favSlice';
 import { cartSlice } from './cartSlice';
 import { bookSlice } from './bookSlice';
+import { profileSlice } from './profileSlice';
 
 export const rootReducer = combineSlices(
   favSlice,
   filtersSlice,
   cartSlice,
   bookSlice,
+  profileSlice,
 );
 
 export const store = configureStore({

@@ -2,7 +2,6 @@ import cn from 'classnames'
 import styles from './MyBooksPage.module.scss';
 import { Slider } from '../../../../shared/components/Slider';
 import { useCallback } from 'react';
-import { Book } from '../../../../shared/types/Book';
 import { SecondaryButton } from '../../../../shared/components/SecondaryButton';
 import { useAppSelector } from '../../../../shared/hooks/storeHooks';
 
@@ -19,11 +18,15 @@ export const MyBooksPage: React.FC = () => {
     })
   }, [navigate]);
 
-  const { items: allBooks } = useAppSelector(state => state.books);
+  // const { items: allBooks } = useAppSelector(state => state.books);
+  // const givenBooks: Book[] = allBooks;
+  // const takenBooks: Book[] = allBooks;
 
   const { items: favourites } = useAppSelector(state => state.fav);
-  const givenBooks: Book[] = allBooks;
-  const takenBooks: Book[] = allBooks;
+  const { 
+    donated: givenBooks,
+    taken: takenBooks,
+  } = useAppSelector(state => state.profile);
 
   return (
     <div className={styles.myBooksPage}>

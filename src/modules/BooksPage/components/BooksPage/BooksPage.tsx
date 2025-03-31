@@ -16,9 +16,15 @@ export const BooksPage: React.FC = () => {
   const filterSearch = useFilters();
 
   useEffect(() => {}, [error])
+
+  useEffect(() => {
+    console.log('filterSearch changed', { filterSearch });
+  }, [filterSearch])
   
 
   useEffect(() => {
+    console.log('books to be updated');
+
     if (!notFirstLoadRef.current) {
       notFirstLoadRef.current = true;
       setLoaded(false);

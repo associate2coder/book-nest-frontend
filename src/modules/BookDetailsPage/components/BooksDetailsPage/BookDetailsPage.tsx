@@ -10,6 +10,7 @@ import { Loader } from '../../../../shared/components/Loader';
 import { BookInfo } from '../BookInfo';
 import placeholderImage from '@assets/images/book_image_240x360.svg';
 import { Slider } from '../../../../shared/components/Slider';
+import { useAppSelector } from '../../../../shared/hooks/storeHooks';
 
 
 const testBook: Book = {
@@ -30,6 +31,7 @@ const testBook: Book = {
 
 export const BookDetailsPage: React.FC = () => {
   const { slug } = useParams();
+  const { recommended } = useAppSelector(state => state.books);
   const [book, setBook] = useState<Book | null>(null);
   const [loaded, setLoaded] = useState(false);
   // const [error, setError] = useState('');
@@ -109,7 +111,7 @@ export const BookDetailsPage: React.FC = () => {
       
       }
 
-      <Slider title="You may also like" books={[]}/>
+      <Slider title="You may also like" books={recommended}/>
 
     </div>
   );

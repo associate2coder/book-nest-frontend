@@ -4,8 +4,11 @@ import { GiveBookForm } from '../GiveBookForm';
 import { faq } from '../ParticulartFAQ/config';
 import { ParticularFAQ } from '../ParticulartFAQ';
 import { Slider } from '../../../../shared/components/Slider';
+import { useAppSelector } from '../../../../shared/hooks/storeHooks';
 
 export const GiveBookPage: React.FC = () => {
+  const { recommended } = useAppSelector(state => state.books);
+
   return (
     <div className={styles.giveBookPage}>
       <header className={styles.pageHeader}>
@@ -28,7 +31,7 @@ export const GiveBookPage: React.FC = () => {
         ))}
       </div>
 
-      <Slider title="Explore books" books={[]}/>
+      <Slider title="Explore books" books={recommended}/>
 
     </div>
   );
