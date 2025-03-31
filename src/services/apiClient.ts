@@ -30,12 +30,31 @@ function request<T>(
     .then(response => {     
       // console.log(response);
 
-      if (!response.ok) {
+      if (response.status === 401) {
+        return new Error('unauthorised');
+      }
 
+      if (!response.ok) {
         throw new Error();
       }
 
-      return response.json();
+      const contentType = response.headers.get('Content-Type') || '';
+      const contentLength = response.headers.get('Content-Length');
+
+      const hasBody =
+        response.status !== 204 &&
+        contentType.includes('application/json') &&
+        (contentLength === null || parseInt(contentLength) > 0);
+
+      if (contentType.includes('text')) {
+        return response.text();
+      }
+
+      if (!hasBody) {
+        return null;
+      }
+
+      return hasBody ? response.json() : null;
     });
 }
 

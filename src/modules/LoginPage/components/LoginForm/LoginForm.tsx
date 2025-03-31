@@ -1,13 +1,15 @@
 // import cn from 'classnames'
 import styles from './LoginForm.module.scss';
-import React, { useCallback, useContext, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 import { FormSeparator } from '../../../../shared/components/FormSeparator/FormSeparator';
 import { FormInput } from '../../../../shared/components/FormInput';
 import { authService } from '../../../../features/auth/authService';
 import { SocialButtonBlock } from '../../../../shared/components/SocialButtonBlock';
 import { Link, useNavigate } from 'react-router-dom';
 import { SubmitButton } from '../../../../shared/components/SubmitButton';
-import { AuthContext } from '../../../../features/auth/AuthContext';
+import { useAppDispatch } from '../../../../shared/hooks/storeHooks';
+import { getUser } from '../../../../services/userService';
+import { setUser } from '../../../../store/profileSlice';
 
 interface LoginState {
   email: string;
@@ -25,8 +27,8 @@ const initialLoginState: LoginState = {
 
 export const LoginForm: React.FC = () => {
   const [formData, setFormData] = useState<LoginState>(initialLoginState);
-  const { setAuthToken } = useContext(AuthContext);
   const navigate = useNavigate();
+  const dispatch = useAppDispatch();
 
   const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const target = e.target;
@@ -47,14 +49,18 @@ export const LoginForm: React.FC = () => {
     const requestData = { email, password };
 
     authService.login(requestData)
-      .then(res => {
-        setAuthToken(res.token);
+      .then(() => {
+        getUser()
+          .then(usr => {
+            dispatch(setUser(usr));
+          });
+
         navigate('/mybooks');
       })
       .catch(err => {
         console.log(err);
       })
-  }, [formData.email, formData.password, navigate, setAuthToken]);
+  }, [dispatch, formData.email, formData.password, navigate]);
 
   return (
     <form 

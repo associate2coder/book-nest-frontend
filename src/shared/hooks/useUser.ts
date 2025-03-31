@@ -1,8 +1,11 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo } from "react";
 import { User } from "../types/User"
 import { userService } from "../../services/userService";
 import { TESTING, testUser } from "../../config/constants";
 import { useLocation } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "./storeHooks";
+import { setUser } from "../../store/profileSlice";
+import { useAuth } from "../../features/hooks/useAuth";
 
 const authPathname = [
   '/login',
@@ -10,8 +13,12 @@ const authPathname = [
 ];
 
 export const useUser = () => {
-  const [user, setUser] = useState<User | null>(null);
-  const [loaded, setLoaded] = useState(false);
+  const dispatch = useAppDispatch();
+  const { loaded, user } = useAppSelector(state => state.profile);
+  const authorised = useAuth();
+  
+  // const [user, setUser] = useState<User | null>(null);
+  // const [loaded, setLoaded] = useState(false);
   const location = useLocation();
 
   const isAuthPathname = useMemo(() => {
@@ -21,9 +28,7 @@ export const useUser = () => {
 
   // update user only if smth changed
   const updateUser = (usr: User) => {
-    if (JSON.stringify(usr) !== JSON.stringify(user)) {
-      setUser(usr);
-    }
+      dispatch(setUser(usr));
   }
 
   useEffect(() => {
@@ -31,7 +36,9 @@ export const useUser = () => {
       return;
     }
 
-    setLoaded(false);
+    if (authorised) {
+      return;
+    }
 
     userService.getUser()
       .then(updateUser)
@@ -41,10 +48,11 @@ export const useUser = () => {
         if (TESTING) {
           setUser(testUser);
         }
+
+        dispatch(setUser(null));
       })
-      .finally(() => setLoaded(true))
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [isAuthPathname])
+  }, [location.pathname])
 
   return { user, loaded };
 }

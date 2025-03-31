@@ -28,9 +28,25 @@ const login = (data: LoginRequest) => {
   return apiClient.post<TokenResponse>('/auth/login', data);
 };
 
+const validate = () => {
+  try {
+    apiClient.get('/auth/validate-token');
+
+    return true;
+  } catch {
+      return false;
+  }
+}
+
+const signOut = () => {
+  return apiClient.post('/auth/signout');
+}
+
 export const authService = {
   createRegistrationRequest,
   createLoginRequest,
   register,
   login,
+  validate,
+  signOut,
 }

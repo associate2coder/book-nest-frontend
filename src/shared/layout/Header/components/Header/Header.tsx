@@ -4,10 +4,11 @@ import { Logo } from '../../../../components/Logo/Logo';
 import { BackLink } from '../BackLink/BackLink';
 import { NavBar } from '../../../NavBar';
 import { useLocation } from 'react-router-dom';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { LoginBlock } from '../LoginBlock';
-import { useUser } from '../../../../hooks/useUser';
 import { ProfileBlock } from '../ProfileBlock';
+import { useAppSelector } from '../../../../hooks/storeHooks';
+import { useAuth } from '../../../../../features/hooks/useAuth';
 
 const authPathname = [
   '/login',
@@ -16,7 +17,8 @@ const authPathname = [
 
 export const Header: React.FC = () => {
   const location = useLocation();
-  const { user, loaded } = useUser();
+  const { loaded, user } = useAppSelector(state => state.profile);
+  const authValid = useAuth();
 
   const isAuthPathname = useMemo(() => {
     return authPathname.includes(location.pathname) ||
@@ -28,10 +30,32 @@ export const Header: React.FC = () => {
     return location.pathname === '/';
   }, [location.pathname])
 
-  const authorized = !isAuthPathname && loaded && user;
+  const authorized = useMemo(
+    () => !isAuthPathname && loaded && !!user && authValid,
+    [authValid, isAuthPathname, loaded, user],
+  );
 
-  const showLoginBlock = loaded && !authorized && !isRootPathname;
-  const showProfileBlock = authorized || !isAuthPathname || !isRootPathname;
+  const showLoginBlock = useMemo(
+    () => loaded && !isAuthPathname && !authorized && !isRootPathname,
+    [authorized, isAuthPathname, isRootPathname, loaded],
+  );
+
+  const showProfileBlock = useMemo(
+    () => authValid && authorized && !isAuthPathname && !isRootPathname,
+  [authValid, authorized, isAuthPathname, isRootPathname],
+);
+
+  useEffect(() => {
+    console.log({
+      authorized,
+      showLoginBlock,
+      showProfileBlock,
+      isAuthPathname,
+      loaded, 
+      user: !!user,
+      authValid,
+    })
+  }, [authValid, authorized, isAuthPathname, loaded, showLoginBlock, showProfileBlock, user])
 
   return (
     <header className={styles.header}>
@@ -45,7 +69,7 @@ export const Header: React.FC = () => {
 
       {showProfileBlock && <ProfileBlock />}
 
-      {!loaded || isRootPathname && <div></div>}
+      {!loaded || isRootPathname && <div className={styles.empty}></div>}
     </header>
   );
 }

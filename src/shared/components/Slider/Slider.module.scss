@@ -18,9 +18,11 @@
   @include mixins.flex-row-gap(24px);
   flex-wrap: nowrap;
   overflow: hidden;
+  width: 100%;
 
   & > * {
     min-width: calc((100% - 48px) / 3);
+    max-width: calc((100% - 48px) / 3);
   }
 }
 

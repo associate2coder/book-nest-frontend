@@ -6,8 +6,10 @@ import { useCallback, useState } from 'react';
 import { ProfileDropdown } from '../ProfileDropdown';
 import { Avatar } from '../Avatar';
 import { CartMenu } from '../CartMenu/CatMenu';
+import { useAppSelector } from '../../../../hooks/storeHooks';
 
 export const ProfileBlock: React.FC = () => {
+  const { loaded, user } = useAppSelector(state => state.profile);
   const [expanded, setExpanded] = useState(false);
   const [cartOpened, setCartOpened] = useState(false);
 
@@ -31,7 +33,9 @@ export const ProfileBlock: React.FC = () => {
         </div>
       </div>
 
-      {expanded && <ProfileDropdown />}
+      {loaded && user && expanded && (
+        <ProfileDropdown close={() => setExpanded(false)} user={user} />
+      )}
     </div>
   );
 }
