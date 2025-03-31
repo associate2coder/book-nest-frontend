@@ -11,14 +11,22 @@ import { useLocation, useSearchParams } from 'react-router-dom';
 
 export const BooksPageAlt: React.FC = () => {
   const location = useLocation();
-    const [searchParams] = useSearchParams();
-    const filters = useAppSelector(state => state.filters.filters); 
-    // const { items: favourites, loaded } = useAppSelector(state => state.fav);
-    const { items: allBooks } = useAppSelector(state => state.books);
-    const favourites: Book[] = allBooks;
-    const givenBooks: Book[] = allBooks;
-    const takenBooks: Book[] = allBooks;
-    const loaded = true;
+  const [searchParams] = useSearchParams();
+  const filters = useAppSelector(state => state.filters.filters); 
+  // const { items: favourites, loaded } = useAppSelector(state => state.fav);
+  // const { items: allBooks } = useAppSelector(state => state.books);
+  // const favourites: Book[] = allBooks;
+  // const givenBooks: Book[] = allBooks;
+  // const takenBooks: Book[] = allBooks;
+
+  const { loaded: favLoaded, items: favourites } = useAppSelector(state => state.fav);
+  const { 
+    donated: givenBooks, 
+    taken: takenBooks, 
+    loaded: profileLoaded
+  } = useAppSelector(state => state.profile);
+
+  const loaded = profileLoaded || favLoaded;
   
   const currentPage = useMemo(() => {
     const segments = location.pathname.split('/');
