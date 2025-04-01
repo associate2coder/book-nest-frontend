@@ -25,5 +25,6 @@ export type BookData = Pick<Book,
   | 'title'
   | 'condition'
   | 'releaseYear'
+  | 'format'
   | 'description'
 > & { genreIds: number[] };;

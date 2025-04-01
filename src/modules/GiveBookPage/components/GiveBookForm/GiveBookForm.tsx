@@ -6,7 +6,7 @@ import { Book, BookData } from '../../../../shared/types/Book';
 // import { categoryService } from '../../../../services/categoryService';
 import { Category } from '../../../../shared/types/Category';
 import { SelectInput } from '../SelectInput';
-import { conditionOptions } from '../SelectInput/config';
+import { conditionOptions, formatOptions } from '../SelectInput/config';
 import { Loader } from '../../../../shared/components/Loader';
 import { DescriptionInput } from '../DescriptionInput';
 import plusIcon from '@assets/icons/plus.svg';
@@ -18,9 +18,10 @@ import { bookService } from '../../../../services/bookService';
 
 interface Props {
   book?: Book;
+  complete: () => void;
 }
 
-const keys: (keyof Book)[] = ['title', 'author', 'genres', 'condition', 'description'];
+const keys: (keyof Book)[] = ['title', 'author', 'genres', 'condition', 'format', 'description'];
 
 interface FormDataType {
   title: string;
@@ -31,6 +32,8 @@ interface FormDataType {
   genresError: string;
   condition: string;
   conditionError: string;
+  format: string;
+  formatError: string;
   releaseYear: string;
   releaseYearError: string;
   description: string;
@@ -45,12 +48,14 @@ const initialFormData: FormDataType = {
   genresError: '',
   condition: '',
   conditionError: '',
+  format: '',
+  formatError: '',
   releaseYear: '',
   releaseYearError: '',
   description: '',
 }
 
-export const GiveBookForm: React.FC<Props> = ({ book }) => {
+export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
 
   // const [loaded, setLoaded] = useState(false);
 
@@ -164,6 +169,7 @@ export const GiveBookForm: React.FC<Props> = ({ book }) => {
       authorError: '',
       genresError: '',
       conditionError: '',
+      formatError: '',
       releaseYearError: '',  
     }
 
@@ -181,6 +187,10 @@ export const GiveBookForm: React.FC<Props> = ({ book }) => {
 
     if (!formData.condition) {
       errors.conditionError = 'Please select condition of the book';
+    }
+
+    if (!formData.format) {
+      errors.formatError = 'Please select format of the book';
     }
 
     if (!formData.releaseYear) {
@@ -222,6 +232,7 @@ export const GiveBookForm: React.FC<Props> = ({ book }) => {
         title: formData.title,
         genreIds: formData.genres.map(getGehnreIdByName),
         condition: formData.condition,
+        format: formData.format,
         releaseYear: +formData.releaseYear,
         description: formData.description,
       }
@@ -235,6 +246,8 @@ export const GiveBookForm: React.FC<Props> = ({ book }) => {
           updateForm(initialFormData);
         })
         .catch(err => console.log(err));
+
+      complete();
     }
   }
 
@@ -320,6 +333,15 @@ export const GiveBookForm: React.FC<Props> = ({ book }) => {
             configKey='condition' 
             options={conditionOptions} 
             value={formData.condition} 
+            onSelect={handleSelect} 
+          />
+        </div>
+
+        <div className={cn(styles.category)}>
+          <SelectInput 
+            configKey='format' 
+            options={formatOptions} 
+            value={formData.format} 
             onSelect={handleSelect} 
           />
         </div>
