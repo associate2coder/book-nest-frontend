@@ -55,7 +55,7 @@ export const Header: React.FC = () => {
       user: !!user,
       authValid,
     })
-  }, [authValid, authorized, isAuthPathname, loaded, showLoginBlock, showProfileBlock, user])
+  }, [authValid, authorized, isAuthPathname, loaded, showLoginBlock, showProfileBlock, user]);
 
   return (
     <header className={styles.header}>

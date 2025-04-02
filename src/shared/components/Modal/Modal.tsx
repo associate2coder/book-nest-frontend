@@ -10,8 +10,8 @@ interface Props {
 export const Modal: React.FC<Props> = ({ overlay, children }) => {
   return (
     <div
-      className={cn(styles.modalOverlay, {
-        overlay: overlay,
+      className={cn(styles.modal, {
+        [styles.overlay]: overlay,
       })}
     >
       {children}

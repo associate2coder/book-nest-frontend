@@ -3,8 +3,8 @@ import { AddToFavsButton } from '../AddToFavsButton';
 import styles from './AddButtonsBlock.module.scss';
 import { Book } from '../../types/Book';
 import { useAppDispatch, useAppSelector } from '../../hooks/storeHooks';
-import { useCallback, useMemo } from 'react';
-import { addCart, removeCart } from '../../../store/cartSlice';
+import { useCallback, useEffect, useMemo } from 'react';
+import { addCart, removeCart, setConfirmation } from '../../../store/cartSlice';
 
 interface Props {
   book: Book;
@@ -15,11 +15,21 @@ export const AddButtonsBlock: React.FC<Props> = ({ book }) => {
   const dispatch = useAppDispatch();
 
   const bookInCart = useMemo(() => {
-    return cartItems.includes(book);
+    const ids = cartItems.map(book => book.id);
+    
+    return ids.includes(book.id);
   }, [book, cartItems])
+
+  useEffect(() => {
+    console.log(bookInCart, book.title, cartItems);
+  });
 
   const handleCartButtonClick = useCallback(() => {
     const actionFn = bookInCart ? removeCart : addCart;
+
+    if (actionFn === addCart) {
+      dispatch(setConfirmation(book));
+    }
 
     dispatch(actionFn(book));
   }, [book, bookInCart, dispatch]);

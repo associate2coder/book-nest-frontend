@@ -9,7 +9,7 @@ export const useFilters = () => {
     };
 
     params.forEach((value, key) => {
-      if (key === 'genre') {
+      if (key === 'genres') {
         const values = params.getAll(key);
   
         if (values.length > 0) {
@@ -23,9 +23,10 @@ export const useFilters = () => {
     })
   
     return Object.entries(pageSliceState).reduce((acc, [key, value], i) => {
+      const appliedJey = key === 'genres' ? 'genre' : key;
       const separator = i === 0 ? '?' : '&';
   
-      return `${acc}${separator}${key}=${value}`
+      return `${acc}${separator}${appliedJey}=${value}`
     }, '');  
   }, []);
 

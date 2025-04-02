@@ -1,0 +1,28 @@
+.messageBlock {
+  @include mixins.flex-column-gap(16px);
+}
+
+.title {
+  @extend %h2;
+  color: vars.$grey-100;
+}
+
+.message {
+  @extend %body-text;
+  color: vars.$grey-100;
+}
+
+.noteBlock {
+  @include mixins.flex-column-gap(4px);
+}
+
+.note {
+  @extend %body-text;
+  color: vars.$primary-color;
+}
+
+.buttonBlock {
+  & > * {
+    width: 176px;
+  }
+}

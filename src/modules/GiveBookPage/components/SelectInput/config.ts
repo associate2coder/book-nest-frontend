@@ -22,6 +22,13 @@ export const selectConfig = {
     multiple: false,
     excluded: false,
   },
+  format: {
+    id: 'format',
+    type: 'text',
+    label: 'Format',
+    multiple: false,
+    excluded: false,
+  },
 };
 
 export const conditionOptions: Category[] = [
@@ -40,5 +47,16 @@ export const conditionOptions: Category[] = [
   {
     id: 'Poor',
     name: 'Poor',
+  },
+];
+
+export const formatOptions: Category[] = [
+  {
+    id: 'Paperback',
+    name: 'Paperback',
+  },
+  {
+    id: 'Hardcover',
+    name: 'Hardcover',
   },
 ];
