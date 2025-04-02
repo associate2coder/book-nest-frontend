@@ -6,6 +6,7 @@ import { CartResponse } from '../shared/types/CartResponse';
 export interface CartState extends CartResponse {
   loaded: boolean;
   error: string;
+  confirmation: Book | null;
 }
 
 const initialState: CartState = {
@@ -14,6 +15,7 @@ const initialState: CartState = {
   books: [],
   loaded: false,
   error: '',
+  confirmation: null,
 };
 
 export const initCart = createAsyncThunk<CartResponse>(
@@ -34,7 +36,11 @@ export const removeCart = createAsyncThunk<void, Book>(
 export const cartSlice = createSlice({
   name: 'cart',
   initialState,
-  reducers: {},
+  reducers: {
+    setConfirmation: (state, action: PayloadAction<Book | null>) => {
+      state.confirmation = action.payload;
+    }
+  },
   extraReducers: builder => {
     // INIT CART ITEMS
     builder.addCase(initCart.pending, state => {
@@ -79,3 +85,5 @@ export const cartSlice = createSlice({
     });
   },
 });
+
+export const { setConfirmation } = cartSlice.actions;

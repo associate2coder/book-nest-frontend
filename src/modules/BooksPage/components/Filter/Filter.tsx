@@ -42,7 +42,7 @@ export const Filter: React.FC<Props> = ({
     const paramsToUpdate = currentParams.includes(value) 
       ? currentParams.filter(param => param !== value)
       : [...currentParams, value];
-
+    
     setSearchParams(prevParams => getSearchWith(prevParams, { [filter.id]: paramsToUpdate }));
   }
 

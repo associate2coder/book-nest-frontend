@@ -10,6 +10,7 @@ import { Footer } from './shared/layout/Footer/components/Footer';
 import { initBooks, initRecommended } from './store/bookSlice';
 import { fetchUser, initDonated, initTaken } from './store/profileSlice';
 import { useAuth } from './features/hooks/useAuth';
+import { AddToCartConfirmation } from './shared/components/AddToCartConfirmation';
 
 export const App: React.FC = () => {
   const dispatch = useAppDispatch();
@@ -67,6 +68,8 @@ export const App: React.FC = () => {
       <Header />
 
       <main className="App__main">
+        <AddToCartConfirmation />
+
         <Outlet />
       </main>
 

@@ -1,0 +1,84 @@
+.container {
+  @include mixins.flex-column-gap(32px);
+
+  position: absolute;
+  top: 64px;
+  right: 30%;
+  z-index: 999;
+  background-color: vars.$secondary-color;
+  padding: 40px 24px;
+  box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.15);
+}
+
+.message {
+  width: 100%;
+  font-weight: 500;
+  font-family: vars.$sans-font;
+  font-size: 20px;
+  line-height: 140%;
+  letter-spacing: 0;
+  color: vars.$primary-color;
+  padding-bottom: 16px;
+  text-align: center;
+}
+
+.book {
+  @include mixins.flex-row-gap(48px);
+}
+
+.imageWrapper {
+  @include mixins.flex-column-gap();
+  width: 191px;
+
+  & > * {
+    object-fit: contain;
+  }
+}
+
+.leftSide {
+  @include mixins.flex-column-gap(40px);
+}
+
+.info {
+  @include mixins.flex-column-gap(16px);
+}
+
+.autor {
+  font-family: vars.$sans-font;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 110%;
+  letter-spacing: -0.05em;
+  color: vars.$grey-100;
+}
+
+.title {
+  @extend %h2;
+  color: vars.$grey-100;
+}
+
+.condition {
+  font-family: vars.$sans-font;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 110%;
+  letter-spacing: -0.05em;
+  color: vars.$primary-color;
+}
+
+.format {
+  font-family: vars.$sans-font;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 110%;
+  letter-spacing: -0.05em;
+  color: vars.$grey-100;
+}
+
+.buttons {
+  @include mixins.flex-column-gap(16px);
+
+  & > * {
+    width: 100%;
+  }
+}
