@@ -6,7 +6,7 @@ import { ParticularFAQ } from '../ParticulartFAQ';
 import { Slider } from '../../../../shared/components/Slider';
 import { useAppSelector } from '../../../../shared/hooks/storeHooks';
 import { useState } from 'react';
-import { ConfirmationMessage } from '../ConfirmationMessage';
+import { ConfirmationMessage } from '../../../../shared/components/ConfirmationMessage';
 
 export const GiveBookPage: React.FC = () => {
   const { recommended } = useAppSelector(state => state.books);
@@ -16,7 +16,7 @@ export const GiveBookPage: React.FC = () => {
     <div className={styles.giveBookPage}>
 
       {submitted ? (
-        <ConfirmationMessage reset={() => setSubmitted(false)} />
+        <ConfirmationMessage type="give" reset={() => setSubmitted(false)} />
       ) : (
         <>
           <header className={styles.pageHeader}>

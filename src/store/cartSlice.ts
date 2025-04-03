@@ -39,6 +39,9 @@ export const cartSlice = createSlice({
   reducers: {
     setConfirmation: (state, action: PayloadAction<Book | null>) => {
       state.confirmation = action.payload;
+    },
+    clearCart: state => {
+      state.books = [];
     }
   },
   extraReducers: builder => {
@@ -86,4 +89,4 @@ export const cartSlice = createSlice({
   },
 });
 
-export const { setConfirmation } = cartSlice.actions;
+export const { setConfirmation, clearCart } = cartSlice.actions;
