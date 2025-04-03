@@ -1,7 +1,8 @@
 import { useCallback, useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
+import { BOOKS_PER_PAGE } from "../../../config/constants";
 
-export const useFilters = () => {
+export const useFilters = (size: number = BOOKS_PER_PAGE) => {
   const prepareSearch = useCallback((params: URLSearchParams) => {
     const pageSliceState: Record<string, string> = { 
       sort: 'releaseYear:desc',
@@ -37,5 +38,5 @@ export const useFilters = () => {
     setSearch(prepareSearch(searchParams))
   }, [prepareSearch, searchParams]);
 
-  return search;
+  return `${search}&size=${size}`;
 }
