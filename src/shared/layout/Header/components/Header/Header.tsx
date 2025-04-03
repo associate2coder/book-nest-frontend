@@ -69,7 +69,7 @@ export const Header: React.FC = () => {
 
       {showProfileBlock && <ProfileBlock />}
 
-      {!loaded || isRootPathname && <div className={styles.empty}></div>}
+      {(!loaded || isRootPathname) && <div className={styles.empty}>{` `}</div>}
     </header>
   );
 }
