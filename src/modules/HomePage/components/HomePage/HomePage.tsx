@@ -15,9 +15,6 @@ import booksImage2 from '@assets/images/standing_books.svg';
 import { SecondaryButton } from '../../../../shared/components/SecondaryButton';
 import { HowDoesItWork } from '../HowDoesItWork';
 
-
-
-
 export const HomePage: React.FC = () => {
   const naviate = useNavigate();
 

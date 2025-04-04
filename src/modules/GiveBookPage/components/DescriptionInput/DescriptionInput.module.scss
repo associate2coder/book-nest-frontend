@@ -3,7 +3,7 @@
 
   &:focus-within {
     .label {
-      display: unset;
+      display: block;
       color: vars.$primary-color;
     }
 
@@ -17,8 +17,8 @@
   display: none;
 
   @extend %body-text;
-  font-size: 16px;
-  letter-spacing: -5%;
+
+  letter-spacing: -0.05em;
 
   position: absolute;
   top: -10px;
@@ -37,6 +37,7 @@
 
   &::placeholder {
     @extend %buttons;
+    
     color: vars.$grey-50;
   }
 }

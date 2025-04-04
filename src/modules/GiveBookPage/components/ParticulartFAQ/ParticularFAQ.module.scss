@@ -1,23 +1,29 @@
 .particularFAQ {
   padding: 24px;
   background-color: vars.$secondary-color;
+  border-radius: 8px;
 
   @include mixins.flex-column-gap(16px);
 }
 
 .question {
-  color: vars.$primary-color;
-  font-size: 20px;
+  @extend %h4;
+
   line-height: 100%;
-  letter-spacing: -0.02em;
-  font-weight: 700;
+  color: vars.$primary-color;
+  // font-size: 20px;
+  // line-height: 100%;
+  // letter-spacing: -0.02em;
+  // font-weight: 700;
 }
 
 .answer {
+  @extend %body-text;
+
   color: vars.$grey-80;
-  font-family: vars.$sans-font;
-  font-size: 16px;
   line-height: 110%;
   letter-spacing: -0.05em;
-  font-weight: 400;
+  // font-family: vars.$sans-font;
+  // font-size: 16px;
+  // font-weight: 400;
 }

@@ -4,11 +4,13 @@
 
 .title {
   @extend %h2;
+  
   color: vars.$grey-100;
 }
 
 .message {
   @extend %body-text;
+
   color: vars.$grey-100;
 }
 
@@ -18,6 +20,7 @@
 
 .note {
   @extend %body-text;
+
   color: vars.$primary-color;
 }
 

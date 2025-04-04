@@ -8,9 +8,9 @@
 }
 
 .loginTitle {
-  @extend %h3;
-  font-size: 32px;
-  line-height: 35px;
-  letter-spacing: -5%;
+  @extend %h2;
+
+  line-height: 110%;
+  letter-spacing: -0.05em;
   text-align: center;
 }

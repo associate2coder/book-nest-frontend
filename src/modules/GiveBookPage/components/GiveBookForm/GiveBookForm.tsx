@@ -273,7 +273,7 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
   return (
     <form className={styles.form} onSubmit={handleSubmit} ref={formRef} >
 
-      <h3 className={styles.subTitle}>Book Information</h3>
+      <h3 className={styles.formTitle}>Book Information</h3>
 
       {!loaded && <Loader />}
 

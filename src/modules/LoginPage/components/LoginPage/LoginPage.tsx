@@ -6,7 +6,7 @@ export const LoginPage: React.FC = () => {
 
   return (
     <div className={styles.loginPageContainer}>
-      <h1 className={styles.loginTitle}>Log In</h1>
+      <h2 className={styles.loginTitle}>Log In</h2>
 
       <LoginForm />
 

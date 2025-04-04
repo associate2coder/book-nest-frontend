@@ -43,21 +43,25 @@
 }
 
 .quote {
-  font-family: vars.$heading-font;
-  font-size: 40px;
-  line-height: 1;
-  font-weight: 600;
-  color: vars.$grey-100;
-  letter-spacing: 0;
+  @extend %quote-primary;
+
+  color: vars.$black;
+  // font-family: vars.$heading-font;
+  // font-size: 40px;
+  // line-height: 1;
+  // font-weight: 600;
+  // letter-spacing: 0;
 }
 
 .quotee {
-  font-family: vars.$heading-font;
-  font-size: 24px;
-  line-height: 120%;
-  font-weight: 400;
-  color: vars.$grey-100;
-  letter-spacing: 0;
+  @extend %quote-secondary;
+
+  color: vars.$black;
+  // font-family: vars.$heading-font;
+  // font-size: 24px;
+  // line-height: 120%;
+  // font-weight: 400;
+  // letter-spacing: 0;
 }
 
 
@@ -68,13 +72,15 @@
 }
 
 .count {
+  @extend %count-big;
+  
   width: 108px;
-  font-family: vars.$sans-font;
-  font-size: 100px;
-  line-height: 100%;
-  letter-spacing: -0.05em;
-  font-weight: 700;
   color: vars.$grey-100;
+  // font-family: vars.$sans-font;
+  // font-size: 100px;
+  // line-height: 100%;
+  // letter-spacing: -0.05em;
+  // font-weight: 700;
 }
 
 .block {

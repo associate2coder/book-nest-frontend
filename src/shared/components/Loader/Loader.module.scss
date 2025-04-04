@@ -48,10 +48,9 @@
   transform-origin: center top;
  
   &::after {
-    content: '';
-
     @include mixins.width-height(50px, 12.5px);
 
+    content: '';
     display: block;
     border-radius: 50%;
     background-color: vars.$primary-color;
@@ -74,7 +73,7 @@
   left: 0;
   width: 100vw;
   height: 100vh;
-  background: rgba(0, 0, 0, 0.5); // Adjust opacity for dim effect
-  z-index: 9999; // Ensure it appears above everything
+  background: rgba(0, 0, 0, 0.5); 
+  z-index: 9999;
 }
  

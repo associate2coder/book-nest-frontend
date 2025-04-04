@@ -28,7 +28,7 @@ export const Dropdown: React.FC<Props> = ({ options, expanded, onSelect, dropdow
         >
           <img src={dropdownItem} alt="list item icon" className={styles.icon}/>
 
-          <span className="button-text">{category.name}</span>
+          <span className={styles.dropdownText}>{category.name}</span>
         </div>
       ))}
     </div>
