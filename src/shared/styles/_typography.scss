@@ -1,29 +1,33 @@
 %h1 {
-  font-family: vars.$heading-font;
+  font-family: vars.$serif-font;
   font-weight: 400;
   font-size: 48px;
-  line-height: 1;
+  line-height: 100%;
+  letter-spacing: -0.03em;
 }
 
 %h2 {
-  font-family: vars.$heading-font;
+  font-family: vars.$serif-font;
   font-weight: 400;
   font-size: 32px;
-  line-height: 1;
+  line-height: 100%;
+  letter-spacing: -0.03em;
 }
 
 %h3 {
-  font-family: vars.$heading-font;
+  font-family: vars.$serif-font;
   font-weight: 400;
   font-size: 24px;
-  line-height: 1.4;
+  line-height: 140%;
+  letter-spacing: -0.03em;
 }
 
 %h4 {
-  font-family: vars.$heading-font;
+  font-family: vars.$serif-font;
   font-weight: 700;
   font-size: 20px;
-  line-height: 1.4;
+  line-height: 140%;
+  letter-spacing: -0.02em;
 }
 
 %upper-case {
@@ -31,26 +35,78 @@
   text-transform: uppercase;
   font-weight: 400;
   font-size: 14px;
-  line-height: 1;
+  line-height: 100%;
+  letter-spacing: -0.02em;
 }
 
 %buttons {
   font-family: vars.$sans-font;
   font-weight: 500;
-  font-size: 14px;
-  line-height: 1;
+  font-size: 16px;
+  line-height: 100%;
+  letter-spacing: -0.03em;
 }
 
 %body-text {
   font-family: vars.$sans-font;
   font-weight: 400;
   font-size: 14px;
-  line-height: 1.4;
+  line-height: 140%;
+  letter-spacing: -0.03em;
 }
 
 %small-text {
   font-family: vars.$sans-font;
   font-weight: 600;
   font-size: 12px;
-  line-height: 1.4;
+  line-height: 140%;
+  letter-spacing: -0.02em;
+}
+
+%quote-primary {
+  font-family: vars.$serif-font;
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 100%;
+  letter-spacing: 0;
+}
+
+%quote-secondary {
+  font-family: vars.$serif-font;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 120%;
+  letter-spacing: 0;
+}
+
+%count-big {
+  font-family: vars.$sans-font;
+  font-weight: 700;
+  font-size: 100px;
+  line-height: 100%;
+  letter-spacing: -0.05em;
+}
+
+%author {
+  font-family: vars.$sans-font;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 110%;
+  letter-spacing: -0.05em;
+}
+
+%book-title {
+  font-family: vars.$serif-font;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 110%;
+  letter-spacing: -0.05em;
+}
+
+%condition {
+  font-family: vars.$sans-font;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 110%;
+  letter-spacing: -0.05em;
 }

@@ -11,38 +11,41 @@
 }
 
 .author {
-  font-family: vars.$sans-font;
-  font-size: 18px;
-  line-height: 110%;
-  font-weight: 400;
-  letter-spacing: -0.05em;
+  @extend %author;
+
   color: vars.$grey-100;
 }
 
 .title {
-  font-family: vars.$heading-font;
+  @extend %book-title;
+
+  // font-family: vars.$serif-font;
+  // font-weight: 700;
+  // line-height: 110%;
+  // letter-spacing: -0.05em;
   font-size: 24px;
-  line-height: 110%;
-  font-weight: 700;
-  letter-spacing: -0.05em;
   color: vars.$grey-100;
 }
 
 .condition {
-  font-family: vars.$sans-font;
-  font-size: 14px;
-  line-height: 110%;
-  font-weight: 400;
-  letter-spacing: -0.05em;
+  @extend %condition;
+
+  // font-family: vars.$sans-font;
+  // font-size: 14px;
+  // line-height: 110%;
+  // font-weight: 400;
+  // letter-spacing: -0.05em;
   color: vars.$primary-color;
 }
 
 .format {
-  font-family: vars.$sans-font;
-  font-size: 14px;
-  line-height: 110%;
-  font-weight: 400;
-  letter-spacing: -0.05em;
+  @extend %condition;
+
+  // font-family: vars.$sans-font;
+  // font-size: 14px;
+  // line-height: 110%;
+  // font-weight: 400;
+  // letter-spacing: -0.05em;
   color: vars.$grey-100;
 }
 

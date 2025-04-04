@@ -5,7 +5,7 @@
 
   &:focus-within {
     .label {
-      display: unset;
+      display: block;
       color: vars.$primary-color;
     }
 
@@ -16,16 +16,14 @@
 }
 
 .label {
-  display: none;
-
   @extend %body-text;
-  font-size: 16px;
-  letter-spacing: -5%;
 
+  display: none;
   position: absolute;
   top: -10px;
   left: 12px;
   
+  letter-spacing: -0.05em;
   color: vars.$grey-50;
   background-color: vars.$background-color;
   padding-inline: 4px;
@@ -59,10 +57,11 @@
 }
 
 .message {
+  @extend %small-text;
+
   margin-top: -8px;
   height: 12px;
   color: vars.$grey-80;
-  @extend %small-text;
   padding-left: 17px;
 }
 
@@ -84,5 +83,3 @@
   top: 20%;
   cursor: pointer;
 }
-
-

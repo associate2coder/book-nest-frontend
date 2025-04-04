@@ -7,29 +7,35 @@
 }
 
 .author {
-  font-family: vars.$sans-font;
-  font-size: 18px;
-  line-height: 110%;
-  letter-spacing: -5%;
-  font-weight: 400;
+  @extend %author;
+
+  // font-family: vars.$sans-font;
+  // font-size: 18px;
+  // line-height: 110%;
+  // letter-spacing: -0.05em;
+  // font-weight: 400;
   color: vars.$grey-100;
 }
 
 .title {
-  font-family: vars.$heading-font;
-  font-size: 32px;
-  line-height: 110%;
-  letter-spacing: -5%;
-  font-weight: 700;
+  @extend %book-title;
+
+  // font-family: vars.$serif-font;
+  // font-size: 32px;
+  // line-height: 110%;
+  // letter-spacing: -0.05em;
+  // font-weight: 700;
   color: vars.$grey-100;
 }
 
 .bookCondition {
-  font-family: vars.$sans-font;
-  font-size: 14px;
-  line-height: 110%;
-  letter-spacing: -5%;
-  font-weight: 400;
+  @extend %condition;
+  
+  // font-family: vars.$sans-font;
+  // font-size: 14px;
+  // line-height: 110%;
+  // letter-spacing: -0.05em;
+  // font-weight: 400;
   color: vars.$primary-color;
 }
 

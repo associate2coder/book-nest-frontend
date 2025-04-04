@@ -8,13 +8,15 @@
 
 }
 
-.subTitle {
-  font-family: vars.$heading-font;
-  font-size: 24px;
-  line-height: 140%;
-  font-weight: 400;
-  letter-spacing: -0.03em;
+.formTitle {
+  @extend %h3;
 
+  color: #000;
+  // font-family: vars.$heading-font;
+  // font-size: 24px;
+  // line-height: 140%;
+  // font-weight: 400;
+  // letter-spacing: -0.03em;
 }
 
 .formGrid {

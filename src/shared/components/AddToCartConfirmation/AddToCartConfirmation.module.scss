@@ -1,6 +1,9 @@
 .container {
   @include mixins.flex-column-gap(32px);
 
+  width: 703px;
+  height: 472px;
+
   position: absolute;
   top: 64px;
   right: 30%;
@@ -20,6 +23,7 @@
   color: vars.$primary-color;
   padding-bottom: 16px;
   text-align: center;
+  border-bottom: 0.5px solid vars.$grey-60;
 }
 
 .book {
@@ -27,16 +31,21 @@
 }
 
 .imageWrapper {
-  @include mixins.flex-column-gap();
-  width: 191px;
+  max-width: 191px;
+  min-width: 191px;
+  width: 100%;
+  @include mixins.display-flex-centered;
 
   & > * {
-    object-fit: contain;
+    width: 100%;
+    object-fit: cover
   }
 }
 
 .leftSide {
   @include mixins.flex-column-gap(40px);
+
+  width: 100%;
 }
 
 .info {
@@ -54,6 +63,8 @@
 
 .title {
   @extend %h2;
+
+  min-height: 70px;
   color: vars.$grey-100;
 }
 
@@ -80,5 +91,15 @@
 
   & > * {
     width: 100%;
+
+    &:first-child {
+      height: 48px;
+    }
+
+    &:last-child {
+      height: 44px;
+    }
   }
+
+
 }

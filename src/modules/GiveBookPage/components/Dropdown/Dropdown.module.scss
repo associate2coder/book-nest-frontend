@@ -52,3 +52,7 @@
     background-color: vars.$secondary-color;
   }
 }
+
+.dropdownText {
+  @extend %body-text;
+}

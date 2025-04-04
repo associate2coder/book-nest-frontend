@@ -10,11 +10,17 @@
   
   justify-content: space-between;
   align-items: center;
+}
 
-  font-family: vars.$heading-font;
-  font-size: 20px;
-  line-height: 20px;
-  font-weight: 700;
+.title {
+  @extend %h4;
+
+  // font-family: vars.$heading-font;
+  // font-size: 20px;
+  // line-height: 20px;
+  // font-weight: 700;
+  line-height: 100%;
+  letter-spacing: 0;
   color: vars.$grey-100;
 }
 
@@ -53,7 +59,7 @@
 
 .label {
   text-align: left;
-  color: vars.$grey-50;
+  color: vars.$grey-100;
 }
 
 .filterDisabled {

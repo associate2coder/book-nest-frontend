@@ -3,17 +3,17 @@
 }
 
 .number {
+  @extend %count-big;
+
   height: 100px;
   aspect-ratio: 1 / 1;
-
-  font-family: vars.$sans-font;
-  font-weight: 700;
-  font-size: 100px;
-  line-height: 100%;
-  letter-spacing: -0.05em;
   text-align: center;
   color: vars.$primary-color;
-
+  // font-family: vars.$sans-font;
+  // font-weight: 700;
+  // font-size: 100px;
+  // line-height: 100%;
+  // letter-spacing: -0.05em;
 }
 
 .content {
@@ -24,19 +24,23 @@
 }
 
 .title {
-  font-family: vars.$heading-font;
-  font-weight: 600;
-  font-size: 40px;
-  line-height: 100%;
-  letter-spacing: 0;
-  color: vars.$grey-100;
+  @extend %quote-primary;
+
+  // font-family: vars.$heading-font;
+  // font-weight: 600;
+  // font-size: 40px;
+  // line-height: 100%;
+  // letter-spacing: 0;
+  color: vars.$black;
 }
 
 .description {
-  font-family: vars.$heading-font;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 120%;
-  letter-spacing: 0;
-  color: vars.$grey-100;
+  @extend %quote-secondary;
+
+  // font-family: vars.$heading-font;
+  // font-weight: 400;
+  // font-size: 24px;
+  // line-height: 120%;
+  // letter-spacing: 0;
+  color: vars.$black;
 }

@@ -24,11 +24,12 @@
 
 .descriptionSection {
   @include mixins.flex-column-gap(16px);
+  @extend %body-text;
 
-  font-family: vars.$sans-font;
-  font-size: 16px;
-  line-height: 140%;
-  letter-spacing: -5%;
+  // font-family: vars.$sans-font;
+  // font-size: 16px;
+  // line-height: 140%;
+  letter-spacing: -0.05em;
   color: vars.$grey-100;
 
   // title

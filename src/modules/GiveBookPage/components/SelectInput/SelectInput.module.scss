@@ -7,15 +7,17 @@
 }
 
 .selectInput {
+  @extend %buttons;
+
   width: 100%;
   height: 44px;
   padding: 13px 16px;
   border-radius: 8px;
-  border: 1px solid vars.$grey-60;
-  color: vars.$grey-60;
-  font-family: vars.$sans-font;
-  line-height: 110%;
-  font-size: 16px;
+  border: 1px solid vars.$grey-50;
+  color: vars.$grey-100;
+  // font-family: vars.$sans-font;
+  // line-height: 110%;
+  // font-size: 16px;
 }
 
 .expand {
