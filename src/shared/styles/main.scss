@@ -7,3 +7,32 @@
   background-color: rgba(0, 0, 0, 0.3);
   width: 100%;
 }
+
+input[type="checkbox"] {
+  appearance: none;
+  width: 16px;
+  height: 16px;
+  border: 1px solid vars.$grey-100;
+  border-radius: 4px;
+  background-color: vars.$background-color;
+  cursor: pointer;
+  position: relative;
+}
+
+input[type="checkbox"] .disabled {
+  border: 1px solid vars.$grey-50;
+}
+
+input[type="checkbox"]:checked {
+  background-color: vars.$background-color;
+  border-color: vars.$primary-color;
+}
+
+input[type="checkbox"]:checked::after {
+  content: '✓';
+  color: vars.$primary-color;
+  position: absolute;
+  left: 5%;
+  top: 5%;
+  font-size: 16px;
+}
