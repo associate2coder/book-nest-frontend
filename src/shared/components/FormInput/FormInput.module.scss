@@ -5,7 +5,7 @@
 
   &:focus-within {
     .label {
-      display: unset;
+      display: block;
       color: vars.$primary-color;
     }
 
