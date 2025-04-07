@@ -4,6 +4,7 @@ import { apiClient } from "./apiClient";
 const path = {
   books: '/books',
   recommended: '/recommendations',
+  guestRecommended: '/guest/recommendations',
   donated: '/donated',
   taken: '/received',
 }
@@ -26,8 +27,10 @@ export const postBook = async (data: BookData) => {
   return apiClient.post<BookData>(`${path.books}`, data);
 }
 
-export const getRecommended = async () => {
-  return apiClient.get<Book[]>(`${path.recommended}`);
+export const getRecommended = async (authorized: boolean = false) => {
+  const url = authorized ? path.recommended : path.guestRecommended;
+
+  return apiClient.get<Book[]>(`${url}`);
 }
 
 export const getDonated = async () => {
