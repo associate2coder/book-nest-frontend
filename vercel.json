@@ -9,10 +9,6 @@
           "value": "book-nest-frontend-pearl.vercel.app"
         }
       ]
-    },
-    {
-      "source": "/:path*",
-      "destination": "https://book-nest-d7b451700a31.herokuapp.com/:path*"
     }
   ]
 }
