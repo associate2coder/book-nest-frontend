@@ -9,7 +9,7 @@ export const Footer: React.FC = () => {
 
       <FooterNav />
 
-      <span className={styles.rights}>© 2025 All rights reserved</span>
+      <span className={styles.rights}>{`© ${new Date().getFullYear()} All rights reserved`}</span>
     </footer>
   );
 }

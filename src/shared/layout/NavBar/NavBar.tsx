@@ -19,6 +19,7 @@ export const NavBar: React.FC = () => {
           <li className={styles.navItem} key={page.id}>
             <NavLink 
               to={`/${page.path}`}
+              state={{ from:location.pathname, search: location.search }}
               className={props => getNavLinkClassNames(props, page.path)}
             >
               {page.title}

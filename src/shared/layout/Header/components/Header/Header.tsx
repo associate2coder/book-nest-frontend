@@ -25,14 +25,13 @@ export const Header: React.FC = () => {
       location.pathname === '';
   }, [location.pathname])
 
-
   const isRootPathname = useMemo(() => {
     return location.pathname === '/';
   }, [location.pathname])
 
   const authorized = useMemo(
-    () => !isAuthPathname && loaded && !!user && authValid,
-    [authValid, isAuthPathname, loaded, user],
+    () => !isAuthPathname && loaded && authValid,
+    [authValid, isAuthPathname, loaded],
   );
 
   const showLoginBlock = useMemo(
@@ -43,7 +42,11 @@ export const Header: React.FC = () => {
   const showProfileBlock = useMemo(
     () => authValid && authorized && !isAuthPathname && !isRootPathname,
   [authValid, authorized, isAuthPathname, isRootPathname],
-);
+  );
+
+  useEffect(() => {
+    console.log({ location });
+  })
 
   useEffect(() => {
     console.log({
@@ -61,16 +64,14 @@ export const Header: React.FC = () => {
     <header className={styles.header}>
       <Logo />
 
-      {isAuthPathname && <BackLink />}
-
       {!isAuthPathname && <NavBar />}
 
       <div className={styles.rightBlock}>
+        {isAuthPathname && <BackLink />}
+
         {showLoginBlock && <LoginBlock />}
 
         {showProfileBlock && <ProfileBlock />}
-        
-        {(!loaded || isRootPathname) && <div className={styles.empty}>{` `}</div>}
       </div>
     </header>
   );
