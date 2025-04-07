@@ -6,6 +6,7 @@ import { DeliveryForm } from '../DeliveryForm';
 import styles from './CartPage.module.scss';
 import { ConfirmationMessage } from '../../../../shared/components/ConfirmationMessage';
 import { Slider } from '../../../../shared/components/Slider';
+import cn from 'classnames';
 
 export const CartPage: React.FC = () => {
   const { loaded, books } = useAppSelector(state => state.cart);
@@ -23,7 +24,9 @@ export const CartPage: React.FC = () => {
   }, []);
   
   return (
-    <div className={styles.cartPage}>
+    <div className={cn(styles.cartPage, {
+      [styles.submitted]: submitted,
+    })}>
 
       {submitted && (
         <>

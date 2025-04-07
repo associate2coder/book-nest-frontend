@@ -1,5 +1,7 @@
 .messageBlock {
   @include mixins.flex-column-gap(16px);
+
+  padding-right: 265px;
 }
 
 .title {

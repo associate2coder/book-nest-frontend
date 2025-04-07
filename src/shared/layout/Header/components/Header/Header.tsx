@@ -65,11 +65,13 @@ export const Header: React.FC = () => {
 
       {!isAuthPathname && <NavBar />}
 
-      {showLoginBlock && <LoginBlock />}
+      <div className={styles.rightBlock}>
+        {showLoginBlock && <LoginBlock />}
 
-      {showProfileBlock && <ProfileBlock />}
-
-      {(!loaded || isRootPathname) && <div className={styles.empty}>{` `}</div>}
+        {showProfileBlock && <ProfileBlock />}
+        
+        {(!loaded || isRootPathname) && <div className={styles.empty}>{` `}</div>}
+      </div>
     </header>
   );
 }

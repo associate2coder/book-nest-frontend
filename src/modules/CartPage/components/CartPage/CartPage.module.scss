@@ -1,7 +1,12 @@
 .cartPage {
   @include mixins.flex-column-gap(80px);
 
-  padding-inline: 366px 307px;
+  padding-left: 366px;
+  padding-right: 307px;
+}
+
+.submitted {
+  padding-right: 0;
 }
 
 .pageTitle {

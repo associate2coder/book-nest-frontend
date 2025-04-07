@@ -31,19 +31,24 @@ export const HomePage: React.FC = () => {
             <img src={hero12} alt="book image 2" />
             <img src={hero13} alt="book image 3" />
           </div>
+
           <div className={styles.col}>
             <img src={hero21} alt="book image 4" />
             <img src={hero22} alt="book image 5" />
             <img src={hero23} alt="book image 6" />
           </div>
+          
           <div className={styles.col}>
             <img src={hero31} alt="book image 7" />
             <img src={hero32} alt="book image 8" />
             <img src={hero33} alt="book image 9" />
           </div>
         </div>
+
         <h1 className={styles.title}>{`Book Nest`}</h1>
+
         <p className={styles.purpose}>{`Clear your shelves and find your next great read with ease!`}</p>
+
         <SecondaryButton text={`Explore books!`} onClick={handleClick} />
       </div>
 

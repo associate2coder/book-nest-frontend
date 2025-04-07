@@ -17,3 +17,10 @@
 .empty {
   margin-left: 180px;
 }
+
+.rightBlock {
+  @include mixins.flex-row-gap();
+
+  width: 600px;
+  height: 100%;
+}

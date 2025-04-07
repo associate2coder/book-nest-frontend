@@ -1,5 +1,5 @@
 .homePage {
-  @include mixins.flex-column-gap(243px);
+  @include mixins.flex-column-gap(350px);
 
   position: relative;
   width: 100%;
@@ -9,7 +9,7 @@
   @include mixins.flex-column-gap(16px);
 
   padding-right: 440px;
-  padding-top: 150px;
+  padding-block: 200px 140px;
   width: 100%;
   align-items: center;
 
@@ -19,8 +19,11 @@
 }
 
 .mainPageImage {
+  min-height: 805px;
+  max-height: 805px;
+
   margin-right: -40px;
-  width: 440px;
+  width: 636px;
   background-color: vars.$primary-color;
   position: absolute;
   top: -112px;
@@ -49,11 +52,6 @@
   @extend %body-text;
 
   width: 225px;
-  // font-family: vars.$sans-font;
-  // font-size: 16px;
-  // line-height: 140%;
-  // font-weight: 400;
-  // letter-spacing: -0.03em;
   margin-bottom: 24px;
   text-align: center;
 }
@@ -113,21 +111,11 @@
 .quote {
   @extend %quote-primary;
 
-  // font-family: vars.$serif-font;
-  // font-size: 40px;
-  // line-height: 100%;
-  // font-weight: 600;
-  // letter-spacing: 0;
   color: vars.$black;
 }
 
 .quotee {
   @extend %quote-secondary;
 
-  // font-family: vars.$serif-font;
-  // font-size: 24px;
-  // line-height: 120%;
-  // font-weight: 400;
-  // letter-spacing: 0;
   color: vars.$black;
 }
