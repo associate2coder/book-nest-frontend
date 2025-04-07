@@ -2,7 +2,7 @@
   @include mixins.flex-column-gap(32px);
   
   width: 100%;
-  max-width: 336px;
-  padding-inline: 40px 11px;
-  position: fixed;
+  max-width: 329px; // 336px according to figma - 40px general inline padding + 33px gap
+  padding-inline: 0 44px;
+  position: absolute;
 }

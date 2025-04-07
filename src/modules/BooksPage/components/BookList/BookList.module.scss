@@ -1,6 +1,6 @@
 .listContainer {
   @include mixins.flex-column-gap(16px);
-  padding-left: 368px;
+  padding-left: 330px; // 370px according to figma 330 + 40px general inline padding
   width: 100%;
 }
 

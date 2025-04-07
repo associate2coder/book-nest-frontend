@@ -1,7 +1,7 @@
 import cn from 'classnames'
 import styles from './MyBooksPage.module.scss';
 import { Slider } from '../../../../shared/components/Slider';
-import { useCallback } from 'react';
+import { useCallback, useMemo } from 'react';
 import { SecondaryButton } from '../../../../shared/components/SecondaryButton';
 import { useAppSelector } from '../../../../shared/hooks/storeHooks';
 
@@ -27,6 +27,18 @@ export const MyBooksPage: React.FC = () => {
     donated: givenBooks,
     taken: takenBooks,
   } = useAppSelector(state => state.profile);
+
+  const hasGiven = useMemo(() => givenBooks.length > 0, [givenBooks]);
+  const hasTaken = useMemo(() => takenBooks.length > 0, [takenBooks]);
+  const hasFavs = useMemo(() => favourites.length > 0, [favourites]);
+
+  const navigateToGive = useCallback(() => {
+    navigate('/give');
+  }, [navigate]);
+
+  const navigateToBooks = useCallback(() => {
+    navigate('/books');
+  }, [navigate]);
 
   return (
     <div className={styles.myBooksPage}>
@@ -60,7 +72,13 @@ export const MyBooksPage: React.FC = () => {
             <div className={styles.block}>
               <p className={styles.blockTitle}>Given Books</p>
 
-              <SecondaryButton text="Show all  →" onClick={() => showDetails('given')} />
+              <SecondaryButton 
+                text={hasGiven ? 'Show all  →' : 'Give a book'}
+                onClick={hasGiven 
+                  ? () => showDetails('given') 
+                  : () => navigateToGive
+                } 
+              />
             </div>
           </div>
 
@@ -74,7 +92,13 @@ export const MyBooksPage: React.FC = () => {
             <div className={styles.block}>
             <p className={styles.blockTitle}>Taken Books</p>
 
-              <SecondaryButton text="Show all  →" onClick={() => showDetails('taken')} />
+              <SecondaryButton 
+                text={hasTaken ? 'Show all  →' : 'Explore books'}
+                onClick={hasTaken 
+                  ? () => showDetails('given') 
+                  : () => navigateToBooks
+                } 
+              />
             </div>
           </div>
 
@@ -88,7 +112,13 @@ export const MyBooksPage: React.FC = () => {
             <div className={styles.block}>
               <p className={styles.blockTitle}>Favourites</p>
 
-              <SecondaryButton text="Show all  →" onClick={() => showDetails('favourites')} />
+              <SecondaryButton 
+                text={hasFavs ? 'Show all  →' : 'Explore books'}
+                onClick={hasFavs 
+                  ? () => showDetails('favourites') 
+                  : () => navigateToBooks
+                } 
+              />
             </div>
           </div>
 

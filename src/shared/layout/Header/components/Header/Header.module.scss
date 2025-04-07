@@ -22,6 +22,5 @@
   @include mixins.flex-row-gap();
 
   width: 600px;
-  justify-content: end;
-  -webkit-justify-content: end;
+  height: 100%;
 }

@@ -126,10 +126,12 @@ export const Slider: React.FC<Props> = React.memo(
           ))}
         </div>
 
-        <div className={styles.navigation}>
-          <ArrowButton configKey="arrowLeft" action={handlePrev} disabled={prevDisabled} />
-          <ArrowButton configKey="arrowRight" action={handleNext} disabled={nextDisabled} />
-        </div>
+        {visibleBooks.length > 0 && (
+          <div className={styles.navigation}>
+            <ArrowButton configKey="arrowLeft" action={handlePrev} disabled={prevDisabled} />
+            <ArrowButton configKey="arrowRight" action={handleNext} disabled={nextDisabled} />
+          </div>
+        )}
         
 
       </div>
