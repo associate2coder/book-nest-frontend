@@ -29,8 +29,8 @@ export const App: React.FC = () => {
 
   // init books for slider from server
   useEffect(() => {
-    dispatch(initRecommended());
-  }, [dispatch]);
+    dispatch(initRecommended(authorised));
+  }, [authorised, dispatch]);
 
   // init favourites from server
   useEffect(() => {

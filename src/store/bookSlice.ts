@@ -21,9 +21,11 @@ export const initBooks = createAsyncThunk<BookResponse>(
   getAllBooks,
 );
 
-export const initRecommended = createAsyncThunk<Book[]>(
+export const initRecommended = createAsyncThunk<Book[], boolean>(
   'books/fetchRecommended',
-  getRecommended,
+  async (isAuthorized: boolean = false) => {
+    return await getRecommended(isAuthorized);
+  },
 );
 
 export const bookSlice = createSlice({
