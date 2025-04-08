@@ -1,8 +1,7 @@
 .giveBookPage{
-  padding-left: 368px;
-
   @include mixins.grid-from-design(12);
 
+  padding-left: 330px;
   row-gap: 40px;
 
   & > *:not(:last-child) {

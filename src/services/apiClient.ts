@@ -28,14 +28,10 @@ function request<T>(
 
   return fetch(API_BASE_URL + url, options)
     .then(response => {     
-      console.log(response);
+      // console.log(response);
 
-      if (response.status === 401) {
-        return new Error('unauthorised');
-      }
-
-      if (!response.ok) {
-        throw new Error();
+      if (response.status === 401 || response.status === 403) {
+        throw new Error('unauthorised');
       }
 
       const contentType = response.headers.get('Content-Type') || '';
@@ -51,7 +47,7 @@ function request<T>(
       }
 
       if (!hasBody) {
-        return null;
+        return response.ok;
       }
 
       return hasBody ? response.json() : null;

@@ -71,8 +71,6 @@ export const Filter: React.FC<Props> = ({
         {expanded && filter.values.map(value => {
           const params = searchParams.getAll(key);
 
-          console.log({params, key, searchParams });
-
           const checked = params?.includes(value.name) || false;
 
           // const filterDisabled = !availableValues.includes(value)

@@ -65,13 +65,10 @@ export const BooksPageAlt: React.FC = () => {
     }, [filters, searchParams])
 
   const filteredBooks = useMemo(() => {
-    // console.log(existingFilters);
 
     const applicableFilters = existingFilters;
     const query = searchParams.get('query')?.toLocaleLowerCase() || '';
     const sortBy = searchParams.get('sort') || DEFAULT_SORTBY;
-
-    // console.log(books);
 
     const filtered = books.filter(book => {
       const filtersApplied = Object.entries(applicableFilters).every(([key, values]) => {

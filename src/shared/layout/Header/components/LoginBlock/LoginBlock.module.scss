@@ -1,5 +1,13 @@
 .loginBlock {
   @include mixins.flex-row-gap(80px);
+
+  width: 100%;
+  height: 100%;
+
+  justify-content: flex-end;
+  -webkit-justify-content: flex-end;
+  align-items: center;
+  -webkit-align-items: center;
 }
 
 .authLink {

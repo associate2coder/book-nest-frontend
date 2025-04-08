@@ -4,6 +4,7 @@ import { favSlice } from './favSlice';
 import { cartSlice } from './cartSlice';
 import { bookSlice } from './bookSlice';
 import { profileSlice } from './profileSlice';
+import { authSlice } from './authSlice';
 
 export const rootReducer = combineSlices(
   favSlice,
@@ -11,6 +12,7 @@ export const rootReducer = combineSlices(
   cartSlice,
   bookSlice,
   profileSlice,
+  authSlice,
 );
 
 export const store = configureStore({

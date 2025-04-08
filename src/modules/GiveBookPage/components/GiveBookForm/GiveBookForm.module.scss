@@ -1,22 +1,11 @@
 .form {
-  // @include mixins.grid-from-design(12);
-
-  // & > * {
-  //   grid-column: span 9;
-  // }
   @include mixins.flex-column-gap(24px);
-
 }
 
 .formTitle {
   @extend %h3;
 
   color: #000;
-  // font-family: vars.$heading-font;
-  // font-size: 24px;
-  // line-height: 140%;
-  // font-weight: 400;
-  // letter-spacing: -0.03em;
 }
 
 .formGrid {
