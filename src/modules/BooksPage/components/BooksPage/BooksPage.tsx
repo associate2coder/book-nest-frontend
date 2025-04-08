@@ -18,8 +18,6 @@ export const BooksPage: React.FC = () => {
   useEffect(() => {}, [error])
 
   useEffect(() => {
-    console.log('books to be updated');
-
     if (!notFirstLoadRef.current) {
       notFirstLoadRef.current = true;
       setLoaded(false);

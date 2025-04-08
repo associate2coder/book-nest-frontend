@@ -28,13 +28,11 @@ const login = (data: LoginRequest) => {
   return apiClient.post<TokenResponse>('/auth/login', data);
 };
 
-const validate = () => {
+const validate = async () => {
   try {
-    apiClient.get('/auth/validate-token');
-
-    return true;
+    return apiClient.get<boolean>('/auth/validate-token');
   } catch {
-      return false;
+    return false;
   }
 }
 
