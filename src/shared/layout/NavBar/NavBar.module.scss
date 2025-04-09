@@ -3,6 +3,10 @@
   height: 100%;
 }
 
+.onHomePage {
+  margin-left: -200px;
+}
+
 .navList {
   @include mixins.flex-row-gap(64px);
 

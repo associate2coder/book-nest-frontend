@@ -55,6 +55,10 @@
   color: vars.$black;
 }
 
+.pageContent {
+  @include mixins.flex-column-gap(80px);
+}
+
 
 .sectionHeader {
   @include mixins.flex-row-gap(8px);

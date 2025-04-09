@@ -1,15 +1,16 @@
 // import cn from 'classnames'
 import styles from './LoginForm.module.scss';
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { FormSeparator } from '../../../../shared/components/FormSeparator/FormSeparator';
 import { FormInput } from '../../../../shared/components/FormInput';
 import { authService } from '../../../../features/auth/authService';
 import { SocialButtonBlock } from '../../../../shared/components/SocialButtonBlock';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { SubmitButton } from '../../../../shared/components/SubmitButton';
 import { useAppDispatch } from '../../../../shared/hooks/storeHooks';
 import { getUser } from '../../../../services/userService';
 import { setUser } from '../../../../store/profileSlice';
+import { BASED_AUTHORISED_ROUTE } from '../../../../config/constants';
 
 interface LoginState {
   email: string;
@@ -27,8 +28,13 @@ const initialLoginState: LoginState = {
 
 export const LoginForm: React.FC = () => {
   const [formData, setFormData] = useState<LoginState>(initialLoginState);
+  const location = useLocation();
   const navigate = useNavigate();
   const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    console.log('LOGIN mounted');
+  }, [])
 
   const handleInputChange = useCallback((e: React.ChangeEvent<HTMLInputElement>) => {
     const target = e.target;
@@ -40,6 +46,15 @@ export const LoginForm: React.FC = () => {
       return { ...prevState, [key]: value, [error]: '' };
     })
   }, [])
+
+  const getTargetRoute = useCallback(() => {
+
+    const target = location.state?.to ?? BASED_AUTHORISED_ROUTE;
+
+    console.log('TARGET', target);
+
+    return target;
+  }, [location.state?.to]);
 
   const handleSubmit = useCallback((e: React.FormEvent) => {
     e.preventDefault();
@@ -55,12 +70,12 @@ export const LoginForm: React.FC = () => {
             dispatch(setUser(usr));
           });
 
-        navigate('/mybooks');
+        setTimeout(() => navigate(getTargetRoute()), 0);
       })
       .catch(err => {
         console.log(err);
       })
-  }, [dispatch, formData.email, formData.password, navigate]);
+  }, [dispatch, formData.email, formData.password, getTargetRoute, navigate]);
 
   return (
     <form 

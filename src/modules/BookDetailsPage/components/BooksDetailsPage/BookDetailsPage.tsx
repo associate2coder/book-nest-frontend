@@ -37,9 +37,7 @@ export const BookDetailsPage: React.FC = () => {
   // const [error, setError] = useState('');
 
   // fetch book on page load
-  useEffect(() => {
-    console.log(slug);
-    
+  useEffect(() => {   
     setLoaded(false);
 
     const id = Number((slug as string).split('-').pop());
@@ -47,7 +45,6 @@ export const BookDetailsPage: React.FC = () => {
     getBook(id)
       .then(book => {
         setBook(book);
-        console.log(book);
         
       })
       .catch(err => {

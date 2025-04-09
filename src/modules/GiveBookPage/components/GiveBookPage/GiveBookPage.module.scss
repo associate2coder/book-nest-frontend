@@ -2,7 +2,11 @@
   @include mixins.grid-from-design(12);
 
   padding-left: 330px;
-  row-gap: 40px;
+  row-gap: 120px;
+
+  & > form {
+    margin-top: -80px;
+  }
 
   & > *:not(:last-child) {
     grid-column: span 9;

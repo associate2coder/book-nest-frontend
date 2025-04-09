@@ -1,6 +1,6 @@
 import { API_BASE_URL } from "../config/constants";
 
-type RequestMethod = 'GET' | 'POST' | 'PATCH' | 'DELETE';
+type RequestMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
 // wait function to test loaders
 // function wait(delay: number) {
@@ -57,5 +57,6 @@ function request<T>(
 export const apiClient = {
   get: <T>(url: string) => request<T>(url),
   post: <T>(url: string, data?: unknown) => request<T>(url, 'POST', data),
+  put: <T>(url: string, data?: unknown) => request<T>(url, 'PUT', data),
   delete: (url: string) => request(url, 'DELETE'),
 };

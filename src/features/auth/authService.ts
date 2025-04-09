@@ -36,7 +36,7 @@ const validate = async () => {
   }
 }
 
-const signOut = () => {
+const signOut = async () => {
   return apiClient.post('/auth/signout');
 }
 

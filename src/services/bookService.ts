@@ -24,7 +24,7 @@ export const getBook = async (id: number) => {
 export const postBook = async (data: BookData) => {
   console.log(JSON.stringify(data));
   
-  return apiClient.post<BookData>(`${path.books}`, data);
+  return apiClient.post<Book>(`${path.books}`, data);
 }
 
 export const getRecommended = async (authorized: boolean = false) => {
@@ -41,6 +41,15 @@ export const getTaken = async () => {
   return apiClient.get<Book[]>(`${path.taken}`);
 }
 
+export const addImage = async (
+  bookId: number,
+  file: File,
+) => {
+  const data = { image: file };
+
+  return apiClient.put(`${path.books}/${bookId}/image`, data);
+}
+
 export const bookService = {
   getAllBooks,
   getBooks,
@@ -49,4 +58,5 @@ export const bookService = {
   getRecommended,
   getDonated,
   getTaken,
+  addImage,
 }

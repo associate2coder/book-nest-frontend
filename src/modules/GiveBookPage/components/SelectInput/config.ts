@@ -11,14 +11,14 @@ export const selectConfig = {
   condition: {
     id: 'condition',
     type: 'text',
-    label: 'Condition',
+    label: 'Book Condition',
     multiple: false,
     excluded: false,
   },
   releaseYear: {
     id: 'releaseYear',
     type: 'text',
-    label: 'Year',
+    label: 'Publication Year',
     multiple: false,
     excluded: false,
   },

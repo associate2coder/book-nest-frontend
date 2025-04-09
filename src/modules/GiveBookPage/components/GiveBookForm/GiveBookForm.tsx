@@ -37,6 +37,8 @@ interface FormDataType {
   releaseYear: string;
   releaseYearError: string;
   description: string;
+  image: File | null;
+  imageError: string;
 }
 
 const initialFormData: FormDataType = {
@@ -53,6 +55,16 @@ const initialFormData: FormDataType = {
   releaseYear: '',
   releaseYearError: '',
   description: '',
+  image: null,
+  imageError: '',
+}
+
+interface ImageData {
+  filename: string;
+}
+
+const initialImageData: ImageData = {
+  filename: 'No file chosen',
 }
 
 export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
@@ -101,6 +113,7 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
   // FORM DATA state
   const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState<FormDataType>(initFormData());
+  const [imageData, setImageData] = useState(initialImageData);
   const { filters, loaded } = useAppSelector(state => state.filters);
   const genres = useMemo(() => filters.genres.values, [filters])
 
@@ -129,7 +142,10 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
     if (input) {
       const key = input.name as keyof FormDataType;
 
-      updateForm({ [key]: input.value });
+      updateForm({ 
+        [key]: input.value,
+        [`${key}Error`]: '',
+      });
     }
   }, [updateForm]);
 
@@ -140,7 +156,10 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
     if (input) {
       const key = input.name as keyof FormDataType;
 
-      updateForm({ [key]: input.value });
+      updateForm({ 
+        [key]: input.value,
+        [`${key}Error`]: '',
+       });
     }
   }, [updateForm]);
 
@@ -170,7 +189,8 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
       genresError: '',
       conditionError: '',
       formatError: '',
-      releaseYearError: '',  
+      releaseYearError: '', 
+      imageError: '', 
     }
 
     if (!formData.author) {
@@ -195,6 +215,18 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
 
     if (!formData.releaseYear) {
       errors.releaseYearError = 'Please select the release year of the book';
+    }
+
+    if (!formData.image) {
+      errors.imageError = 'Please add image for the book';
+    }
+
+    if (formData.image) {
+      const filename = formData.image.name;
+
+      if (!filename.endsWith('.png')) {
+        errors.imageError = 'Only PNG images are acceptable';
+      }
     }
 
     // check if all errors are empty
@@ -238,10 +270,21 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
       }
 
       // TODO => add SUCCESS handling
-      // TODO +> add ERRORS handling
+      // TODO => add ERRORS handling
       bookService.postBook(newBook)
         .then(res => {
           console.log(res);
+
+          const bookId = res.id;
+
+          const image = formData.image;
+
+          if (image) {
+            bookService.addImage(bookId, image)
+              .then(() => {
+                console.log('image added');
+              })
+          }
           
           updateForm(initialFormData);
         })
@@ -269,6 +312,26 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
       num => num !== value
     ));
   }, []);
+
+  const fileChangeEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+
+    if (file) {
+      const filename = file.name;
+
+      updateForm({ 
+        image: file,
+        imageError: '',
+       });
+
+      setImageData(prev => {
+        return {
+          ...prev,
+          filename,
+        }
+      });
+    }
+  }
 
   return (
     <form className={styles.form} onSubmit={handleSubmit} ref={formRef} >
@@ -305,6 +368,7 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
                   configKey='genres'
                   options={genres}
                   value={formData.genres[i]}
+                  error={formData.genresError}
                   onSelect={handleSelect}
                   index={index}
                 />
@@ -332,7 +396,8 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
           <SelectInput 
             configKey='condition' 
             options={conditionOptions} 
-            value={formData.condition} 
+            value={formData.condition}
+            error={formData.conditionError}
             onSelect={handleSelect} 
           />
         </div>
@@ -342,6 +407,7 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
             configKey='format' 
             options={formatOptions} 
             value={formData.format} 
+            error={formData.formatError}
             onSelect={handleSelect} 
           />
         </div>
@@ -350,9 +416,24 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
           <SelectInput 
             configKey='releaseYear' 
             options={years} 
-            value={formData.releaseYear} 
+            value={formData.releaseYear}
+            error={formData.releaseYearError}
             onSelect={handleSelect}
           />
+        </div>
+
+        <div className={styles.fileBlock}>
+          <div className={styles.fileInputBlock}>
+            <input type="file" id="file" className={styles.fileInput} multiple={false} onChange={fileChangeEvent} />
+            <label htmlFor="file" className={styles.fileLabel}>Choose file</label>
+            <span className={styles.fileName} id="file-name">{imageData.filename}</span>
+          </div>
+
+          <p className={cn(styles.message, {
+            [styles.errorMessage]: formData.imageError,
+          })}>
+            {formData.imageError}
+          </p> 
         </div>
       </div>
 

@@ -4,17 +4,17 @@
 
   padding: 14px;
   border-radius: 8px;
+
+  &:hover {
+    cursor: pointer;
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.15);
+  }
 }
 
 .default {
   background-color: vars.$primary-color;
   color: vars.$white-color;
   border: none;
-
-  &:hover {
-    cursor: pointer;
-    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.15);
-  }
 }
 
 .selected {
