@@ -11,7 +11,7 @@ export const BackLink: React.FC = () => {
   // if none (link is copied outside), page will instead be routed to home
   const getReferreer = useCallback(() => {
     const historyState = location.state;
-
+    
     if (historyState) {
       return historyState.from;
     }

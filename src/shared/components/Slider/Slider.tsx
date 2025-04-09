@@ -113,27 +113,24 @@ export const Slider: React.FC<Props> = React.memo(
     return (
       <div className={styles.container}>
         <h3 className={styles.title}>{title}</h3>
-
-        <div 
+        <div
           ref={sliderRef}
           className={styles.slider}
         >
-          {visibleBooks.map(book => (
-            <BookCard 
+          {visibleBooks && visibleBooks.length > 0 && visibleBooks.map(book => (
+            <BookCard
               key={`slider-${book.id}`}
               book={book}
             />
           ))}
         </div>
-
         {visibleBooks.length > 0 && (
           <div className={styles.navigation}>
             <ArrowButton configKey="arrowLeft" action={handlePrev} disabled={prevDisabled} />
             <ArrowButton configKey="arrowRight" action={handleNext} disabled={nextDisabled} />
           </div>
         )}
-        
-
+      
       </div>
     );
   }

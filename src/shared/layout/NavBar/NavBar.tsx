@@ -5,6 +5,7 @@ import { NavLink, NavLinkRenderProps, useLocation } from 'react-router-dom';
 
 export const NavBar: React.FC = () => {
   const location = useLocation();
+  const onHomePage = location.pathname === '/';
 
   const getNavLinkClassNames = ({ isActive }: NavLinkRenderProps, path: string) => {
     return cn(styles.navLink, {
@@ -13,7 +14,9 @@ export const NavBar: React.FC = () => {
   };
 
   return (
-    <nav className={styles.navBar}>
+    <nav className={cn(styles.navBar, {
+      [styles.onHomePage]: onHomePage,
+    })}>
       <ul className={styles.navList}>
         {Object.values(navItems).map(page => (
           <li className={styles.navItem} key={page.id}>

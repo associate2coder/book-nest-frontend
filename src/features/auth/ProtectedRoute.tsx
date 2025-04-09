@@ -1,6 +1,7 @@
-import { Navigate, Outlet } from "react-router-dom";
+import { Navigate, Outlet, useLocation } from "react-router-dom";
 import React from "react";
 import { useAuth } from "../hooks/useAuth";
+import { BASED_AUTHORISED_ROUTE } from "../../config/constants";
 
 interface Props {
   children?: React.ReactNode;
@@ -8,14 +9,19 @@ interface Props {
 
 export const ProtectedRoute: React.FC<Props> = ({ children }) => {
   const authorised = useAuth();
+  const location = useLocation();
 
-    // console.log('user', user);
 
     if (!authorised) {
       return <Navigate 
         to="/login" 
         replace={true} 
-        state={{ from: location.pathname, search: location.search }}
+        state={{ 
+          to: location.pathname,
+          toSearch: location.search,
+          from: location.state?.from ?? BASED_AUTHORISED_ROUTE, 
+          search: location.state?.search ?? '',
+        }}
       />
     }
 

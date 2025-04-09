@@ -61,14 +61,10 @@ const initialFormData: FormDataType = {
 
 interface ImageData {
   filename: string;
-  file: File | null;
-  error: string;
 }
 
 const initialImageData: ImageData = {
   filename: 'No file chosen',
-  file: null,
-  error: '',
 }
 
 export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
@@ -315,7 +311,6 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
         return {
           ...prev,
           filename,
-          file,
         }
       });
     }

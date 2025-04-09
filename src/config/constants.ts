@@ -6,6 +6,8 @@ export const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 export const REDIRECT_LINK = `${import.meta.env.VITE_HOST}/redirect`;
 
+export const BASED_AUTHORISED_ROUTE = '/mybooks';
+
 export const MIN_PASS_LENGTH = 8;
 
 export const DEFAULT_SORTBY = 'releaseYear:desc';
