@@ -1,17 +1,17 @@
 import { Navigate, Outlet } from "react-router-dom";
 import React from "react";
-import { useUser } from "../../shared/hooks/useUser";
+import { useAuth } from "../hooks/useAuth";
 
 interface Props {
   children?: React.ReactNode;
 }
 
 export const ProtectedRoute: React.FC<Props> = ({ children }) => {
-    const user = useUser();
+  const authorised = useAuth();
 
     // console.log('user', user);
 
-    if (!user) {
+    if (!authorised) {
       return <Navigate 
         to="/login" 
         replace={true} 

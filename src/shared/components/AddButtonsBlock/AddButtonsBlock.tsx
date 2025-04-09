@@ -5,6 +5,7 @@ import { Book } from '../../types/Book';
 import { useAppDispatch, useAppSelector } from '../../hooks/storeHooks';
 import { useCallback, useMemo } from 'react';
 import { addCart, removeCart, setConfirmation } from '../../../store/cartSlice';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 interface Props {
   book: Book;
@@ -12,7 +13,14 @@ interface Props {
 
 export const AddButtonsBlock: React.FC<Props> = ({ book }) => {
   const { books: cartItems } = useAppSelector(state => state.cart);
+  const { taken } = useAppSelector(state => state.profile);
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const onPage = useMemo(() => {
+    return location.pathname.includes(book.slug);
+  }, [book.slug, location.pathname])
 
   const bookInCart = useMemo(() => {
     const ids = cartItems.map(book => book.id);
@@ -29,15 +37,61 @@ export const AddButtonsBlock: React.FC<Props> = ({ book }) => {
 
     dispatch(actionFn(book));
   }, [book, bookInCart, dispatch]);
+
+  // Check if Book is in Taken
+  // if so, you can't request it
+  const inTaken = useMemo(() => {
+    if (!taken || taken.length === 0) {
+      return false;
+    }
+
+    return taken.map(book => book.id).includes(book.id);
+  }, [book.id, taken])
+
+  // If in taken, explore the book OR other books
+  const handleExploreButtonClick = useCallback(() => {
+
+    const navitageTo = onPage
+      ? `/books`
+      : `/books/${book.slug}`;
+    
+    setTimeout(() => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }, 0);
+    
+    navigate(
+      navitageTo, 
+      { state: {
+        from: location.pathname,
+        search: location.search,
+      } },
+    );  
+
+  }, [book.slug, location.pathname, location.search, navigate, onPage]);
+
+  const takenButtonText = useMemo(() => {
+    return onPage 
+      ? 'Explore more books'
+      : 'Explore the book';
+  }, [onPage]);
   
   return (
     <div className={styles.buttons}>
-      <PrimaryButton 
-        text="Request a book" 
-        onClick={handleCartButtonClick} 
-        selected={bookInCart}
-        selectedText="Requested" 
-      />
+      {inTaken ? (
+        <PrimaryButton 
+          text={takenButtonText}
+          onClick={handleExploreButtonClick} 
+          selected={(inTaken)}
+          selectedText={takenButtonText}
+        />
+      ) : (
+        <PrimaryButton 
+          text="Request a book" 
+          onClick={handleCartButtonClick} 
+          selected={bookInCart}
+          selectedText="Requested" 
+        />
+      )}
 
       <AddToFavsButton book={book} />
     </div>

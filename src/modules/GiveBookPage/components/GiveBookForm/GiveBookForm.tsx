@@ -37,6 +37,8 @@ interface FormDataType {
   releaseYear: string;
   releaseYearError: string;
   description: string;
+  image: File | null;
+  imageError: string;
 }
 
 const initialFormData: FormDataType = {
@@ -53,6 +55,20 @@ const initialFormData: FormDataType = {
   releaseYear: '',
   releaseYearError: '',
   description: '',
+  image: null,
+  imageError: '',
+}
+
+interface ImageData {
+  filename: string;
+  file: File | null;
+  error: string;
+}
+
+const initialImageData: ImageData = {
+  filename: 'No file chosen',
+  file: null,
+  error: '',
 }
 
 export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
@@ -101,6 +117,7 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
   // FORM DATA state
   const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState<FormDataType>(initFormData());
+  const [imageData, setImageData] = useState(initialImageData);
   const { filters, loaded } = useAppSelector(state => state.filters);
   const genres = useMemo(() => filters.genres.values, [filters])
 
@@ -170,7 +187,8 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
       genresError: '',
       conditionError: '',
       formatError: '',
-      releaseYearError: '',  
+      releaseYearError: '', 
+      imageError: '', 
     }
 
     if (!formData.author) {
@@ -195,6 +213,10 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
 
     if (!formData.releaseYear) {
       errors.releaseYearError = 'Please select the release year of the book';
+    }
+
+    if (!formData.image) {
+      errors.imageError = 'Please add image for the book';
     }
 
     // check if all errors are empty
@@ -238,10 +260,21 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
       }
 
       // TODO => add SUCCESS handling
-      // TODO +> add ERRORS handling
+      // TODO => add ERRORS handling
       bookService.postBook(newBook)
         .then(res => {
           console.log(res);
+
+          const bookId = res.id;
+
+          const image = formData.image;
+
+          if (image) {
+            bookService.addImage(bookId, image)
+              .then(() => {
+                console.log('image added');
+              })
+          }
           
           updateForm(initialFormData);
         })
@@ -269,6 +302,24 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
       num => num !== value
     ));
   }, []);
+
+  const fileChangeEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+
+    if (file) {
+      const filename = file.name;
+
+      updateForm({ image: file });
+
+      setImageData(prev => {
+        return {
+          ...prev,
+          filename,
+          file,
+        }
+      });
+    }
+  }
 
   return (
     <form className={styles.form} onSubmit={handleSubmit} ref={formRef} >
@@ -354,6 +405,12 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
             onSelect={handleSelect}
           />
         </div>
+      </div>
+
+      <div className={styles.fileBlock}>
+        <input type="file" id="file" className={styles.fileInput} multiple={false} onChange={fileChangeEvent} />
+        <label htmlFor="file" className={styles.fileLabel}>Choose file</label>
+        <span className={styles.fileName} id="file-name">{imageData.filename}</span>
       </div>
 
       <div className={styles.descriptionContainer}>
