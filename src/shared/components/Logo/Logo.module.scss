@@ -2,3 +2,9 @@
   padding: 16px;
   width: 329px;
 }
+
+.logoLink {
+  &:hover > * {
+    @include mixins.pulse-animation;
+  }
+}

@@ -2,12 +2,6 @@ import { API_BASE_URL } from "../config/constants";
 
 type RequestMethod = 'GET' | 'POST' | 'PUT' | 'DELETE';
 
-// wait function to test loaders
-// function wait(delay: number) {
-//   return new Promise(resolve => {
-//     setTimeout(resolve, delay);
-//   });
-// }
 
 function request<T>(
   url: string,
@@ -20,10 +14,19 @@ function request<T>(
   };
 
   if (data) {
-    options.body = JSON.stringify(data);
-    options.headers = {
-      'Content-Type': 'application/json; charset=UTF-8',
-    };
+    const isImageUpload = typeof data === 'object' && data !== null && 'image' in data && data.image instanceof File;
+
+    if (isImageUpload) {
+      const formData = new FormData();
+      formData.append('image', (data as { image: File }).image);
+
+      options.body = formData;
+    } else {
+      options.body = JSON.stringify(data);
+      options.headers = {
+        'Content-Type': 'application/json; charset=UTF-8',
+      };  
+    }
   }
 
   return fetch(API_BASE_URL + url, options)
