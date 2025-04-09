@@ -79,12 +79,15 @@
   }
 }
 
-
-
 .fileBlock {
-  display: flex;
+  @include mixins.flex-column-gap(8px);
+}
+
+.fileInputBlock {
+  @include mixins.flex-row-gap(8px);
+
   align-items: center;
-  gap: 1rem;
+  -webkit-align-items: center;
 }
 
 .fileInput {
@@ -115,3 +118,15 @@
   color: #666;
 }
 
+.message {
+  @extend %small-text;
+
+  margin-top: -8px;
+  height: 12px;
+  color: vars.$grey-80;
+  padding-left: 17px;
+}
+
+.errorMessage {
+  color: vars.$red-color;
+}

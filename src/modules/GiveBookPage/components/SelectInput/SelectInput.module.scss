@@ -18,6 +18,15 @@
   // font-family: vars.$sans-font;
   // line-height: 110%;
   // font-size: 16px;
+
+  &.error {
+    border: 1px solid vars.$red-color;
+  }
+
+  &:focus {
+    border: 1px solid vars.$primary-color;
+    outline: none;
+  }
 }
 
 .expand {
@@ -35,4 +44,17 @@
 
 .iconExpanded {
   transform: rotate(180deg);
+}
+
+.message {
+  @extend %small-text;
+
+  margin-top: -8px;
+  height: 12px;
+  color: vars.$grey-80;
+  padding-left: 17px;
+}
+
+.errorMessage {
+  color: vars.$red-color;
 }

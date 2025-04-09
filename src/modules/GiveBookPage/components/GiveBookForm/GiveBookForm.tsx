@@ -142,7 +142,10 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
     if (input) {
       const key = input.name as keyof FormDataType;
 
-      updateForm({ [key]: input.value });
+      updateForm({ 
+        [key]: input.value,
+        [`${key}Error`]: '',
+      });
     }
   }, [updateForm]);
 
@@ -153,7 +156,10 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
     if (input) {
       const key = input.name as keyof FormDataType;
 
-      updateForm({ [key]: input.value });
+      updateForm({ 
+        [key]: input.value,
+        [`${key}Error`]: '',
+       });
     }
   }, [updateForm]);
 
@@ -213,6 +219,14 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
 
     if (!formData.image) {
       errors.imageError = 'Please add image for the book';
+    }
+
+    if (formData.image) {
+      const filename = formData.image.name;
+
+      if (!filename.endsWith('.png')) {
+        errors.imageError = 'Only PNG images are acceptable';
+      }
     }
 
     // check if all errors are empty
@@ -305,7 +319,10 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
     if (file) {
       const filename = file.name;
 
-      updateForm({ image: file });
+      updateForm({ 
+        image: file,
+        imageError: '',
+       });
 
       setImageData(prev => {
         return {
@@ -351,6 +368,7 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
                   configKey='genres'
                   options={genres}
                   value={formData.genres[i]}
+                  error={formData.genresError}
                   onSelect={handleSelect}
                   index={index}
                 />
@@ -378,7 +396,8 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
           <SelectInput 
             configKey='condition' 
             options={conditionOptions} 
-            value={formData.condition} 
+            value={formData.condition}
+            error={formData.conditionError}
             onSelect={handleSelect} 
           />
         </div>
@@ -388,6 +407,7 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
             configKey='format' 
             options={formatOptions} 
             value={formData.format} 
+            error={formData.formatError}
             onSelect={handleSelect} 
           />
         </div>
@@ -396,16 +416,25 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
           <SelectInput 
             configKey='releaseYear' 
             options={years} 
-            value={formData.releaseYear} 
+            value={formData.releaseYear}
+            error={formData.releaseYearError}
             onSelect={handleSelect}
           />
         </div>
-      </div>
 
-      <div className={styles.fileBlock}>
-        <input type="file" id="file" className={styles.fileInput} multiple={false} onChange={fileChangeEvent} />
-        <label htmlFor="file" className={styles.fileLabel}>Choose file</label>
-        <span className={styles.fileName} id="file-name">{imageData.filename}</span>
+        <div className={styles.fileBlock}>
+          <div className={styles.fileInputBlock}>
+            <input type="file" id="file" className={styles.fileInput} multiple={false} onChange={fileChangeEvent} />
+            <label htmlFor="file" className={styles.fileLabel}>Choose file</label>
+            <span className={styles.fileName} id="file-name">{imageData.filename}</span>
+          </div>
+
+          <p className={cn(styles.message, {
+            [styles.errorMessage]: formData.imageError,
+          })}>
+            {formData.imageError}
+          </p> 
+        </div>
       </div>
 
       <div className={styles.descriptionContainer}>

@@ -10,13 +10,14 @@ interface Props {
   configKey: string;
   options: Category[];
   value: string;
+  error: string;
   onSelect: (key: string, value: string, index?: number) => void;
   // indices: number;
   index?: number;
 }
 
 export const SelectInput: React.FC<Props> = React.memo(
-  ({ configKey, options, value = '', onSelect, index }) => {
+  ({ configKey, options, value = '', onSelect, error, index }) => {
     const [expanded, setExpanded] = useState(false);
 
     const dropdownRef = useRef<HTMLDivElement>(null);
@@ -94,7 +95,9 @@ export const SelectInput: React.FC<Props> = React.memo(
           type={config.type} 
           value={value} 
           readOnly
-          className={styles.selectInput}
+          className={cn(styles.selectInput, {
+            [styles.error]: error,
+          })}
         />
 
         <button 
@@ -124,6 +127,12 @@ export const SelectInput: React.FC<Props> = React.memo(
             dropdownRef={dropdownRef} 
           />
         )}
+
+        <p className={cn(styles.message, {
+          [styles.errorMessage]: error,
+        })}>
+          {error}
+        </p> 
       </div>
     );
   }
