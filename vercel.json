@@ -9,6 +9,10 @@
           "value": "book-nest-frontend-pearl.vercel.app"
         }
       ]
+    },
+    {
+      "source": "/api/:path*",
+      "destination": "https://backend.booknest.net.ua/:path*"
     }
   ]
 }

@@ -29,8 +29,8 @@ export const ProfileDropdown: React.FC<Props> = ({ user, close }) => {
         dispatch(setUser(null));
 
         setTimeout(() => {
-          navigate('/');
-        }, 3);
+          navigate('/login');
+        }, 100);
       })
   }
 
@@ -41,6 +41,8 @@ export const ProfileDropdown: React.FC<Props> = ({ user, close }) => {
           <Avatar />
           <h4 className={styles.userName}>{user?.fullName}</h4>
         </div>
+
+        <p className={styles.tokens}>{`Book points: ${user.tokens}`}</p>
         
         <div className="divider"></div>
       </div>

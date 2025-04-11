@@ -13,11 +13,9 @@ interface Props {
 export const Slider: React.FC<Props> = React.memo(
   ({ title, books: visibleBooks }) => {
     const sliderRef = useRef<HTMLDivElement>(null);
-    // const [visibleBooks, setVisibleBooks] = useState(tmpBooks);
     const [visibleIndices, setVisibleIndices] = useState(
       Array.from({ length: SLIDER_VISIBLE_BOOKS_DESKTOP }).map((_, i) => i)
     );
-    // const [curScroll, setCurScroll] = useState(0);
 
     const updateNextIndex = (nextIndex: number) => {
       const indices = [...visibleIndices, nextIndex];
@@ -59,7 +57,7 @@ export const Slider: React.FC<Props> = React.memo(
       const targetIndex =  visibleIndices[0] - 1;
 
       // show target
-      children[targetIndex].scrollIntoView({ inline: 'start', behavior: 'smooth' });
+      children[targetIndex].scrollIntoView({ inline: 'start', block: 'start', behavior: 'smooth' });
 
       // update visible indices
       updatePrevIndex(targetIndex);
@@ -91,18 +89,11 @@ export const Slider: React.FC<Props> = React.memo(
       const targetIndex =  visibleIndices[2] + 1;
 
       // show target
-      children[targetIndex].scrollIntoView({ inline: 'end', behavior: 'smooth' });
+      children[targetIndex].scrollIntoView({ inline: 'start', block: 'start', behavior: 'smooth' });
 
       // update visible indices
       updateNextIndex(targetIndex);
     }
-
-    // useEffect(() => {
-    //   bookService.getBooks()
-    //     .then(response => {
-    //       setVisibleBooks(response.content);
-    //     })
-    // }, []);
 
     const prevDisabled = useMemo(() => visibleIndices[0] <= 0, [visibleIndices]);
     const lastIndex = useMemo(() => visibleIndices.length - 1, [visibleIndices.length]);

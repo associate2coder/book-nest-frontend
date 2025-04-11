@@ -30,6 +30,13 @@
   @extend %h4;
 }
 
+.tokens {
+  @extend %buttons;
+
+  color: vars.$primary-color;
+  padding-inline: 8px;
+}
+
 .navSection {
   gap: 8px;
 }

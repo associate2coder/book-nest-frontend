@@ -6,6 +6,7 @@ import { useAppDispatch, useAppSelector } from '../../hooks/storeHooks';
 import { useCallback, useMemo } from 'react';
 import { addCart, removeCart, setConfirmation } from '../../../store/cartSlice';
 import { useLocation, useNavigate } from 'react-router-dom';
+import { useAuth } from '../../../features/hooks/useAuth';
 
 interface Props {
   book: Book;
@@ -14,6 +15,7 @@ interface Props {
 export const AddButtonsBlock: React.FC<Props> = ({ book }) => {
   const { books: cartItems } = useAppSelector(state => state.cart);
   const { taken } = useAppSelector(state => state.profile);
+  const authorised = useAuth();
   const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const location = useLocation();
@@ -28,7 +30,29 @@ export const AddButtonsBlock: React.FC<Props> = ({ book }) => {
     return ids.includes(book.id);
   }, [book, cartItems])
 
+  // return TRUE if login needed
+  const loginIfUnauthorised = useCallback(() => {
+    if (!authorised) {
+      setTimeout(() => navigate('/login', {
+        replace: true,
+        state: {
+          from: location.pathname,
+          search: location.search,
+        }
+      }), 0);
+
+      return true;
+    }
+
+    return false;
+  }, [authorised, location.pathname, location.search, navigate])
+
+
   const handleCartButtonClick = useCallback(() => {
+    if (loginIfUnauthorised()) {
+      return;
+    }
+
     const actionFn = bookInCart ? removeCart : addCart;
 
     if (actionFn === addCart) {
@@ -36,7 +60,7 @@ export const AddButtonsBlock: React.FC<Props> = ({ book }) => {
     }
 
     dispatch(actionFn(book));
-  }, [book, bookInCart, dispatch]);
+  }, [book, bookInCart, dispatch, loginIfUnauthorised]);
 
   // Check if Book is in Taken
   // if so, you can't request it
