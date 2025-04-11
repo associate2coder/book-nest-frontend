@@ -2,17 +2,7 @@
   "rewrites": [
     {
       "source": "/(.*)", 
-      "destination": "/index.html",
-      "has": [
-        {
-          "type": "host",
-          "value": "book-nest-frontend-pearl.vercel.app"
-        }
-      ]
-    },
-    {
-      "source": "/api/:path*",
-      "destination": "https://backend.booknest.net.ua/:path*"
+      "destination": "/index.html"
     }
   ]
 }
