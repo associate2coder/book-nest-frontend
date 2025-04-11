@@ -1,4 +1,6 @@
-import { REDIRECT_LINK } from "../../config/constants";
+// import { REDIRECT_LINK } from "../../config/constants";
+
+const REDIRECT_LINK = `${window.location.origin}/redirect`;
 
 const googleRegisterLink = `https://accounts.google.com/o/oauth2/v2/auth?` +
   `client_id=${import.meta.env.VITE_GOOGLE_CLIENT_ID}` +
