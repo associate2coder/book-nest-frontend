@@ -3,7 +3,6 @@ import styles from './GiveBookForm.module.scss';
 import { FormInput } from '../../../../shared/components/FormInput';
 import React, { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { Book, BookData } from '../../../../shared/types/Book';
-// import { categoryService } from '../../../../services/categoryService';
 import { Category } from '../../../../shared/types/Category';
 import { SelectInput } from '../SelectInput';
 import { conditionOptions, formatOptions } from '../SelectInput/config';
@@ -59,17 +58,9 @@ const initialFormData: FormDataType = {
   imageError: '',
 }
 
-interface ImageData {
-  filename: string;
-}
-
-const initialImageData: ImageData = {
-  filename: 'No file chosen',
-}
-
 export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
 
-  // const [loaded, setLoaded] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
   // CURRENT YEAR for Year select
   const currentYear = useMemo(() => {
@@ -113,17 +104,13 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
   // FORM DATA state
   const formRef = useRef<HTMLFormElement>(null);
   const [formData, setFormData] = useState<FormDataType>(initFormData());
-  const [imageData, setImageData] = useState(initialImageData);
+  const [imageFilename, setImageFilename] = useState('No file chosen');
   const { filters, loaded } = useAppSelector(state => state.filters);
   const genres = useMemo(() => filters.genres.values, [filters])
 
   // GENRE COUNT state
   const [genreCount, setGenreCount] = useState(0);
   const [genreIndices, setGenreIndices] = useState<number[]>([])
-
-  // const bookOrBlank = useCallback((key: keyof Book) => {
-  //   return book ? book[key] : '';
-  // }, [book]);
 
   // Update Form helper
   const updateForm = useCallback((newFields: Partial<FormDataType>) => {    
@@ -256,8 +243,12 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
 
   // SUBMIT a form
   const handleSubmit = (e: React.FormEvent) => {
+    // avoid standard submit
     e.preventDefault();
+    // show loader
+    setSubmitting(true);
 
+    // validate form data
     if (validateForm()) {
       const newBook: BookData = {
         author: formData.author,
@@ -269,28 +260,40 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
         description: formData.description,
       }
 
-      // TODO => add SUCCESS handling
-      // TODO => add ERRORS handling
+      // if validated post a book (without image)
       bookService.postBook(newBook)
         .then(res => {
-          console.log(res);
-
+          // retrieve book id for adding image later on
           const bookId = res.id;
 
+          // retrieve image
           const image = formData.image;
 
           if (image) {
+            // add image to the book
             bookService.addImage(bookId, image)
               .then(() => {
-                console.log('image added');
+                console.log(`Image added succesfully to book with id ${bookId}`);
+              })
+              .catch((error) => {
+                console.log(error);
+              })
+              .finally(() => {
+                // clear form, since book has been added
+                updateForm(initialFormData);
               })
           }
-          
-          updateForm(initialFormData);
-        })
-        .catch(err => console.log(err));
 
-      complete();
+          // replace form with confirmation
+          complete();
+        })
+        .catch(error => {
+          console.log(error);
+        })
+        .finally(() => {
+          // remove loader
+          setSubmitting(false);
+        })
     }
   }
 
@@ -313,139 +316,137 @@ export const GiveBookForm: React.FC<Props> = ({ book, complete }) => {
     ));
   }, []);
 
+  // Update form on image selection
   const fileChangeEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
+    // check if file has been added
     const file = e.target.files?.[0];
 
     if (file) {
       const filename = file.name;
 
+      // update formdata
       updateForm({ 
         image: file,
         imageError: '',
        });
 
-      setImageData(prev => {
-        return {
-          ...prev,
-          filename,
-        }
-      });
+      // update filename for input
+      setImageFilename(filename);
     }
   }
 
   return (
-    <form className={styles.form} onSubmit={handleSubmit} ref={formRef} >
+    <>
+      {submitting || !loaded && <Loader />}
 
-      <h3 className={styles.formTitle}>Book Information</h3>
+      <form className={styles.form} onSubmit={handleSubmit} ref={formRef} >
+        <h3 className={styles.formTitle}>Book Information</h3>
 
-      {!loaded && <Loader />}
+        <div className={cn(styles.names, styles.formGrid)}>
+          <FormInput
+            configKey="bookTitle"
+            value={formData.title}
+            error={formData.titleError}
+            onChange={updateInput}
+          />
 
-      <div className={cn(styles.names, styles.formGrid)}>
-        <FormInput 
-          configKey="bookTitle"
-          value={formData.title}
-          error={formData.titleError}
-          onChange={updateInput}
-        />
+          <FormInput
+            configKey="bookAuthor"
+            value={formData.author}
+            error={formData.authorError}
+            onChange={updateInput}
+          />
+        </div>
 
-        <FormInput 
-          configKey="bookAuthor"
-          value={formData.author}
-          error={formData.authorError}
-          onChange={updateInput}
-        />
-      </div>
+        <div className={cn(styles.categories, styles.formGrid)}>
+          <div className={cn(styles.genres, styles.formGrid)}>
+            {genreIndices.map(index => {
+              const i = genreIndices.indexOf(index);
 
-      <div className={cn(styles.categories, styles.formGrid)}>
-  
-        <div className={cn(styles.genres, styles.formGrid)}>
-          {genreIndices.map(index => {
-            const i = genreIndices.indexOf(index);
-
-            return (
-              <div className={styles.genre} key={index} >
-                <SelectInput
-                  configKey='genres'
-                  options={genres}
-                  value={formData.genres[i]}
-                  error={formData.genresError}
-                  onSelect={handleSelect}
-                  index={index}
-                />
-
-                {i !== 0 ? (
-                  <img 
-                    src={deleteIcon} 
-                    alt="bin icon" 
-                    className={styles.icon}
-                    onClick={() => deleteGenreInput(index)} 
+              return (
+                <div className={styles.genre} key={index} >
+                  <SelectInput
+                    configKey='genres'
+                    options={genres}
+                    value={formData.genres[i]}
+                    error={formData.genresError}
+                    onSelect={handleSelect}
+                    index={index}
                   />
-                ) : (
-                  <img 
-                    src={plusIcon} 
-                    alt="plus icon" 
-                    className={styles.icon}
-                    onClick={() => setGenreCount(prev => prev + 1)} 
-                  />          
-                )}
-              </div>
-          )})}
-        </div>
-  
-        <div className={cn(styles.category)}>
-          <SelectInput 
-            configKey='condition' 
-            options={conditionOptions} 
-            value={formData.condition}
-            error={formData.conditionError}
-            onSelect={handleSelect} 
-          />
-        </div>
 
-        <div className={cn(styles.category)}>
-          <SelectInput 
-            configKey='format' 
-            options={formatOptions} 
-            value={formData.format} 
-            error={formData.formatError}
-            onSelect={handleSelect} 
-          />
-        </div>
-
-        <div className={cn(styles.category)}>
-          <SelectInput 
-            configKey='releaseYear' 
-            options={years} 
-            value={formData.releaseYear}
-            error={formData.releaseYearError}
-            onSelect={handleSelect}
-          />
-        </div>
-
-        <div className={styles.fileBlock}>
-          <div className={styles.fileInputBlock}>
-            <input type="file" id="file" className={styles.fileInput} multiple={false} onChange={fileChangeEvent} />
-            <label htmlFor="file" className={styles.fileLabel}>Choose file</label>
-            <span className={styles.fileName} id="file-name">{imageData.filename}</span>
+                  {i !== 0 ? (
+                    <img
+                      src={deleteIcon}
+                      alt="bin icon"
+                      className={styles.icon}
+                      onClick={() => deleteGenreInput(index)}
+                    />
+                  ) : (
+                    <img
+                      src={plusIcon}
+                      alt="plus icon"
+                      className={styles.icon}
+                      onClick={() => setGenreCount(prev => prev + 1)}
+                    />
+                  )}
+                </div>
+            )})}
           </div>
 
-          <p className={cn(styles.message, {
-            [styles.errorMessage]: formData.imageError,
-          })}>
-            {formData.imageError}
-          </p> 
+          <div className={cn(styles.category)}>
+            <SelectInput
+              configKey='condition'
+              options={conditionOptions}
+              value={formData.condition}
+              error={formData.conditionError}
+              onSelect={handleSelect}
+            />
+          </div>
+
+          <div className={cn(styles.category)}>
+            <SelectInput
+              configKey='format'
+              options={formatOptions}
+              value={formData.format}
+              error={formData.formatError}
+              onSelect={handleSelect}
+            />
+          </div>
+
+          <div className={cn(styles.category)}>
+            <SelectInput
+              configKey='releaseYear'
+              options={years}
+              value={formData.releaseYear}
+              error={formData.releaseYearError}
+              onSelect={handleSelect}
+            />
+          </div>
+
+          <div className={styles.fileBlock}>
+            <div className={styles.fileInputBlock}>
+              <input type="file" id="file" className={styles.fileInput} multiple={false} onChange={fileChangeEvent} />
+              <label htmlFor="file" className={styles.fileLabel}>Choose file</label>
+              <span className={styles.fileName} id="file-name">{imageFilename}</span>
+            </div>
+            <p className={cn(styles.message, {
+              [styles.errorMessage]: formData.imageError,
+            })}>
+              {formData.imageError}
+            </p>
+          </div>
         </div>
-      </div>
 
-      <div className={styles.descriptionContainer}>
-        <DescriptionInput value={formData.description} onChange={updateTextArea} />
-      </div>
+        <div className={styles.descriptionContainer}>
+          <DescriptionInput value={formData.description} onChange={updateTextArea} />
+        </div>
 
-      <div className={styles.buttons}>
-        <PrimaryButton text="Submit Book" type='submit' />
-          
-        <SecondaryButton text="Cancel" onClick={() => {}}/>
-      </div>
-    </form>
+        <div className={styles.buttons}>
+          <PrimaryButton text="Submit Book" type='submit' />
+      
+          <SecondaryButton text="Cancel" onClick={() => {}}/>
+        </div>
+      </form>
+    </>
   )
 };

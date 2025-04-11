@@ -45,6 +45,7 @@ export const BookDetailsPage: React.FC = () => {
     getBook(id)
       .then(book => {
         setBook(book);
+        console.log({ book });
         
       })
       .catch(err => {
@@ -61,7 +62,7 @@ export const BookDetailsPage: React.FC = () => {
   }, []);
 
   const bookDescription = useMemo(() => {
-    return book?.description.split('\\n') || '';
+    return book?.description.split(/(\n\n|\\n)/) || [''];
   }, [book?.description]);
 
   const image = useMemo(() => {

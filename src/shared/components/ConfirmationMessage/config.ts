@@ -1,5 +1,5 @@
 export const textConfig = {
-  given: {
+  give: {
     title: 'Thank You for Sharing Your Book!',
     message: `Your book submission has been received. ` +
     `Our team will review it shortly. ` +
